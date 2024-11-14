@@ -54,6 +54,7 @@ export default function Testimonial() {
 
   return (
     <Box
+      className="mx-20"
       sx={{
         my: 8,
         display: "flex",
@@ -96,7 +97,7 @@ export default function Testimonial() {
             borderRadius: "25px",
             px: 4,
             boxShadow: "0px 4px 10px rgba(255, 165, 0, 0.3)",
-            alignSelf: isMobile ? "flex-start" : "center",
+            alignSelf: isMobile ? "center" : "flex-start",
           }}
         >
           Be Our Partner
@@ -104,17 +105,14 @@ export default function Testimonial() {
       </Box>
 
       {/* Right Section: Testimonial Carousel */}
-      <Box sx={{ width: isMobile ? "100%" : "70%", position: "relative" }}>
-        {/* Mobile View Testimonial Card */}
-        {isMobile && (
+      <Box
+        sx={{ width: isMobile ? "100%" : "70%", position: "relative" }}
+        className="my-4 "
+      >
+        <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
           <Card
             elevation={3}
-            sx={{
-              borderRadius: 4,
-              backgroundColor: "#f0f0f0", // Warna background untuk menonjolkan card di mobile
-              mb: 2,
-              p: 2,
-            }}
+            sx={{ borderRadius: 4, position: "relative", zIndex: 2 }}
           >
             <CardContent>
               <Typography variant="body1" paragraph>
@@ -126,100 +124,69 @@ export default function Testimonial() {
               </Typography>
             </CardContent>
           </Card>
-        )}
-
-        {/* Desktop View Testimonial Card */}
-        {!isMobile && (
-          <>
-            <Card
-              elevation={3}
-              sx={{
-                borderRadius: 4,
-                position: "relative",
-                zIndex: 2,
-                transform: "scale(1)",
-                transition: "transform 0.3s ease-in-out",
-                display: "block",
-              }}
-            >
-              <CardContent>
-                <Typography variant="body1" paragraph>
-                  {testimonials[testimonialIndex].text}
-                </Typography>
-                <Typography variant="subtitle2" color="text.secondary">
-                  {testimonials[testimonialIndex].author},{" "}
-                  {testimonials[testimonialIndex].position}
-                </Typography>
-              </CardContent>
-            </Card>
-
-            {/* Shadow Card for Next Testimonial */}
-            <Card
-              elevation={1}
-              sx={{
-                borderRadius: 4,
-                position: "absolute",
-                right: "-20px",
-                top: "10%",
-                opacity: 0.6,
-                transform: "scale(0.9)",
-                transition:
-                  "opacity 0.3s ease-in-out, transform 0.3s ease-in-out",
-              }}
-            >
-              <CardContent>
-                <Typography variant="body1" paragraph color="text.secondary">
-                  {
-                    testimonials[(testimonialIndex + 1) % testimonials.length]
-                      .text
-                  }
-                </Typography>
-                <Typography variant="subtitle2" color="text.secondary">
-                  {
-                    testimonials[(testimonialIndex + 1) % testimonials.length]
-                      .author
-                  }
-                  ,{" "}
-                  {
-                    testimonials[(testimonialIndex + 1) % testimonials.length]
-                      .position
-                  }
-                </Typography>
-              </CardContent>
-            </Card>
-          </>
-        )}
-
-        {/* Navigation Arrows */}
-        <Box
+          {/* Back card with shadow and author */}
+          <Card
+            elevation={1}
+            sx={{
+              borderRadius: 4,
+              position: "absolute",
+              top: isMobile ? "10%" : "10%", // Adjust for mobile
+              left: isMobile ? "20%" : "", // Adjust for mobile
+              bottom: isMobile ? "-20%" : "-50px", // Adjust for mobile
+              right: isMobile ? "-20%" : "-90px", // Adjust for mobile
+              opacity: 0.6,
+              transform: isMobile ? "scale(1.05)" : "scale(0.9)", // Slightly increase scale on mobile
+              zIndex: 1,
+              boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.3)",
+              padding: "1rem",
+              backgroundColor: "rgba(255, 255, 255, 0.8)",
+            }}
+          >
+            <CardContent>
+              <Typography variant="body1" paragraph color="text.secondary">
+                {
+                  testimonials[(testimonialIndex + 1) % testimonials.length]
+                    .text
+                }
+              </Typography>
+              <Typography variant="subtitle2" color="text.secondary">
+                {
+                  testimonials[(testimonialIndex + 1) % testimonials.length]
+                    .author
+                }
+              </Typography>
+            </CardContent>
+          </Card>
+        </Box>
+        <IconButton
+          onClick={handlePrev}
           sx={{
-            mt: isMobile ? 2 : 0,
-            display: "flex",
-            justifyContent: isMobile ? "space-between" : "flex-start",
-            width: "100%",
+            position: "absolute",
+            left: "-20px",
+            top: "50%",
+            transform: "translateY(-50%)",
+            bgcolor: "background.paper",
+            boxShadow: 2,
+            zIndex: 3,
           }}
         >
-          <IconButton
-            onClick={handlePrev}
-            sx={{
-              bgcolor: "background.paper",
-              marginLeft: isMobile ? "0" : "-40px",
-            }}
-          >
-            <ArrowBackIcon />
-          </IconButton>
-          <IconButton
-            onClick={handleNext}
-            sx={{
-              bgcolor: "background.paper",
-              marginRight: isMobile ? "0" : "-40px",
-            }}
-          >
-            <ArrowForwardIcon />
-          </IconButton>
-        </Box>
+          <ArrowBackIcon />
+        </IconButton>
+        <IconButton
+          onClick={handleNext}
+          sx={{
+            position: "absolute",
+            right: "-70px",
+            top: "70%",
+            transform: "translateY(-50%)",
+            bgcolor: "background.paper",
+            boxShadow: 2,
+            zIndex: 3,
+          }}
+        >
+          <ArrowForwardIcon />
+        </IconButton>
       </Box>
     </Box>
   );
 }
-``;

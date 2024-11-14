@@ -6,12 +6,13 @@ export default function Footer() {
     <Box component="footer" sx={{ py: 6, mt: 8, color: "black" }}>
       <Container maxWidth="lg">
         <Stack
-          direction={{ xs: "column", md: "row" }}
+          direction={{ xs: "column", md: "row" }} // Vertikal di mobile, horizontal di desktop
           justifyContent="space-between"
-          alignItems="center"
+          alignItems="flex-start" // Agar semua elemen rata kiri
           spacing={4}
         >
-          <Box>
+          {/* Logo dan Alamat */}
+          <Box sx={{ textAlign: { xs: "left", md: "left" } }}>
             <Image
               src="/assets/logo.png"
               alt="Hafa Pilar Logo"
@@ -22,11 +23,17 @@ export default function Footer() {
               Jl. Bougenvile No.32, Jakarta Utara, Indonesia, 14230
             </Typography>
           </Box>
-          <Box>
+
+          {/* Get in Touch */}
+          <Box sx={{ textAlign: { xs: "left", md: "left" } }}>
             <Typography variant="h6" gutterBottom fontWeight="bold">
               Get in Touch
             </Typography>
-            <Stack direction="row" spacing={3} alignItems="center">
+            <Stack
+              direction={{ xs: "column", md: "row" }} // Vertikal di mobile, horizontal di desktop
+              spacing={3}
+              alignItems="flex-start" // Pastikan elemen "Get in Touch" rata kiri di mobile
+            >
               <Link
                 href="mailto:hrd@hafapilar.com"
                 color="inherit"
@@ -75,7 +82,14 @@ export default function Footer() {
             </Stack>
           </Box>
         </Stack>
-        <Box display="flex" gap={2} mt={4} justifyContent="start">
+
+        {/* Gambar footer */}
+        <Box
+          display="flex"
+          gap={2}
+          mt={4}
+          justifyContent="flex-start" // Pastikan gambar footer rata kiri di mobile
+        >
           <Image
             src="/assets/footerbot.png"
             alt="Lloyd's Register"

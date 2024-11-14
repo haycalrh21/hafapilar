@@ -8,13 +8,11 @@ import {
   Grid,
   Container,
   Box,
-  Avatar,
-  IconButton,
 } from "@mui/material";
 
 export default function Services() {
   return (
-    <Box sx={{ my: 8 }}>
+    <Box className="flex flex-col md:flex-cold justify-between items-center relative overflow-hidden mb-6 mx-4">
       <Typography
         variant="h4"
         component="h2"

@@ -15,7 +15,7 @@ export default function PartnerCard() {
       <Box
         sx={{
           my: 8,
-          bgcolor: "primary.main",
+          bgcolor: "#0F4C5C",
           color: "white",
           py: 6,
           borderRadius: 4,
