@@ -107,20 +107,27 @@ const DepartmentCards = () => {
                   Positions: {department.positions}
                 </Typography>
               </CardContent>
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{ margin: "1rem", backgroundColor: "#0F4C5C" }}
+              <Link
+                href={{
+                  pathname: "/candidate/form",
+                  query: { department: department.title },
+                }}
               >
-                <Link
-                  href={{
-                    pathname: "/candidate/form",
-                    query: { department: department.title }, // Kirim data lewat query params
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{
+                    backgroundColor: "#0F4C5C",
+                    maxWidth: "3xl",
+                    width: "90%",
+                    borderRadius: "8px",
+                    fontWeight: "bold",
+                    mb: 4,
                   }}
                 >
                   Apply
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             </Card>
           </Box>
         ))}

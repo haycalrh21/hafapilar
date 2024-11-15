@@ -11,13 +11,13 @@ export function CandidatePage() {
         bgcolor: "background.default",
         backgroundImage: "url('/assets/nexttpage.png')",
         backgroundPosition: {
-          xs: "-400px 0px", // Mobile: geser ke kiri 500px dari top
+          xs: "-400px 0px",
           md: "center top",
           lg: "center top",
         },
         backgroundSize: {
-          xs: "280% 1600px ", // Mobile: full width, auto height
-          md: "100% 100% ", // Desktop: full width, auto height
+          xs: "280% 1600px ",
+          md: "100% 100% ",
         },
         backgroundRepeat: "no-repeat",
         minHeight: "100vh",

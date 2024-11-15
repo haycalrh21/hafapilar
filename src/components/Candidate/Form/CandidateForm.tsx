@@ -1,14 +1,14 @@
 "use client";
 import { Box, Container } from "@mui/material";
 
-import Header from "@/components/Homepage/Header";
 import FormInput from "./FormInput";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
+import HeaderNotButton from "../HeaderNotButton";
 
 export default function CandidateForm() {
-  const searchParams = useSearchParams(); // Ambil searchParams
-  const department = searchParams.get("department"); // Ambil parameter department dari query string
+  const searchParams = useSearchParams();
+  const department = searchParams.get("department");
   if (!department) {
     return <div>Loading...</div>;
   }
@@ -30,7 +30,7 @@ export default function CandidateForm() {
         minHeight: "100vh",
       }}
     >
-      <Header />
+      <HeaderNotButton />
       <Container maxWidth="lg" sx={{ p: 0 }}>
         <div>
           <h1 className="text-center text-3xl font-bold mt-20 sm:text-3xl">

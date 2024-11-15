@@ -1,14 +1,4 @@
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  Card,
-  CardContent,
-  Grid,
-  Container,
-  Box,
-} from "@mui/material";
+import { Typography, Button, Box } from "@mui/material";
 import Link from "next/link";
 export default function PartnerCard() {
   return (

@@ -12,13 +12,11 @@ import Footer from "./Footer";
 export function BlockPage() {
   return (
     <Box
-      sx={{ bgcolor: "background.default", p: 0, m: 0 }}
+      sx={{ bgcolor: "background.default" }}
       className="h-fit bg-cover w-full mx-auto"
       style={{ backgroundImage: "url('/assets/homepage.png')" }}
     >
-      <Header />
-
-      <Container maxWidth="lg" sx={{ p: 0 }}>
+      <Container maxWidth="lg">
         <Hero />
         <Services />
         <ImpactCard />

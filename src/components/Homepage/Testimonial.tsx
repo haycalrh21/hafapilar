@@ -56,7 +56,8 @@ export default function Testimonial() {
     <Box
       className="mx-20"
       sx={{
-        my: 8,
+        my: 10,
+        pb: 10,
         display: "flex",
         flexDirection: isMobile ? "column" : "row",
         justifyContent: isMobile ? "center" : "space-between",

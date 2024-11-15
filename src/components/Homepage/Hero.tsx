@@ -1,46 +1,56 @@
-import { Typography, Button, Box } from "@mui/material";
+import Image from "next/image";
 import Link from "next/link";
 
-export default function Hero() {
+const HeroSection = () => {
   return (
-    <div>
-      <Box className="flex flex-col md:flex-row justify-between items-center my-14 mx-4">
-        {/* Konten Teks */}
-        <Box className="z-10 text-center md:text-left p-2 md:p-0 order-2 md:order-1 w-full md:w-1/2">
-          <Typography
-            variant="h3"
-            component="h1"
-            gutterBottom
-            fontWeight="bold"
-            color="primary.main"
-          >
-            Connecting Potential, Creating Opportunity
-          </Typography>
-          <Typography variant="subtitle1" paragraph className="mb-4">
-            Hafa Pilar Indonesia is dedicated to elevating manpower solutions in
-            hospitality
-          </Typography>
-          <Link href="/partner">
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              className="rounded-s-md px-8 mb-4"
-            >
-              Be Our Partner
-            </Button>
-          </Link>
-        </Box>
-
-        {/* Gambar */}
-        <Box
-          component="img"
+    <div className="relative w-full h-screen lg:h-auto flex flex-col items-center  lg:flex-row-reverse lg:justify-center">
+      {/* Gambar - Di kanan pada desktop, atas pada mobile */}
+      <div className="lg:w-1/2 w-full h-1/2 lg:h-full relative mb-4 lg:mb-0">
+        <Image
           src="/assets/hero.png"
           alt="Hero Image"
-          className="w-full md:w-1/2 h-[500px] max-w-[600px] order-1 md:order-2 mb-4 md:mb-0  md:absolute md:right-72"
-          sx={{ objectFit: "cover" }}
+          layout="responsive"
+          width={200}
+          height={300}
+          className="object-cover w-full h-full"
+          priority
         />
-      </Box>
+      </div>
+
+      <div className="w-full sm:top-20  lg:w-1/2 px-4 py-2 lg:px-8 flex flex-col items-center lg:items-start text-center lg:text-left ">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-black mb-2">
+          Connecting Potential, <br /> Creating Opportunity
+        </h1>
+        <p className="text-sm md:text-base lg:text-lg text-black mb-4 max-w-md lg:max-w-lg">
+          Hafa Pilar Indonesia is dedicated to elevating manpower solutions in
+          hospitality
+        </p>
+        <Link href="/partner">
+          <button className="px-6 py-2 bg-teal-700 text-white rounded-md shadow-lg hover:bg-teal-800 text-sm lg:text-base">
+            Be Our Partner
+          </button>
+        </Link>
+      </div>
+
+      <div className="absolute top-4 right-4 lg:right-12 lg:top-12">
+        <Link href="/candidate">
+          <button className="px-4 py-2 text-teal-600 rounded-lg shadow-md bg-white border-teal-600 border-2 font-semibold text-xs lg:text-sm">
+            Apply as a Candidate
+          </button>
+        </Link>
+      </div>
+
+      {/* Logo - Pojok Kiri Atas */}
+      <div className="absolute top-4 left-4 lg:left-12 lg:top-12">
+        <Image
+          src="/assets/logo.png"
+          alt="Logo Hafa Pilar"
+          width={120}
+          height={40}
+        />
+      </div>
     </div>
   );
-}
+};
+
+export default HeroSection;

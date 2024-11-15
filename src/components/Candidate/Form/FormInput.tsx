@@ -29,25 +29,25 @@ export default function FormInput({ department }: any) {
     passportId: "",
     email: "",
     whatsapp: "",
-    department: department || "", // Pastikan department ter-set dengan nilai awal
+    department: department || "",
     position: "",
   });
   const [isAgreed, setIsAgreed] = useState(false);
   const [openTerms, setOpenTerms] = useState(false);
   const [openRecruitment, setOpenRecruitment] = useState(false);
   const [positions, setPositions] = useState<string[]>([]);
-  const [cvFile, setCvFile] = useState<File | null>(null); // Menambahkan state untuk menyimpan file CV
+  const [cvFile, setCvFile] = useState<File | null>(null);
   const [workExperienceFile, setWorkExperienceFile] = useState<File | null>(
     null
-  ); // Menambahkan state untuk menyimpan file lainnya
+  );
 
   useEffect(() => {
-    console.log(department); // Pastikan department sudah di-update
+    console.log(department);
     if (department) {
       const selectedDepartment = DepartmentsData.find(
         (dept) => dept.title === department
       );
-      console.log(selectedDepartment); // Log ini untuk lihat apakah data ditemukan
+      console.log(selectedDepartment);
       if (selectedDepartment) {
         setPositions(selectedDepartment.positions.split(", "));
         setFormData((prevFormData) => ({
@@ -87,26 +87,26 @@ export default function FormInput({ department }: any) {
       return;
     }
 
-    // Menambahkan file ke dalam formData
     const dataToSubmit = { ...formData, cvFile, workExperienceFile };
-    console.log(dataToSubmit); // Memeriksa data yang akan dikirim
+    console.log(dataToSubmit);
   };
 
   const handleFileUploadCv = (file: File | null) => {
-    setCvFile(file); // Menyimpan file CV
+    setCvFile(file);
   };
 
   const handleFileUploadWorkExperience = (file: File | null) => {
-    setWorkExperienceFile(file); // Menyimpan file pengalaman kerja
+    setWorkExperienceFile(file);
   };
 
   return (
-    <div className="my-auto">
+    <div className="mx-auto">
       <Box
         component="form"
         onSubmit={handleSubmit}
         sx={{
           display: "flex",
+          mx: "auto",
           flexDirection: "column",
           gap: 2,
           p: 2,
@@ -124,7 +124,6 @@ export default function FormInput({ department }: any) {
             flexDirection: { xs: "column", sm: "row" },
           }}
         >
-          {/* First Name */}
           <Box sx={{ flex: 1 }}>
             <InputLabel htmlFor="firstName">Full Name *</InputLabel>
             <TextField
@@ -134,10 +133,14 @@ export default function FormInput({ department }: any) {
               onChange={handleChange}
               required
               fullWidth
+              sx={{
+                borderRadius: 2, // Border radius
+                border: "1px solid", // Border style
+                borderColor: "blue.300", // Border color
+              }}
             />
           </Box>
 
-          {/* Last Name */}
           <Box sx={{ flex: 1 }}>
             <InputLabel htmlFor="lastName">Last Name *</InputLabel>
             <TextField
@@ -147,9 +150,15 @@ export default function FormInput({ department }: any) {
               onChange={handleChange}
               required
               fullWidth
+              sx={{
+                borderRadius: 2,
+                border: "1px solid",
+                borderColor: "blue.300",
+              }}
             />
           </Box>
         </Box>
+
         {/* Date of Birth and Gender */}
         <Box
           sx={{
@@ -158,7 +167,6 @@ export default function FormInput({ department }: any) {
             flexDirection: { xs: "column", sm: "row" },
           }}
         >
-          {/* Date of Birth */}
           <Box sx={{ flex: 1 }}>
             <InputLabel htmlFor="dateOfBirth">Date of Birth *</InputLabel>
             <TextField
@@ -170,10 +178,14 @@ export default function FormInput({ department }: any) {
               required
               InputLabelProps={{ shrink: true }}
               fullWidth
+              sx={{
+                borderRadius: 2, // Border radius
+                border: "1px solid", // Border style
+                borderColor: "blue.300", // Border color
+              }}
             />
           </Box>
 
-          {/* Gender */}
           <Box sx={{ flex: 1 }}>
             <FormControl required fullWidth>
               <FormLabel>Gender *</FormLabel>
@@ -197,6 +209,7 @@ export default function FormInput({ department }: any) {
             </FormControl>
           </Box>
         </Box>
+
         {/* Passport ID */}
         <Box sx={{ flex: 1 }}>
           <InputLabel htmlFor="passportId">Passport ID *</InputLabel>
@@ -207,8 +220,14 @@ export default function FormInput({ department }: any) {
             onChange={handleChange}
             required
             fullWidth
+            sx={{
+              borderRadius: 2, // Border radius
+              border: "1px solid", // Border style
+              borderColor: "blue.300", // Border color
+            }}
           />
         </Box>
+
         {/* Email Address and Whatsapp Number */}
         <Box
           sx={{
@@ -217,7 +236,6 @@ export default function FormInput({ department }: any) {
             flexDirection: { xs: "column", sm: "row" },
           }}
         >
-          {/* Email Address */}
           <Box sx={{ flex: 1 }}>
             <InputLabel htmlFor="email">Email Address *</InputLabel>
             <TextField
@@ -228,10 +246,14 @@ export default function FormInput({ department }: any) {
               required
               type="email"
               fullWidth
+              sx={{
+                borderRadius: 2, // Border radius
+                border: "1px solid", // Border style
+                borderColor: "blue.300", // Border color
+              }}
             />
           </Box>
 
-          {/* Whatsapp Number */}
           <Box sx={{ flex: 1 }}>
             <InputLabel htmlFor="whatsapp">Whatsapp Number *</InputLabel>
             <TextField
@@ -242,9 +264,15 @@ export default function FormInput({ department }: any) {
               required
               type="tel"
               fullWidth
+              sx={{
+                borderRadius: 2, // Border radius
+                border: "1px solid", // Border style
+                borderColor: "blue.300", // Border color
+              }}
             />
           </Box>
         </Box>
+
         {/* Department and Position */}
         <Box
           sx={{
@@ -253,7 +281,6 @@ export default function FormInput({ department }: any) {
             flexDirection: { xs: "column", sm: "row" },
           }}
         >
-          {/* Department */}
           <Box sx={{ flex: 1 }}>
             <InputLabel htmlFor="department">Department Applied *</InputLabel>
             <Select
@@ -263,6 +290,11 @@ export default function FormInput({ department }: any) {
               displayEmpty
               fullWidth
               required
+              sx={{
+                borderRadius: 2, // Border radius
+                border: "1px solid", // Border style
+                borderColor: "blue.300", // Border color
+              }}
             >
               <MenuItem value="" disabled>
                 Select Department
@@ -275,7 +307,6 @@ export default function FormInput({ department }: any) {
             </Select>
           </Box>
 
-          {/* Position */}
           <Box sx={{ flex: 1 }}>
             <InputLabel htmlFor="position">Select Position *</InputLabel>
             <Select
@@ -286,6 +317,11 @@ export default function FormInput({ department }: any) {
               fullWidth
               required
               disabled={!formData.department}
+              sx={{
+                borderRadius: 2, // Border radius
+                border: "1px solid", // Border style
+                borderColor: "blue.300", // Border color
+              }}
             >
               <MenuItem value="" disabled>
                 Select Position
@@ -298,19 +334,12 @@ export default function FormInput({ department }: any) {
             </Select>
           </Box>
         </Box>
-        <FileUploadCv onFileSelect={handleFileUploadCv} />{" "}
-        {/* Menambahkan handler untuk upload CV */}
-        <FileUpload onFileSelect={handleFileUploadWorkExperience} />{" "}
-        {/* Menambahkan handler untuk upload file lainnya */}
-        {/* Checkbox Section */}
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: 1,
-            mb: 2,
-          }}
-        >
+
+        <FileUploadCv onFileSelect={handleFileUploadCv} />
+        <FileUpload onFileSelect={handleFileUploadWorkExperience} />
+
+        {/* Terms and Checkbox */}
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
           <Checkbox
             checked={isAgreed}
             onChange={handleCheckboxChange}
@@ -318,21 +347,22 @@ export default function FormInput({ department }: any) {
           />
           <Typography variant="body2">
             By checking this box, I have read and agree to the{" "}
-            <strong
+            <span
               onClick={() => setOpenTerms(true)}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer", color: "#F2AF29" }}
             >
               Terms and Conditions
-            </strong>{" "}
+            </span>{" "}
             and{" "}
-            <strong
+            <span
               onClick={() => setOpenRecruitment(true)}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer", color: "#F2AF29" }}
             >
               Recruitment Process
-            </strong>
+            </span>
           </Typography>
         </Box>
+
         <Button type="submit" variant="contained" color="primary">
           Submit
         </Button>

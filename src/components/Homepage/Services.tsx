@@ -19,7 +19,7 @@ export default function Services() {
         gutterBottom
         align="center"
         fontWeight="bold"
-        style={{ position: "relative", marginTop: "20vh" }}
+        style={{ position: "relative" }}
       >
         We Offer{" "}
         <span
