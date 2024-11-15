@@ -21,6 +21,8 @@ import { DepartmentsData } from "@/app/services/dummy";
 import FileUploadCv from "./FileUploadCV";
 import { SelectChangeEvent } from "@mui/material";
 import { useRouter } from "next/navigation";
+import DatePicker from "@/components/field/DatePicker";
+
 export default function FormInput({ department }: any) {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -102,6 +104,8 @@ export default function FormInput({ department }: any) {
     setWorkExperienceFile(file);
   };
 
+  console.log('dateOfBirth :', formData.dateOfBirth);
+
   return (
     <div className="mx-auto">
       <Box
@@ -172,19 +176,14 @@ export default function FormInput({ department }: any) {
         >
           <Box sx={{ flex: 1 }}>
             <InputLabel htmlFor="dateOfBirth">Date of Birth *</InputLabel>
-            <TextField
-              id="dateOfBirth"
-              name="dateOfBirth"
-              type="date"
+            <DatePicker
+              dateFormat="dd-MMM-yyyy"
               value={formData.dateOfBirth}
-              onChange={handleChange}
-              required
-              InputLabelProps={{ shrink: true }}
-              fullWidth
-              sx={{
-                borderRadius: 2, // Border radius
-                border: "1px solid", // Border style
-                borderColor: "blue.300", // Border color
+              onDateChange={(_, formattedDate) => {
+                setFormData(prev => ({
+                  ...prev,
+                  dateOfBirth: formattedDate
+                }));
               }}
             />
           </Box>
