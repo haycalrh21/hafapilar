@@ -1,10 +1,9 @@
 import React from "react";
 import { Container, Box } from "@mui/material";
-
 import Header from "./Header";
 import Hero from "./Hero";
 import Services from "./Services";
-import ImpactCard from "./impact";
+import ImpactCard from "./Impact";
 import Testimonial from "./Testimonial";
 import TeamCard from "./Team";
 import PartnerCard from "./Partner";

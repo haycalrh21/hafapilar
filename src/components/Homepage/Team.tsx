@@ -3,7 +3,10 @@ import Image from "next/image";
 
 export default function TeamCard() {
   return (
-    <Box sx={{ my: 8 }}>
+    <Box
+      sx={{ my: 8 }}
+      className="mx-5 border-9  border-black border-primary-main"
+    >
       <Typography
         variant="h4"
         component="h2"

@@ -120,11 +120,14 @@ export default function Testimonial() {
               </Typography>
               <Typography variant="subtitle2" color="text.secondary">
                 {testimonials[testimonialIndex].author},{" "}
+              </Typography>
+              <Typography variant="subtitle2" color="text.secondary">
                 {testimonials[testimonialIndex].position}
               </Typography>
             </CardContent>
           </Card>
           {/* Back card with shadow and author */}
+
           <Card
             elevation={1}
             sx={{
@@ -139,21 +142,45 @@ export default function Testimonial() {
               zIndex: 1,
               boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.3)",
               padding: "1rem",
-              backgroundColor: "rgba(255, 255, 255, 0.8)",
+              backgroundColor: "#0F4C5C",
             }}
           >
-            <CardContent>
-              <Typography variant="body1" paragraph color="text.secondary">
+            <CardContent className="">
+              <Typography
+                variant="body1"
+                className="sm:my-3 lg:my-7"
+                paragraph
+                sx={{
+                  color: "#FFFFFF", // Menggunakan warna putih agar teks lebih terlihat
+                  opacity: 0.9, // Mengatur transparansi sedikit agar lebih halus
+                }}
+              >
                 {
                   testimonials[(testimonialIndex + 1) % testimonials.length]
                     .text
                 }
               </Typography>
-              <Typography variant="subtitle2" color="text.secondary">
+              <Typography
+                variant="subtitle2"
+                sx={{
+                  color: "#FFFFFF", // Menggunakan warna putih untuk kontras
+                  opacity: 0.9,
+                }}
+              >
                 {
                   testimonials[(testimonialIndex + 1) % testimonials.length]
                     .author
                 }
+              </Typography>
+              <Typography
+                variant="subtitle2"
+                color="text.secondary"
+                sx={{
+                  color: "#FFFFFF", // Menggunakan warna putih untuk kontras
+                  opacity: 0.9,
+                }}
+              >
+                {testimonials[testimonialIndex].position}
               </Typography>
             </CardContent>
           </Card>

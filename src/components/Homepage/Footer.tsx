@@ -17,9 +17,15 @@ export default function Footer() {
               src="/assets/logo.png"
               alt="Hafa Pilar Logo"
               width={150}
+              className="ml-0"
               height={50}
             />
-            <Typography variant="body2" paragraph sx={{ mt: 2 }}>
+            <Typography
+              variant="body2"
+              paragraph
+              sx={{ mt: 2 }}
+              className="sm:ml-8 lg:ml-4"
+            >
               Jl. Bougenvile No.32, Jakarta Utara, Indonesia, 14230
             </Typography>
           </Box>
@@ -82,7 +88,7 @@ export default function Footer() {
             </Stack>
           </Box>
         </Stack>
-
+        <hr className="my-4 " style={{ borderColor: "#0F4C5C" }} />
         {/* Gambar footer */}
         <Box
           display="flex"
@@ -95,6 +101,7 @@ export default function Footer() {
             alt="Lloyd's Register"
             width={500}
             height={50}
+            className="sm:ml-auto lg:ml-3"
           />
         </Box>
       </Container>

@@ -1,4 +1,5 @@
 import { Typography, Button, Box } from "@mui/material";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -19,14 +20,16 @@ export default function Hero() {
             Hafa Pilar Indonesia is dedicated to elevating manpower solutions in
             hospitality
           </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            className="rounded-s-md px-8 mb-4"
-          >
-            Be Our Partner
-          </Button>
+          <Link href="/partner">
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              className="rounded-s-md px-8 mb-4"
+            >
+              Be Our Partner
+            </Button>
+          </Link>
         </Box>
 
         {/* Gambar */}

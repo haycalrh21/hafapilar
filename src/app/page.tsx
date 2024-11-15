@@ -1,5 +1,4 @@
-import { BlockPage } from "@/components/page";
-import Image from "next/image";
+import { BlockPage } from "@/components/Homepage/Homepage";
 
 export default function Home() {
   return <BlockPage />;

@@ -28,7 +28,7 @@ export default function Header() {
               // sx={{ borderRadius: "20px", px: 3 }}
               className="rounded-s-md px-3 mr-4 border-2 border-primary-main font-bold"
             >
-              Apply as Candidate
+              <Link href="/candidate">Apply as Candidate</Link>
             </Button>
           </Toolbar>
         </Container>
