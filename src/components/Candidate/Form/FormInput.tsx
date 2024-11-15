@@ -20,7 +20,9 @@ import FileUpload from "./FIleUpload";
 import { DepartmentsData } from "@/app/services/dummy";
 import FileUploadCv from "./FileUploadCV";
 import { SelectChangeEvent } from "@mui/material";
+import { useRouter } from "next/navigation";
 export default function FormInput({ department }: any) {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -89,6 +91,7 @@ export default function FormInput({ department }: any) {
 
     const dataToSubmit = { ...formData, cvFile, workExperienceFile };
     console.log(dataToSubmit);
+    router.push("/candidate/finish");
   };
 
   const handleFileUploadCv = (file: File | null) => {

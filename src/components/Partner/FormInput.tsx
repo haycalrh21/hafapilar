@@ -18,10 +18,6 @@ export default function FormInputPartner() {
   });
   const [isAgreed, setIsAgreed] = useState(false);
 
-  const [workExperienceFile, setWorkExperienceFile] = useState<File | null>(
-    null
-  ); // Menambahkan state untuk menyimpan file lainnya
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>
   ) => {
@@ -149,6 +145,11 @@ export default function FormInputPartner() {
               required
               type="tel"
               fullWidth
+              sx={{
+                borderRadius: "12px", // Add rounded corners
+                border: "1px solid #ccc", // Light border color
+                // padding: "8px", // Reduced padding for the input field
+              }}
             />
           </Box>
 

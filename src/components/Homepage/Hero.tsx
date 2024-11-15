@@ -42,12 +42,14 @@ const HeroSection = () => {
 
       {/* Logo - Pojok Kiri Atas */}
       <div className="absolute top-4 left-4 lg:left-12 lg:top-12">
-        <Image
-          src="/assets/logo.png"
-          alt="Logo Hafa Pilar"
-          width={120}
-          height={40}
-        />
+        <Link href="/">
+          <Image
+            src="/assets/logo.png"
+            alt="Logo Hafa Pilar"
+            width={120}
+            height={40}
+          />
+        </Link>
       </div>
     </div>
   );
