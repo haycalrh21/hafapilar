@@ -1,14 +1,14 @@
 "use client";
 import { Box, Container } from "@mui/material";
-
-import FormInput from "./FormInput";
-import { useSearchParams } from "next/navigation";
+import dynamic from "next/dynamic"; // Import dynamic for client-side only rendering
 import HeaderNotButton from "../HeaderNotButton";
 
-export default function CandidateForm() {
-  const searchParams = useSearchParams();
-  const department = searchParams.get("department");
+// Dynamically import the FormInput component with ssr: false
+const FormInputWithSearchParams = dynamic(() => import("./FormInput"), {
+  ssr: false,
+});
 
+export default function CandidateForm() {
   return (
     <Box
       sx={{
@@ -37,7 +37,9 @@ export default function CandidateForm() {
             Discover the Career of Your Dreams
           </p>
         </div>
-        <FormInput department={department} />
+
+        {/* Now render FormInput component which uses useSearchParams */}
+        <FormInputWithSearchParams />
       </Container>
     </Box>
   );
