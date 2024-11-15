@@ -29,7 +29,7 @@ export default function FormInput({ department }: any) {
     passportId: "",
     email: "",
     whatsapp: "",
-    department: "",
+    department: department || "", // Pastikan department ter-set dengan nilai awal
     position: "",
   });
   const [isAgreed, setIsAgreed] = useState(false);
@@ -42,15 +42,19 @@ export default function FormInput({ department }: any) {
   ); // Menambahkan state untuk menyimpan file lainnya
 
   useEffect(() => {
-    const selectedDepartment = DepartmentsData.find(
-      (dept) => dept.title === department
-    );
-    if (selectedDepartment) {
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        department: selectedDepartment.title,
-      }));
-      setPositions(selectedDepartment.positions.split(", "));
+    console.log(department); // Pastikan department sudah di-update
+    if (department) {
+      const selectedDepartment = DepartmentsData.find(
+        (dept) => dept.title === department
+      );
+      console.log(selectedDepartment); // Log ini untuk lihat apakah data ditemukan
+      if (selectedDepartment) {
+        setPositions(selectedDepartment.positions.split(", "));
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          department: selectedDepartment.title,
+        }));
+      }
     }
   }, [department]);
 

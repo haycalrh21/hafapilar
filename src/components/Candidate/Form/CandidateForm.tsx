@@ -1,14 +1,17 @@
 "use client";
 import { Box, Container } from "@mui/material";
-import dynamic from "next/dynamic"; // Import dynamic for client-side only rendering
-import HeaderNotButton from "../HeaderNotButton";
 
-// Dynamically import the FormInput component with ssr: false
-const FormInputWithSearchParams = dynamic(() => import("./FormInput"), {
-  ssr: false,
-});
+import Header from "@/components/Homepage/Header";
+import FormInput from "./FormInput";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 export default function CandidateForm() {
+  const searchParams = useSearchParams(); // Ambil searchParams
+  const department = searchParams.get("department"); // Ambil parameter department dari query string
+  if (!department) {
+    return <div>Loading...</div>;
+  }
   return (
     <Box
       sx={{
@@ -27,8 +30,8 @@ export default function CandidateForm() {
         minHeight: "100vh",
       }}
     >
-      <HeaderNotButton />
-      <Container maxWidth="lg" sx={{ pb: 10 }}>
+      <Header />
+      <Container maxWidth="lg" sx={{ p: 0 }}>
         <div>
           <h1 className="text-center text-3xl font-bold mt-20 sm:text-3xl">
             Apply with Us Today
@@ -37,9 +40,9 @@ export default function CandidateForm() {
             Discover the Career of Your Dreams
           </p>
         </div>
-
-        {/* Now render FormInput component which uses useSearchParams */}
-        <FormInputWithSearchParams />
+        <Suspense fallback={<div>Loading...</div>}>
+          <FormInput department={department} />
+        </Suspense>
       </Container>
     </Box>
   );
