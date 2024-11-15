@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import { Fira_Sans, Libre_Franklin, Niramit } from "next/font/google";
+
 import "./globals.css";
-
+import localFont from "next/font/local";
 import Provider from "@/components/theme";
-
-// Load Google Font Niramit using next/font
-const niramit = Libre_Franklin({
-  weight: ["300", "400", "700"],
-  subsets: ["latin"],
+const myFont = localFont({
+  src: "./font/font.otf",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -21,10 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={myFont.className}>
       <head>{/* Fonts are now loaded by next/font */}</head>
       <Provider>
-        <body className={`${niramit.className}`}>{children}</body>
+        <body>{children}</body>
       </Provider>
     </html>
   );

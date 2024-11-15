@@ -21,7 +21,7 @@ const HeroSection = () => {
         <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-black mb-2">
           Connecting Potential, <br /> Creating Opportunity
         </h1>
-        <p className="text-sm md:text-base lg:text-lg text-black mb-4 max-w-md lg:max-w-lg">
+        <p className="text-sm font-thin md:text-base lg:text-lg text-black mb-4 max-w-md lg:max-w-lg">
           Hafa Pilar Indonesia is dedicated to elevating manpower solutions in
           hospitality
         </p>
@@ -34,7 +34,7 @@ const HeroSection = () => {
 
       <div className="absolute top-4 right-4 lg:right-12 lg:top-12">
         <Link href="/candidate">
-          <button className="px-4 py-2 text-teal-600 rounded-lg shadow-md bg-white border-teal-600 border-2 font-semibold text-xs lg:text-sm">
+          <button className="px-4 py-2 text-teal-600 rounded-lg shadow-md bg-white hover:bg-black border-teal-600 border-2 font-semibold text-xs lg:text-sm">
             Apply as a Candidate
           </button>
         </Link>
