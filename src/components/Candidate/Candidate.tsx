@@ -27,10 +27,11 @@ export function CandidatePage() {
 
       <Container maxWidth="lg" sx={{ p: 0 }}>
         <div>
-          <h1 className="text-center text-3xl font-bold mt-20 sm:text-3xl">
+          <h1 className="text-3xl sm:text-2xl md:text-4xl lg:text-6xl text-center font-bold mt-20">
             Apply with Us Today
           </h1>
-          <p className="text-center mt-4 mb-20 sm:text-sm">
+
+          <p className=" font-extralight text-center  mt-4 mb-20 sm:text-sm">
             Discover the Career of Your Dreams
           </p>
         </div>

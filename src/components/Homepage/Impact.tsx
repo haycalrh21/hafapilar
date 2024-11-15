@@ -2,7 +2,7 @@ import { Box, Grid, Typography } from "@mui/material";
 
 export default function ImpactCard() {
   return (
-    <div className="mx-5">
+    <div className="mx-auto">
       <Typography
         variant="h4"
         component="h2"
@@ -27,18 +27,17 @@ export default function ImpactCard() {
       <Box
         sx={{
           my: 8,
-          bgcolor: "#0F4C5C",
+          bgcolor: "#0F4C5C", // Menambahkan warna latar belakang
+          backgroundImage: `url('/assets/left.png'), url('/assets/right.png')`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "left center, right center", // Posisi gambar kiri dan kanan
+          backgroundSize: "300px 300px", // Ukuran gambar berbentuk lingkaran
           color: "white",
           py: 6,
           borderRadius: 4,
         }}
       >
-        <Grid
-          container
-          spacing={4}
-          justifyContent="center"
-          className="px-auto  "
-        >
+        <Grid container spacing={4} justifyContent="center" className="px-auto">
           <Grid item xs={12} sm={6} md={3}>
             <Box sx={{ textAlign: "center" }}>
               <Typography

@@ -9,8 +9,24 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      fontSize: {
-        "9xl": "7rem", // Tambahkan ini jika 9xl belum ada
+      screens: {
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+      },
+      fontWeight: {
+        thin: "100",
+        hairline: "100",
+        extralight: "200",
+        light: "300",
+        normal: "400",
+        medium: "500",
+        semibold: "600",
+        bold: "700",
+        extrabold: "800",
+        "extra-bold": "800",
+        black: "900",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

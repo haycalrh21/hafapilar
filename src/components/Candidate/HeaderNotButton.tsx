@@ -6,7 +6,7 @@ export default function HeaderNotButton() {
     <div className="bg-transparent">
       <header className="w-full py-4">
         <div className="max-w-screen-lg mx-auto flex justify-between items-center relative">
-          <div className="absolute top-4 -left-1 lg:top-9">
+          <div className="absolute top-4 sm:left-2 lg:top-9">
             <Link href="/">
               <Image
                 src="/assets/logo.png"

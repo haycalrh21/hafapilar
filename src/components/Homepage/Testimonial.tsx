@@ -76,7 +76,12 @@ export default function Testimonial() {
           gap: 2,
         }}
       >
-        <Typography variant="h4" component="h2" fontWeight="bold" gutterBottom>
+        <Typography
+          variant="h4"
+          component="h2"
+          fontWeight="normal"
+          gutterBottom
+        >
           Our Success{" "}
           <span
             style={{
@@ -90,19 +95,9 @@ export default function Testimonial() {
             Stories
           </span>
         </Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          size="large"
-          sx={{
-            borderRadius: "25px",
-            px: 4,
-            boxShadow: "0px 4px 10px rgba(255, 165, 0, 0.3)",
-            alignSelf: isMobile ? "center" : "flex-start",
-          }}
-        >
+        <button className="px-8 py-4 text-white rounded-2xl shadow-md border-teal-600 border-2 font-semibold text-xs lg:text-sm bg-[#0F4C5C] hover:bg-white hover:text-[#0F4C5C] transition-colors duration-200">
           Be Our Partner
-        </Button>
+        </button>
       </Box>
 
       {/* Right Section: Testimonial Carousel */}
@@ -116,81 +111,75 @@ export default function Testimonial() {
             sx={{ borderRadius: 4, position: "relative", zIndex: 2 }}
           >
             <CardContent>
-              <Typography variant="body1" paragraph>
+              <Typography variant="body1" paragraph fontWeight="normal">
                 {testimonials[testimonialIndex].text}
               </Typography>
-              <Typography variant="subtitle2" color="text.secondary">
+              <Typography
+                variant="subtitle2"
+                color="text.secondary"
+                fontWeight="normal"
+              >
                 {testimonials[testimonialIndex].author},{" "}
               </Typography>
-              <Typography variant="subtitle2" color="text.secondary">
+              <Typography
+                variant="subtitle2"
+                color="text.secondary"
+                fontWeight="normal"
+              >
                 {testimonials[testimonialIndex].position}
               </Typography>
             </CardContent>
           </Card>
-          {/* Back card with shadow and author */}
 
+          {/* Back card with shadow and author */}
           <Card
             elevation={1}
             sx={{
               borderRadius: 4,
               position: "absolute",
-              top: isMobile ? "10%" : "10%", // Adjust for mobile
-              left: isMobile ? "20%" : "", // Adjust for mobile
-              bottom: isMobile ? "-20%" : "-50px", // Adjust for mobile
-              right: isMobile ? "-20%" : "-90px", // Adjust for mobile
+              top: isMobile ? "10%" : "10%",
+              left: isMobile ? "20%" : "0",
+              bottom: isMobile ? "-10%" : "auto",
+              right: isMobile ? "-20%" : "-90px",
               opacity: 0.6,
-              transform: isMobile ? "scale(1.05)" : "scale(0.9)", // Slightly increase scale on mobile
+              transform: isMobile ? "scale(1.00)" : "scale(0.9)",
               zIndex: 1,
+
               boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.3)",
               padding: "1rem",
-              backgroundColor: "#0F4C5C",
+              backgroundColor: "#0F4C5C80",
             }}
           >
-            <CardContent className="">
-              <Typography
-                variant="body1"
-                className="sm:my-3 lg:my-7"
-                paragraph
-                sx={{
-                  color: "#FFFFFF", // Menggunakan warna putih agar teks lebih terlihat
-                  opacity: 0.9, // Mengatur transparansi sedikit agar lebih halus
-                }}
-              >
+            <div className="p-4 fonthin">
+              {/* Text Testimonial */}
+              <div className="sm:my-auto lg:my-7 text-white mb-4 font-thin">
                 {
                   testimonials[(testimonialIndex + 1) % testimonials.length]
                     .text
                 }
-              </Typography>
-              <Typography
-                variant="subtitle2"
-                sx={{
-                  color: "#FFFFFF", // Menggunakan warna putih untuk kontras
-                  opacity: 0.9,
-                }}
-              >
+              </div>
+
+              {/* Author */}
+              <div className="sm:mb-4 lg:my-auto text-white mt-[-1rem] mb-1 opacity-100 font-normal">
                 {
                   testimonials[(testimonialIndex + 1) % testimonials.length]
                     .author
                 }
-              </Typography>
-              <Typography
-                variant="subtitle2"
-                color="text.secondary"
-                sx={{
-                  color: "#FFFFFF", // Menggunakan warna putih untuk kontras
-                  opacity: 0.9,
-                }}
-              >
+              </div>
+
+              {/* Position */}
+              <div className="text-white mb-0 font-thin text-sm sm:text-base">
                 {testimonials[testimonialIndex].position}
-              </Typography>
-            </CardContent>
+              </div>
+            </div>
           </Card>
         </Box>
+
         <IconButton
           onClick={handlePrev}
           sx={{
             position: "absolute",
-            left: "-20px",
+            left: "-30px",
             top: "50%",
             transform: "translateY(-50%)",
             bgcolor: "background.paper",
@@ -200,6 +189,7 @@ export default function Testimonial() {
         >
           <ArrowBackIcon />
         </IconButton>
+
         <IconButton
           onClick={handleNext}
           sx={{
