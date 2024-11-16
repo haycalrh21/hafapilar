@@ -7,15 +7,20 @@ export default function Header() {
   const router = useRouter();
   return (
     <div className="bg-transparent py-2">
-      <div className="max-w-screen-lg mx-auto flex justify-between items-center flex-wrap">
+      <div className="mx-auto flex justify-between items-center flex-wrap w-full">
+        {" "}
+        {/* Menggunakan w-full untuk memastikan container bisa lebih lebar */}
         <Link href="/" passHref>
-          <Image
-            src="/assets/logo.png"
-            alt="Hafa Pilar Logo"
-            width={150}
-            height={50}
-            className="inline-block"
-          />
+          <div className="relative w-full h-48">
+            {" "}
+            {/* Set height sesuai kebutuhan */}
+            <Image
+              src="/logo.png"
+              alt="Hafa Pilar Logo"
+              fill
+              className="object-contain"
+            />
+          </div>
         </Link>
         <button
           className="bg-blue-600 text-white font-bold py-2 px-6 rounded-lg border-none ml-5 mt-2 sm:mt-0 cursor-pointer"

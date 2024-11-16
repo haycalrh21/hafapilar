@@ -47,14 +47,14 @@ const formSchema = z.object({
       "Passport ID must contain only letters and numbers"
     ),
   email: z.string().min(1, "Email is required").email("Invalid email address"),
-  // whatsapp: z
-  // .string()
-  // .min(1, "WhatsApp number is required *")
-  // .regex(/^\+62[0-9]+$/, "Invalid phone number format. Must start with +62."),
   whatsapp: z
     .string()
     .min(1, "WhatsApp number is required *")
-    .regex(/^08[0-9]+$/, "Invalid phone number format. Must start with 08."),
+    .regex(/^\+[0-9]+$/, "Invalid phone number format. Must start with +."),
+  // whatsapp: z
+  //   .string()
+  //   .min(1, "WhatsApp number is required *")
+  //   .regex(/^08[0-9]+$/, "Invalid phone number format. Must start with 08."),
 
   department: z.string().min(1, "Department is required"),
   position: z.string().min(1, "Position is required"),

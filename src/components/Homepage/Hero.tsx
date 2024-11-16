@@ -45,11 +45,11 @@ const HeroSection = () => {
       <div className="absolute top-4 left-4 lg:left-12 lg:top-12">
         <Link href="/">
           <Image
-            src="/assets/logo.png"
+            src="/logo.png"
             alt="Logo Hafa Pilar"
-            width={120}
-            height={80}
-            className="inline-block"
+            width={150}
+            height={200}
+            className="inline-block left-4"
           />
         </Link>
       </div>

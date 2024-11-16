@@ -97,7 +97,7 @@ export default function Testimonial() {
           </span>
         </Typography>
         <Link href="/partner">
-          <button className="px-8 py-4 text-white rounded-2xl shadow-md border-teal-600 border-2 font-semibold text-xs lg:text-sm bg-[#0F4C5C] hover:bg-white hover:text-[#0F4C5C] hover:border-b-yellow-500 relative overflow-hidden transition-colors duration-200">
+          <button className="px-8 py-4 text-white rounded-2xl shadow-md border-teal-600 border-2 font-semibold text-xs lg:text-sm bg-[#0F4C5C] hover:bg-white hover:text-[#0F4C5C] hover:shadow-amber-400">
             Be Our Partner
           </button>
         </Link>

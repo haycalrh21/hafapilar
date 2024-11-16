@@ -4,15 +4,16 @@ import Link from "next/link";
 export default function HeaderNotButton() {
   return (
     <div className="bg-transparent">
-      <header className="w-full py-4">
+      <header className="w-full ">
         <div className="max-w-screen-lg mx-auto flex justify-between items-center relative">
-          <div className="absolute top-4 sm:left-2 lg:top-9">
+          <div className="absolute top-4 left-7 sm:left-20 sm:top-3 lg:top-12 lg:-left-4 ">
             <Link href="/">
               <Image
-                src="/assets/logo.png"
+                src="/logo.png"
                 alt="Logo Hafa Pilar"
-                width={120}
-                height={40}
+                width={150}
+                height={200}
+                className="inline-block "
               />
             </Link>
           </div>
