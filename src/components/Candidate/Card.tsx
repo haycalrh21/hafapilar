@@ -73,7 +73,7 @@ const DepartmentCards = () => {
                 query: { department: department.title },
               }}
             >
-              <button className="w-11/12 mx-auto bg-[#0F4C5C] text-white py-2 rounded-md font-bold mb-4">
+              <button className="w-11/12 mx-auto bg-[#0F4C5C] text-white py-2 rounded-md font-bold mb-4 hover:bg-white border-2 hover:text-[#0F4C5C]">
                 Apply
               </button>
             </Link>

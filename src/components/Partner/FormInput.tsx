@@ -105,7 +105,7 @@ export default function FormInputPartner() {
   };
 
   return (
-    <div className="mx-auto border-purple-800 border-2 rounded-lg">
+    <div className="mx-auto border-[#0F4C5C] border-2 rounded-lg">
       <Box
         component="form"
         onSubmit={handleSubmit}
@@ -124,6 +124,7 @@ export default function FormInputPartner() {
         <Box
           sx={{
             display: "flex",
+            pb: 4,
             gap: 2,
             flexDirection: { xs: "column", sm: "row" },
           }}
@@ -168,6 +169,8 @@ export default function FormInputPartner() {
           sx={{
             display: "flex",
             gap: 2,
+            pb: 4,
+
             flexDirection: { xs: "column", sm: "row" },
           }}
         >
@@ -213,6 +216,8 @@ export default function FormInputPartner() {
           sx={{
             display: "flex",
             gap: 2,
+            pb: 4,
+
             flexDirection: { xs: "column", sm: "row" },
           }}
         >
@@ -280,9 +285,12 @@ export default function FormInputPartner() {
           )}
         </Box>
 
-        <Button type="submit" variant="contained" color="primary">
+        <button
+          type="submit"
+          className="bg-[#0F4C5C] text-white py-2 rounded-md font-bold mb-4 hover:bg-white border-2 hover:text-[#0F4C5C]"
+        >
           Submit
-        </Button>
+        </button>
       </Box>
     </div>
   );

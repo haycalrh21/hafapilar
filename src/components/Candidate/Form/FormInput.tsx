@@ -510,9 +510,12 @@ export default function FormInput({ department }: any) {
           )} */}
         </Box>
 
-        <Button type="submit" variant="contained" color="primary">
+        <button
+          type="submit"
+          className="bg-[#0F4C5C] text-white py-2 rounded-md font-bold mb-4 hover:bg-white border-2 hover:text-[#0F4C5C]"
+        >
           Submit
-        </Button>
+        </button>
       </Box>
 
       {/* Modal Components */}

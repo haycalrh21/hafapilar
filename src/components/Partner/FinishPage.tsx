@@ -40,12 +40,14 @@ export default function FinishPageCandidate() {
             </p>
             <p>Our team will reach out to you shortly.</p>
           </div>
-          <button
-            className=" mb-6 text-white px-4 py-2 mt-8 rounded-md w-full max-w-3xl"
-            style={{ backgroundColor: "#0F4C5C" }}
-          >
-            <Link href="/"> Back to Home</Link>
-          </button>
+          <Link href="/" className="text-white px-4  mt-8 rounded-md w-full ">
+            <button
+              className=" mb-6 text-white px-4 py-2 rounded-md w-full "
+              style={{ backgroundColor: "#0F4C5C" }}
+            >
+              Back to Home
+            </button>
+          </Link>
         </div>
       </Container>
     </Box>

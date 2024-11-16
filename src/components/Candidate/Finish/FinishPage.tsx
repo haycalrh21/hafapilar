@@ -26,10 +26,11 @@ export default function FinishPage() {
 
       <Container maxWidth="lg" sx={{ p: 0, mb: 20 }}>
         <div>
-          <h1 className="text-center text-3xl font-bold mt-20 sm:text-3xl">
+          <h1 className="text-3xl sm:text-2xl md:text-4xl lg:text-6xl text-center font-bold mt-20">
             Apply with Us Today
           </h1>
-          <p className="text-center mt-4 mb-20 sm:text-sm">
+
+          <p className=" font-sans text-center  mt-4 mb-20 ">
             Discover the Career of Your Dreams
           </p>
         </div>
@@ -40,12 +41,14 @@ export default function FinishPage() {
             </p>
             <p>Our team will reach out to you shortly.</p>
           </div>
-          <button
-            className=" mb-6 text-white px-4 py-2 mt-8 rounded-md w-full max-w-3xl"
-            style={{ backgroundColor: "#0F4C5C" }}
-          >
-            <Link href="/"> Back to Home</Link>
-          </button>
+          <Link href="/" className="text-white px-4  mt-8 rounded-md w-full ">
+            <button
+              className=" mb-6 text-white px-4 py-2 rounded-md w-full "
+              style={{ backgroundColor: "#0F4C5C" }}
+            >
+              Back to Home
+            </button>
+          </Link>
         </div>
       </Container>
     </Box>
