@@ -1,29 +1,13 @@
-import {
-  Box,
-  TextField,
-  Radio,
-  RadioGroup,
-  FormControlLabel,
-  FormControl,
-  FormLabel,
-  Select,
-  MenuItem,
-  Button,
-  Checkbox,
-  Typography,
-  InputLabel,
-  FormHelperText,
-} from "@mui/material";
 import { useState, useEffect } from "react";
 import ModalTerms from "./ModalTerms";
 import ModalRecruitment from "./ModalRecruitment";
 import FileUpload from "./FIleUpload";
 import { DepartmentsData } from "@/app/services/dummy";
 import FileUploadCv from "./FileUploadCV";
-import { SelectChangeEvent } from "@mui/material";
 import { useRouter } from "next/navigation";
 import DatePicker from "@/components/field/DatePicker";
 import { z } from "zod";
+import PhoneNumberInput from "./PhoneInput";
 
 // Zod schema for form validation
 const formSchema = z.object({
@@ -50,11 +34,10 @@ const formSchema = z.object({
   whatsapp: z
     .string()
     .min(1, "WhatsApp number is required *")
-    .regex(/^\+[0-9]+$/, "Invalid phone number format. Must start with +."),
-  // whatsapp: z
-  //   .string()
-  //   .min(1, "WhatsApp number is required *")
-  //   .regex(/^08[0-9]+$/, "Invalid phone number format. Must start with 08."),
+    .regex(
+      /^\+[0-9]{1,15}$/,
+      "Invalid phone number format. Must start with +."
+    ),
 
   department: z.string().min(1, "Department is required"),
   position: z.string().min(1, "Position is required"),
@@ -118,20 +101,26 @@ export default function FormInput({ department }: any) {
   };
 
   const handleChange = (
-    e:
-      | SelectChangeEvent<string>
-      | React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>
+    e: React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name!]: value }));
     validateField(name as keyof FormData, value as string);
 
     if (name === "department") {
+      // Cari departemen yang dipilih dari DepartmentsData
       const selectedDepartment = DepartmentsData.find(
         (dept) => dept.title === value
       );
+
+      // Jika departemen ditemukan, set posisi berdasarkan data tersebut
       if (selectedDepartment) {
         setPositions(selectedDepartment.positions.split(", "));
+        // Update department yang terpilih
+        setFormData((prev) => ({
+          ...prev,
+          department: selectedDepartment.title,
+        }));
       }
     }
   };
@@ -153,8 +142,12 @@ export default function FormInput({ department }: any) {
 
     try {
       const validatedData = formSchema.parse(formData);
+
+      // Menambahkan log data form yang sudah tervalidasi
+      console.log(validatedData);
+
       const dataToSubmit = { ...validatedData, cvFile, workExperienceFile };
-      console.log(dataToSubmit);
+      console.log(dataToSubmit); // Jika ingin log data yang akan disubmit
       router.push("/candidate/finish");
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -173,94 +166,74 @@ export default function FormInput({ department }: any) {
     setCvFile(file);
   };
 
+  const handlePhoneChange = (value: string) => {
+    // Menambahkan tanda + di depan jika belum ada
+    if (!value.startsWith("+")) {
+      value = `+${value}`;
+    }
+    setFormData({ ...formData, whatsapp: value });
+    validateField("whatsapp", value); // Pastikan validasi dijalankan
+  };
+
   const handleFileUploadWorkExperience = (file: File | null) => {
     setWorkExperienceFile(file);
   };
 
   return (
-    <div className="mx-auto border-2 border-[#0F4C5C] rounded-lg">
-      <Box
-        component="form"
-        onSubmit={handleSubmit}
-        sx={{
-          display: "flex",
-          mx: "auto",
-          flexDirection: "column",
-          gap: 2,
-          p: 2,
-          backgroundColor: "white",
-          border: "1px solid",
-          borderColor: "blue.300",
-          borderRadius: 2,
-        }}
-      >
+    <div className="mx-auto bg-white font-sans border-2 border-[#4993a6] rounded-lg p-6">
+      <form onSubmit={handleSubmit}>
         {/* Full Name and Last Name */}
-        <Box
-          sx={{
-            display: "flex",
-            gap: 2,
-            pb: 4,
-            flexDirection: { xs: "column", sm: "row" },
-          }}
-        >
-          <Box sx={{ flex: 1 }}>
-            <InputLabel htmlFor="firstName">Full Name *</InputLabel>
-            <TextField
+        <div className="flex flex-col sm:flex-row gap-4 mb-12">
+          <div className="flex-1">
+            <label htmlFor="firstName" className="block text-sm font-semibold">
+              Full Name *
+            </label>
+            <input
               id="firstName"
+              placeholder="First Name"
               name="firstName"
               value={formData.firstName}
               onChange={handleChange}
               required
-              fullWidth
-              sx={{
-                borderRadius: 2,
-                border: "1px solid",
-                borderColor: errors.firstName ? "error.main" : "blue.300",
-                mb: 0.5,
-              }}
+              className={`w-full p-2 border rounded-md ${
+                errors.firstName ? "border-red-500" : ""
+              }`}
             />
             {errors.firstName && (
-              <Typography color="error" variant="caption" sx={{ pl: 1 }}>
-                {errors.firstName}
-              </Typography>
+              <span className="text-red-500 text-xs">{errors.firstName}</span>
             )}
-          </Box>
+          </div>
 
-          <Box sx={{ flex: 1 }}>
-            <InputLabel htmlFor="lastName">Last Name *</InputLabel>
-            <TextField
+          <div className="flex-1">
+            <label htmlFor="lastName" className="block text-sm font-semibold">
+              Last Name *
+            </label>
+            <input
               id="lastName"
               name="lastName"
+              placeholder="Last Name"
               value={formData.lastName}
               onChange={handleChange}
               required
-              fullWidth
-              sx={{
-                borderRadius: 2,
-                border: "1px solid",
-                borderColor: errors.lastName ? "error.main" : "blue.300",
-                mb: 0.5,
-              }}
+              className={`w-full p-2 border rounded-md ${
+                errors.lastName ? "border-red-500" : ""
+              }`}
             />
             {errors.lastName && (
-              <Typography color="error" variant="caption" sx={{ pl: 1 }}>
-                {errors.lastName}
-              </Typography>
+              <span className="text-red-500 text-xs">{errors.lastName}</span>
             )}
-          </Box>
-        </Box>
+          </div>
+        </div>
 
         {/* Date of Birth and Gender */}
-        <Box
-          sx={{
-            display: "flex",
-            pb: 4,
-            gap: 2,
-            flexDirection: { xs: "column", sm: "row" },
-          }}
-        >
-          <Box sx={{ flex: 1 }}>
-            <InputLabel htmlFor="dateOfBirth">Date of Birth *</InputLabel>
+        <div className="flex flex-col sm:flex-row gap-4 mb-12">
+          <div className="flex-1">
+            <label
+              htmlFor="dateOfBirth"
+              className="block text-sm font-semibold"
+            >
+              Date of Birth *
+            </label>
             <DatePicker
               dateFormat="dd-MMM-yyyy"
               value={formData.dateOfBirth}
@@ -273,252 +246,203 @@ export default function FormInput({ department }: any) {
               }}
             />
             {errors.dateOfBirth && (
-              <Typography color="error" variant="caption" sx={{ pl: 1 }}>
-                {errors.dateOfBirth}
-              </Typography>
+              <span className="text-red-500 text-xs">{errors.dateOfBirth}</span>
             )}
-          </Box>
+          </div>
 
-          <Box sx={{ flex: 1, justifyContent: "between" }}>
-            <FormControl required fullWidth>
-              <FormLabel>Gender *</FormLabel>
-              <RadioGroup
-                row
-                name="gender"
-                value={formData.gender}
-                onChange={handleChange}
-                sx={{
-                  gap: 3, // Default gap untuk mobile
-                  "@media (min-width: 600px)": {
-                    // Media query untuk layar lebih lebar (laptop dan tablet)
-                    gap: 20,
-                  },
-                }}
-              >
-                <FormControlLabel
+          <div className="flex-1">
+            <label className="block text-sm font-semibold mb-2">Gender *</label>
+            <div className="flex  gap-20  items-center">
+              <label className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  name="gender"
                   value="female"
-                  control={<Radio />}
-                  label="Female"
+                  checked={formData.gender === "female"}
+                  onChange={handleChange}
+                  className="form-radio text-blue-600"
                 />
-                <FormControlLabel
+                <span>Female</span>
+              </label>
+              <label className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  name="gender"
                   value="male"
-                  control={<Radio />}
-                  label="Male"
+                  checked={formData.gender === "male"}
+                  onChange={handleChange}
+                  className="form-radio text-blue-600"
                 />
-              </RadioGroup>
-              {errors.gender && (
-                <Typography color="error" variant="caption" sx={{ pl: 1 }}>
-                  {errors.gender}
-                </Typography>
-              )}
-            </FormControl>
-          </Box>
-        </Box>
+                <span>Male</span>
+              </label>
+            </div>
+            {errors.gender && (
+              <span className="text-red-500 text-xs mt-1">{errors.gender}</span>
+            )}
+          </div>
+        </div>
 
         {/* Passport ID */}
-        <Box sx={{ flex: 1, pb: 4 }}>
-          <InputLabel htmlFor="passportId">Passport ID *</InputLabel>
-          <TextField
+        <div className="mb-12">
+          <label htmlFor="passportId" className="block text-sm font-semibold">
+            Passport ID *
+          </label>
+          <input
             id="passportId"
             name="passportId"
+            placeholder="Passport ID"
             value={formData.passportId}
             onChange={handleChange}
             required
-            fullWidth
-            sx={{
-              borderRadius: 2,
-              border: "1px solid",
-              borderColor: errors.passportId ? "error.main" : "blue.300",
-              mb: 0.5,
-            }}
+            className={`w-full p-2 border rounded-md ${
+              errors.passportId ? "border-red-500" : ""
+            }`}
           />
           {errors.passportId && (
-            <Typography color="error" variant="caption" sx={{ pl: 1 }}>
-              {errors.passportId}
-            </Typography>
+            <span className="text-red-500 text-xs">{errors.passportId}</span>
           )}
-        </Box>
+        </div>
 
         {/* Email Address and Whatsapp Number */}
-        <Box
-          sx={{
-            display: "flex",
-            pb: 4,
-            gap: 2,
-            flexDirection: { xs: "column", sm: "row" },
-          }}
-        >
-          <Box sx={{ flex: 1 }}>
-            <InputLabel htmlFor="email">Email Address *</InputLabel>
-            <TextField
+        <div className="flex flex-col sm:flex-row gap-4 mb-12">
+          <div className="flex-1">
+            <label htmlFor="email" className="block text-sm font-semibold">
+              Email Address *
+            </label>
+            <input
               id="email"
               name="email"
+              placeholder="john.doe@example.com"
+              type="email"
               value={formData.email}
               onChange={handleChange}
               required
-              type="email"
-              fullWidth
-              sx={{
-                borderRadius: 2,
-                border: "1px solid",
-                borderColor: errors.email ? "error.main" : "blue.300",
-                mb: 0.5,
-              }}
+              className={`w-full p-2 border rounded-md ${
+                errors.email ? "border-red-500" : ""
+              }`}
             />
             {errors.email && (
-              <Typography color="error" variant="caption" sx={{ pl: 1 }}>
-                {errors.email}
-              </Typography>
+              <span className="text-red-500 text-xs">{errors.email}</span>
             )}
-          </Box>
+          </div>
 
-          <Box sx={{ flex: 1 }}>
-            <InputLabel htmlFor="whatsapp">Whatsapp Number *</InputLabel>
-            <TextField
-              id="whatsapp"
-              name="whatsapp"
-              value={formData.whatsapp}
-              onChange={handleChange}
-              required
-              type="tel"
-              fullWidth
-              sx={{
-                borderRadius: 2,
-                border: "1px solid",
-                borderColor: errors.whatsapp ? "error.main" : "blue.300",
-                mb: 0.5,
-              }}
+          <div className="flex-1">
+            <label htmlFor="whatsapp" className="block text-sm font-semibold">
+              Whatsapp Number *
+            </label>
+            <PhoneNumberInput
+              error={errors.whatsapp}
+              onChange={handlePhoneChange} // Pastikan kita menerima data dari PhoneNumberInput
             />
             {errors.whatsapp && (
-              <Typography color="error" variant="caption" sx={{ pl: 1 }}>
-                {errors.whatsapp}
-              </Typography>
+              <span className="text-red-500 text-xs">{errors.whatsapp}</span>
             )}
-          </Box>
-        </Box>
+          </div>
+        </div>
 
         {/* Department and Position */}
-        <Box
-          sx={{
-            display: "flex",
-            gap: 2,
-            pb: 4,
-            flexDirection: { xs: "column", sm: "row" },
-          }}
-        >
-          <Box sx={{ flex: 1 }}>
-            <InputLabel htmlFor="department">Department Applied *</InputLabel>
-            <Select
+        <div className="flex flex-col sm:flex-row gap-4 mb-12">
+          <div className="flex-1">
+            <label htmlFor="department" className="block text-sm font-semibold">
+              Department *
+            </label>
+            <select
+              id="department"
               name="department"
               value={formData.department}
               onChange={handleChange}
-              displayEmpty
-              fullWidth
               required
-              sx={{
-                borderRadius: 2,
-                border: "1px solid",
-                borderColor: errors.department ? "error.main" : "blue.300",
-                mb: 0.5,
-              }}
+              className={`w-full p-2 border rounded-md ${
+                errors.department ? "border-red-500" : ""
+              }`}
             >
-              <MenuItem value="" disabled>
-                Select Department
-              </MenuItem>
               {DepartmentsData.map((dept) => (
-                <MenuItem key={dept.title} value={dept.title}>
+                <option key={dept.title} value={dept.title}>
                   {dept.title}
-                </MenuItem>
+                </option>
               ))}
-            </Select>
+            </select>
             {errors.department && (
-              <Typography color="error" variant="caption" sx={{ pl: 1 }}>
-                {errors.department}
-              </Typography>
+              <span className="text-red-500 text-xs">{errors.department}</span>
             )}
-          </Box>
+          </div>
 
-          <Box sx={{ flex: 1 }}>
-            <InputLabel htmlFor="position">Select Position *</InputLabel>
-            <Select
+          <div className="flex-1">
+            <label htmlFor="position" className="block text-sm font-semibold">
+              Position *
+            </label>
+            <select
+              id="position"
               name="position"
               value={formData.position}
               onChange={handleChange}
-              displayEmpty
-              fullWidth
               required
-              disabled={!formData.department}
-              sx={{
-                borderRadius: 2,
-                border: "1px solid",
-                borderColor: errors.position ? "error.main" : "blue.300",
-                mb: 0.5,
-              }}
+              className={`w-full p-2 border rounded-md ${
+                errors.position ? "border-red-500" : ""
+              }`}
             >
-              <MenuItem value="" disabled>
-                Select{" "}
-                {formData.department
-                  ? `${formData.department} Position`
-                  : "Position"}
-              </MenuItem>
-              {positions.map((position) => (
-                <MenuItem key={position} value={position}>
-                  {position}
-                </MenuItem>
+              <option value="">Select {formData.department} Position</option>
+              {positions.map((pos, index) => (
+                <option key={index} value={pos}>
+                  {pos}
+                </option>
               ))}
-            </Select>
+            </select>
             {errors.position && (
-              <Typography color="error" variant="caption" sx={{ pl: 1 }}>
-                {errors.position}
-              </Typography>
+              <span className="text-red-500 text-xs">{errors.position}</span>
             )}
-          </Box>
-        </Box>
+          </div>
+        </div>
 
-        <FileUploadCv onFileSelect={handleFileUploadCv} />
-        <FileUpload onFileSelect={handleFileUploadWorkExperience} />
+        {/* File Upload */}
+        <div className="mb-6">
+          <FileUploadCv onFileSelect={handleFileUploadCv} />
+        </div>
 
-        {/* Terms and Checkbox */}
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 1, mb: 2 }}>
-          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <Checkbox
-              checked={isAgreed}
-              onChange={handleCheckboxChange}
-              color="primary"
-            />
-            <Typography variant="body2">
-              By checking this box, I have read and agree to the{" "}
-              <span
-                onClick={() => setOpenTerms(true)}
-                style={{ cursor: "pointer", color: "#F2AF29" }}
-              >
-                Terms and Conditions
-              </span>{" "}
-              and{" "}
-              <span
-                onClick={() => setOpenRecruitment(true)}
-                style={{ cursor: "pointer", color: "#F2AF29" }}
-              >
-                Recruitment Process
-              </span>
-            </Typography>
-          </Box>
-          {/* {errors.terms && (
-            <Typography color="error" variant="caption" sx={{ pl: 1 }}>
-              {errors.terms}
-            </Typography>
-          )} */}
-        </Box>
+        <div className="mb-6">
+          <FileUpload onFileSelect={handleFileUploadWorkExperience} />
+        </div>
 
-        <button
-          type="submit"
-          className="bg-[#0F4C5C] text-white py-2 rounded-md font-bold mb-4 hover:bg-white border-2 hover:text-[#0F4C5C]"
-        >
-          Submit
-        </button>
-      </Box>
+        {/* Terms and Conditions */}
+        <div className="mb-6 flex items-center gap-4">
+          <input
+            type="checkbox"
+            id="terms"
+            checked={isAgreed}
+            onChange={handleCheckboxChange}
+            className="form-checkbox ml-4"
+          />
+          <label htmlFor="terms" className="text-sm flex flex-wrap gap-1">
+            I agree to the{" "}
+            <button
+              type="button"
+              onClick={() => setOpenTerms(true)}
+              className="text-[#F2AF29] underline"
+            >
+              Terms and Conditions
+            </button>
+            <span>and</span>
+            <button
+              type="button"
+              onClick={() => setOpenRecruitment(true)}
+              className="text-[#F2AF29] underline"
+            >
+              Recruitment Process
+            </button>
+          </label>
+        </div>
 
-      {/* Modal Components */}
+        {/* Submit Button */}
+        <div className="w-full mx-auto">
+          <button
+            type="submit"
+            className="w-full bg-[#0F4C5C] text-white py-2 rounded-md font-bold mb-4 hover:bg-white border-2 hover:text-[#0F4C5C]"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+
       <ModalTerms open={openTerms} onClose={() => setOpenTerms(false)} />
       <ModalRecruitment
         open={openRecruitment}

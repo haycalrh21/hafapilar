@@ -49,7 +49,7 @@ const HeroSection = () => {
             alt="Logo Hafa Pilar"
             width={150}
             height={200}
-            className="inline-block left-4"
+            className="inline-block "
           />
         </Link>
       </div>
