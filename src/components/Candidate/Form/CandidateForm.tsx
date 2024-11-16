@@ -18,25 +18,26 @@ export default function CandidateForm() {
         bgcolor: "background.default",
         backgroundImage: "url('/assets/nexttpage.png')",
         backgroundPosition: {
-          xs: "-400px 0px",
+          xs: "-400px 0px", // Mobile: geser ke kiri 500px dari top
           md: "center top",
           lg: "center top",
         },
         backgroundSize: {
-          xs: "280% 1600px",
-          md: "100% 100%",
+          xs: "280% 1600px ", // Mobile: full width, auto height
+          md: "100% 100% ", // Desktop: full width, auto height
         },
         backgroundRepeat: "no-repeat",
-        minHeight: "100vh",
+        minHeight: "200vh",
       }}
     >
       <HeaderNotButton />
-      <Container maxWidth="lg" sx={{ p: 0 }}>
+      <Container maxWidth="lg" sx={{ pb: 10 }}>
         <div>
-          <h1 className="text-center text-3xl font-bold mt-20 sm:text-3xl">
+          <h1 className="text-3xl sm:text-2xl md:text-4xl lg:text-6xl text-center font-bold mt-20">
             Apply with Us Today
           </h1>
-          <p className="text-center mt-4 mb-20 sm:text-sm">
+
+          <p className=" font-sans text-center  mt-4 mb-20 ">
             Discover the Career of Your Dreams
           </p>
         </div>

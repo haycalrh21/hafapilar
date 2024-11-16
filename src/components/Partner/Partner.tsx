@@ -27,10 +27,10 @@ export function PartnerPage() {
 
       <Container maxWidth="lg" sx={{ pb: 10 }}>
         <div>
-          <h1 className="text-center text-3xl font-bold mt-20 sm:text-3xl">
+          <h1 className="text-3xl sm:text-2xl md:text-4xl lg:text-6xl text-center font-bold mt-20">
             Become Our Partner
           </h1>
-          <p className="text-center mt-4 mb-20 sm:text-sm">
+          <p className=" font-sans text-center  mt-4 mb-20 ">
             Build the Dream Team You’ve Always Wanted
           </p>
         </div>

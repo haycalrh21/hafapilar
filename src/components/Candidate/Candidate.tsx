@@ -31,7 +31,7 @@ export function CandidatePage() {
             Apply with Us Today
           </h1>
 
-          <p className=" font-extralight text-center  mt-4 mb-20 sm:text-sm">
+          <p className=" font-sans text-center  mt-4 mb-20 ">
             Discover the Career of Your Dreams
           </p>
         </div>

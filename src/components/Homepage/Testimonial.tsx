@@ -11,6 +11,7 @@ import React from "react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useTheme, useMediaQuery } from "@mui/material";
+import Link from "next/link";
 
 export default function Testimonial() {
   const [testimonialIndex, setTestimonialIndex] = React.useState(0);
@@ -95,9 +96,11 @@ export default function Testimonial() {
             Stories
           </span>
         </Typography>
-        <button className="px-8 py-4 text-white rounded-2xl shadow-md border-teal-600 border-2 font-semibold text-xs lg:text-sm bg-[#0F4C5C] hover:bg-white hover:text-[#0F4C5C] transition-colors duration-200">
-          Be Our Partner
-        </button>
+        <Link href="/partner">
+          <button className="px-8 py-4 text-white rounded-2xl shadow-md border-teal-600 border-2 font-semibold text-xs lg:text-sm bg-[#0F4C5C] hover:bg-white hover:text-[#0F4C5C] hover:border-b-yellow-500 relative overflow-hidden transition-colors duration-200">
+            Be Our Partner
+          </button>
+        </Link>
       </Box>
 
       {/* Right Section: Testimonial Carousel */}

@@ -5,7 +5,7 @@ export default function Provider({ children }: { children: React.ReactNode }) {
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#0D5257",
+        main: "#0F4C5C",
       },
       secondary: {
         main: "#FFA500",

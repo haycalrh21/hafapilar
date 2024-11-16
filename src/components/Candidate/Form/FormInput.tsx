@@ -12,6 +12,7 @@ import {
   Checkbox,
   Typography,
   InputLabel,
+  FormHelperText,
 } from "@mui/material";
 import { useState, useEffect } from "react";
 import ModalTerms from "./ModalTerms";
@@ -22,20 +23,62 @@ import FileUploadCv from "./FileUploadCV";
 import { SelectChangeEvent } from "@mui/material";
 import { useRouter } from "next/navigation";
 import DatePicker from "@/components/field/DatePicker";
+import { z } from "zod";
+
+// Zod schema for form validation
+const formSchema = z.object({
+  firstName: z
+    .string()
+    .min(5, "Minimum 5 character *")
+    .max(50, "First name is too long"),
+  lastName: z
+    .string()
+    .min(5, "Minimum 5 character *")
+    .max(50, "Last name is too long"),
+  dateOfBirth: z.string().min(1, "Date of birth is required"),
+  gender: z.enum(["male", "female"], {
+    required_error: "Please select a gender",
+  }),
+  passportId: z
+    .string()
+    .min(16, "Minimum 16 character *")
+    .regex(
+      /^[A-Za-z0-9]+$/,
+      "Passport ID must contain only letters and numbers"
+    ),
+  email: z.string().min(1, "Email is required").email("Invalid email address"),
+  // whatsapp: z
+  // .string()
+  // .min(1, "WhatsApp number is required *")
+  // .regex(/^\+62[0-9]+$/, "Invalid phone number format. Must start with +62."),
+  whatsapp: z
+    .string()
+    .min(1, "WhatsApp number is required *")
+    .regex(/^08[0-9]+$/, "Invalid phone number format. Must start with 08."),
+
+  department: z.string().min(1, "Department is required"),
+  position: z.string().min(1, "Position is required"),
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 export default function FormInput({ department }: any) {
   const router = useRouter();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
     dateOfBirth: "",
-    gender: "",
+    gender: "" as "male" | "female",
     passportId: "",
     email: "",
     whatsapp: "",
     department: department || "",
     position: "",
   });
+
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
+    {}
+  );
   const [isAgreed, setIsAgreed] = useState(false);
   const [openTerms, setOpenTerms] = useState(false);
   const [openRecruitment, setOpenRecruitment] = useState(false);
@@ -46,12 +89,10 @@ export default function FormInput({ department }: any) {
   );
 
   useEffect(() => {
-    console.log(department);
     if (department) {
       const selectedDepartment = DepartmentsData.find(
         (dept) => dept.title === department
       );
-      console.log(selectedDepartment);
       if (selectedDepartment) {
         setPositions(selectedDepartment.positions.split(", "));
         setFormData((prevFormData) => ({
@@ -62,13 +103,28 @@ export default function FormInput({ department }: any) {
     }
   }, [department]);
 
+  const validateField = (name: keyof FormData, value: string) => {
+    try {
+      formSchema.shape[name].parse(value);
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        setErrors((prev) => ({
+          ...prev,
+          [name]: error.errors[0].message,
+        }));
+      }
+    }
+  };
+
   const handleChange = (
     e:
       | SelectChangeEvent<string>
       | React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>
   ) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name!]: value });
+    setFormData((prev) => ({ ...prev, [name!]: value }));
+    validateField(name as keyof FormData, value as string);
 
     if (name === "department") {
       const selectedDepartment = DepartmentsData.find(
@@ -86,14 +142,31 @@ export default function FormInput({ department }: any) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!isAgreed) {
-      alert("Please agree to the terms and conditions before submitting.");
+      setErrors((prev) => ({
+        ...prev,
+        terms: "Please agree to the terms and conditions",
+      }));
       return;
     }
 
-    const dataToSubmit = { ...formData, cvFile, workExperienceFile };
-    console.log(dataToSubmit);
-    router.push("/candidate/finish");
+    try {
+      const validatedData = formSchema.parse(formData);
+      const dataToSubmit = { ...validatedData, cvFile, workExperienceFile };
+      console.log(dataToSubmit);
+      router.push("/candidate/finish");
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const newErrors: Partial<Record<keyof FormData, string>> = {};
+        error.errors.forEach((err) => {
+          if (err.path[0]) {
+            newErrors[err.path[0] as keyof FormData] = err.message;
+          }
+        });
+        setErrors(newErrors);
+      }
+    }
   };
 
   const handleFileUploadCv = (file: File | null) => {
@@ -104,10 +177,8 @@ export default function FormInput({ department }: any) {
     setWorkExperienceFile(file);
   };
 
-  console.log('dateOfBirth :', formData.dateOfBirth);
-
   return (
-    <div className="mx-auto">
+    <div className="mx-auto border-2 border-[#0F4C5C] rounded-lg">
       <Box
         component="form"
         onSubmit={handleSubmit}
@@ -128,6 +199,7 @@ export default function FormInput({ department }: any) {
           sx={{
             display: "flex",
             gap: 2,
+            pb: 4,
             flexDirection: { xs: "column", sm: "row" },
           }}
         >
@@ -141,11 +213,17 @@ export default function FormInput({ department }: any) {
               required
               fullWidth
               sx={{
-                borderRadius: 2, // Border radius
-                border: "1px solid", // Border style
-                borderColor: "blue.300", // Border color
+                borderRadius: 2,
+                border: "1px solid",
+                borderColor: errors.firstName ? "error.main" : "blue.300",
+                mb: 0.5,
               }}
             />
+            {errors.firstName && (
+              <Typography color="error" variant="caption" sx={{ pl: 1 }}>
+                {errors.firstName}
+              </Typography>
+            )}
           </Box>
 
           <Box sx={{ flex: 1 }}>
@@ -160,9 +238,15 @@ export default function FormInput({ department }: any) {
               sx={{
                 borderRadius: 2,
                 border: "1px solid",
-                borderColor: "blue.300",
+                borderColor: errors.lastName ? "error.main" : "blue.300",
+                mb: 0.5,
               }}
             />
+            {errors.lastName && (
+              <Typography color="error" variant="caption" sx={{ pl: 1 }}>
+                {errors.lastName}
+              </Typography>
+            )}
           </Box>
         </Box>
 
@@ -170,6 +254,7 @@ export default function FormInput({ department }: any) {
         <Box
           sx={{
             display: "flex",
+            pb: 4,
             gap: 2,
             flexDirection: { xs: "column", sm: "row" },
           }}
@@ -180,15 +265,21 @@ export default function FormInput({ department }: any) {
               dateFormat="dd-MMM-yyyy"
               value={formData.dateOfBirth}
               onDateChange={(_, formattedDate) => {
-                setFormData(prev => ({
+                setFormData((prev) => ({
                   ...prev,
-                  dateOfBirth: formattedDate
+                  dateOfBirth: formattedDate,
                 }));
+                validateField("dateOfBirth", formattedDate);
               }}
             />
+            {errors.dateOfBirth && (
+              <Typography color="error" variant="caption" sx={{ pl: 1 }}>
+                {errors.dateOfBirth}
+              </Typography>
+            )}
           </Box>
 
-          <Box sx={{ flex: 1 }}>
+          <Box sx={{ flex: 1, justifyContent: "between" }}>
             <FormControl required fullWidth>
               <FormLabel>Gender *</FormLabel>
               <RadioGroup
@@ -196,6 +287,13 @@ export default function FormInput({ department }: any) {
                 name="gender"
                 value={formData.gender}
                 onChange={handleChange}
+                sx={{
+                  gap: 3, // Default gap untuk mobile
+                  "@media (min-width: 600px)": {
+                    // Media query untuk layar lebih lebar (laptop dan tablet)
+                    gap: 20,
+                  },
+                }}
               >
                 <FormControlLabel
                   value="female"
@@ -208,12 +306,17 @@ export default function FormInput({ department }: any) {
                   label="Male"
                 />
               </RadioGroup>
+              {errors.gender && (
+                <Typography color="error" variant="caption" sx={{ pl: 1 }}>
+                  {errors.gender}
+                </Typography>
+              )}
             </FormControl>
           </Box>
         </Box>
 
         {/* Passport ID */}
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ flex: 1, pb: 4 }}>
           <InputLabel htmlFor="passportId">Passport ID *</InputLabel>
           <TextField
             id="passportId"
@@ -223,17 +326,24 @@ export default function FormInput({ department }: any) {
             required
             fullWidth
             sx={{
-              borderRadius: 2, // Border radius
-              border: "1px solid", // Border style
-              borderColor: "blue.300", // Border color
+              borderRadius: 2,
+              border: "1px solid",
+              borderColor: errors.passportId ? "error.main" : "blue.300",
+              mb: 0.5,
             }}
           />
+          {errors.passportId && (
+            <Typography color="error" variant="caption" sx={{ pl: 1 }}>
+              {errors.passportId}
+            </Typography>
+          )}
         </Box>
 
         {/* Email Address and Whatsapp Number */}
         <Box
           sx={{
             display: "flex",
+            pb: 4,
             gap: 2,
             flexDirection: { xs: "column", sm: "row" },
           }}
@@ -249,11 +359,17 @@ export default function FormInput({ department }: any) {
               type="email"
               fullWidth
               sx={{
-                borderRadius: 2, // Border radius
-                border: "1px solid", // Border style
-                borderColor: "blue.300", // Border color
+                borderRadius: 2,
+                border: "1px solid",
+                borderColor: errors.email ? "error.main" : "blue.300",
+                mb: 0.5,
               }}
             />
+            {errors.email && (
+              <Typography color="error" variant="caption" sx={{ pl: 1 }}>
+                {errors.email}
+              </Typography>
+            )}
           </Box>
 
           <Box sx={{ flex: 1 }}>
@@ -267,11 +383,17 @@ export default function FormInput({ department }: any) {
               type="tel"
               fullWidth
               sx={{
-                borderRadius: 2, // Border radius
-                border: "1px solid", // Border style
-                borderColor: "blue.300", // Border color
+                borderRadius: 2,
+                border: "1px solid",
+                borderColor: errors.whatsapp ? "error.main" : "blue.300",
+                mb: 0.5,
               }}
             />
+            {errors.whatsapp && (
+              <Typography color="error" variant="caption" sx={{ pl: 1 }}>
+                {errors.whatsapp}
+              </Typography>
+            )}
           </Box>
         </Box>
 
@@ -280,6 +402,7 @@ export default function FormInput({ department }: any) {
           sx={{
             display: "flex",
             gap: 2,
+            pb: 4,
             flexDirection: { xs: "column", sm: "row" },
           }}
         >
@@ -293,9 +416,10 @@ export default function FormInput({ department }: any) {
               fullWidth
               required
               sx={{
-                borderRadius: 2, // Border radius
-                border: "1px solid", // Border style
-                borderColor: "blue.300", // Border color
+                borderRadius: 2,
+                border: "1px solid",
+                borderColor: errors.department ? "error.main" : "blue.300",
+                mb: 0.5,
               }}
             >
               <MenuItem value="" disabled>
@@ -307,6 +431,11 @@ export default function FormInput({ department }: any) {
                 </MenuItem>
               ))}
             </Select>
+            {errors.department && (
+              <Typography color="error" variant="caption" sx={{ pl: 1 }}>
+                {errors.department}
+              </Typography>
+            )}
           </Box>
 
           <Box sx={{ flex: 1 }}>
@@ -320,13 +449,17 @@ export default function FormInput({ department }: any) {
               required
               disabled={!formData.department}
               sx={{
-                borderRadius: 2, // Border radius
-                border: "1px solid", // Border style
-                borderColor: "blue.300", // Border color
+                borderRadius: 2,
+                border: "1px solid",
+                borderColor: errors.position ? "error.main" : "blue.300",
+                mb: 0.5,
               }}
             >
               <MenuItem value="" disabled>
-                Select Position
+                Select{" "}
+                {formData.department
+                  ? `${formData.department} Position`
+                  : "Position"}
               </MenuItem>
               {positions.map((position) => (
                 <MenuItem key={position} value={position}>
@@ -334,6 +467,11 @@ export default function FormInput({ department }: any) {
                 </MenuItem>
               ))}
             </Select>
+            {errors.position && (
+              <Typography color="error" variant="caption" sx={{ pl: 1 }}>
+                {errors.position}
+              </Typography>
+            )}
           </Box>
         </Box>
 
@@ -341,28 +479,35 @@ export default function FormInput({ department }: any) {
         <FileUpload onFileSelect={handleFileUploadWorkExperience} />
 
         {/* Terms and Checkbox */}
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
-          <Checkbox
-            checked={isAgreed}
-            onChange={handleCheckboxChange}
-            color="primary"
-          />
-          <Typography variant="body2">
-            By checking this box, I have read and agree to the{" "}
-            <span
-              onClick={() => setOpenTerms(true)}
-              style={{ cursor: "pointer", color: "#F2AF29" }}
-            >
-              Terms and Conditions
-            </span>{" "}
-            and{" "}
-            <span
-              onClick={() => setOpenRecruitment(true)}
-              style={{ cursor: "pointer", color: "#F2AF29" }}
-            >
-              Recruitment Process
-            </span>
-          </Typography>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 1, mb: 2 }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+            <Checkbox
+              checked={isAgreed}
+              onChange={handleCheckboxChange}
+              color="primary"
+            />
+            <Typography variant="body2">
+              By checking this box, I have read and agree to the{" "}
+              <span
+                onClick={() => setOpenTerms(true)}
+                style={{ cursor: "pointer", color: "#F2AF29" }}
+              >
+                Terms and Conditions
+              </span>{" "}
+              and{" "}
+              <span
+                onClick={() => setOpenRecruitment(true)}
+                style={{ cursor: "pointer", color: "#F2AF29" }}
+              >
+                Recruitment Process
+              </span>
+            </Typography>
+          </Box>
+          {/* {errors.terms && (
+            <Typography color="error" variant="caption" sx={{ pl: 1 }}>
+              {errors.terms}
+            </Typography>
+          )} */}
         </Box>
 
         <Button type="submit" variant="contained" color="primary">

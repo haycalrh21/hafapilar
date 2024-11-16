@@ -23,13 +23,13 @@ const ModalRecruitment: React.FC<ModalRecruitmentProps> = ({
         />
       </DialogContent>
       <DialogActions>
-        <Button
+        <button
           onClick={onClose}
-          className="w-full text-white text-sm py-2"
-          style={{ backgroundColor: "#0F4C5C" }}
+          className="w-full font-serif text-white py-2 bg-[#0F4C5C] lg:font-light"
+          // style={{ backgroundColor: "#0F4C5C", fontStyle: "initial" }}
         >
           Close
-        </Button>
+        </button>
       </DialogActions>
     </Dialog>
   );
