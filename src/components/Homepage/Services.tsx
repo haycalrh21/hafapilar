@@ -12,7 +12,7 @@ import {
 
 export default function Services() {
   return (
-    <Box className="flex flex-col md:flex-cold justify-between items-center relative overflow-hidden mb-6 mx-4">
+    <Box className="flex flex-col md:flex-cold justify-between items-center relative overflow-hidden mb-6 mx-4 -top-20">
       <Typography
         variant="h4"
         component="h2"
