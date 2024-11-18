@@ -1,10 +1,15 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 import PhoneNumberInput from "../Candidate/Form/PhoneInput";
 
-// Define the Zod schema for validation
+interface Country {
+  name: {
+    common: string;
+  };
+}
+
 const formSchema = z.object({
   firstName: z.string().min(4, "Minimum 4 character *"),
   lastName: z.string().min(5, "Minimum 5 character *"),
@@ -20,30 +25,28 @@ const formSchema = z.object({
 
 export default function FormInputPartner() {
   const router = useRouter();
-  const jobfunctions = [
-    "Barista",
-    "Bartender",
-    "Bookkeeper",
-    "Business Development",
-    "Cleaner",
-    "Cook",
-    "Customer Service",
-    "Delivery Driver",
-    "Desk Clerk",
-    "Desk Manager",
-    "Dining Room Manager",
-    "Entertainment",
-    "Event Planner",
-    "Food and Beverage",
-    "Hairdresser",
-    "Housekeeper",
-    "Kitchen Assistant",
-    "Laundry",
-    "Line Cook",
-    "Line Manager",
-  ];
+  const [countries, setCountries] = useState<Country[]>([]);
 
-  const country = ["Afghanistan", "Albania", "Algeria", "Andorra"];
+  const fetchData = async () => {
+    const data = await fetch("https://restcountries.com/v3.1/all").then((res) =>
+      res.json()
+    );
+    console.log(data);
+
+    // Menyimpan seluruh data negara
+    setCountries(data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const sortedCountries = countries.sort((a, b) => {
+    if (a.name.common < b.name.common) return -1;
+    if (a.name.common > b.name.common) return 1;
+    return 0;
+  });
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -232,9 +235,9 @@ export default function FormInputPartner() {
               required
               className="w-full p-2 border rounded"
             >
-              {country.map((countryItem, index) => (
-                <option key={index} value={countryItem}>
-                  {countryItem}
+              {sortedCountries.map((countryItem, index) => (
+                <option key={index} value={countryItem.name.common}>
+                  {countryItem.name.common}
                 </option>
               ))}
             </select>
