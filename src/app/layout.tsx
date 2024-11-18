@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
 import Provider from "@/components/theme";
+import Authprovider from "@/components/provider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -27,9 +28,11 @@ export default function RootLayout({
 }>) {
   return (
     <html className={`${poppins.variable}`}>
-      <head>{/* Fonts are now loaded by next/font */}</head>
-      {/* <Provider> */}
-      <body>{children}</body>
+      <Authprovider>
+        <head>{/* Fonts are now loaded by next/font */}</head>
+        {/* <Provider> */}
+        <body>{children}</body>
+      </Authprovider>
     </html>
   );
 }

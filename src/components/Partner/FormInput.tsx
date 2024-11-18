@@ -18,7 +18,7 @@ const formSchema = z.object({
     .email("Invalid email address")
     .min(1, "Business Email is required"),
   whatsapp: z.string().min(1, "Phone Number is required").or(z.literal("")),
-  jobfunction: z.string().min(1, "Job Function is required"),
+
   country: z.string().min(1, "Country is required"),
   Message: z.string().min(1, "Message is required"),
 });
@@ -53,7 +53,7 @@ export default function FormInputPartner() {
     email: "",
     gender: "",
     Message: "",
-    jobfunction: "",
+
     whatsapp: "",
     department: "",
     position: "",
@@ -76,7 +76,9 @@ export default function FormInputPartner() {
   const handlePhoneChange = (value: string) => {
     setFormData({ ...formData, whatsapp: value }); // Kirim data whatsapp dari PhoneNumberInput
   };
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const api_url = process.env.NEXT_PUBLIC_API_URL;
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Cek apakah whatsapp kosong
@@ -107,7 +109,29 @@ export default function FormInputPartner() {
 
       // Data valid, lanjutkan dengan submit
       console.log("Form data submitted:", updatedFormData);
-      router.push("/partner/finish");
+
+      // Send the form data to the backend (Express API)
+      const response = await fetch(`${api_url}/partner`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullname: formData.firstName,
+          lastname: formData.lastName,
+          email: formData.email,
+          country: formData.country,
+          message: formData.Message,
+        }),
+      });
+
+      if (response.ok) {
+        // Redirect to the success page on success
+        router.push("/partner/finish");
+      } else {
+        const errorData = await response.json();
+        console.error("Error creating partner:", errorData.error);
+      }
     } catch (error) {
       if (error instanceof z.ZodError) {
         const formattedErrors: any = {};

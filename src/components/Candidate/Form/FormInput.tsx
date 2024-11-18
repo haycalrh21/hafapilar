@@ -9,7 +9,19 @@ import DatePicker from "@/components/field/DatePicker";
 import { z } from "zod";
 import PhoneNumberInput from "./PhoneInput";
 
-// Zod schema for form validation
+interface ApiResponse {
+  message: string;
+}
+
+const fileToBase64 = (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = (error) => reject(error);
+  });
+};
+
 const formSchema = z.object({
   firstName: z
     .string()
@@ -128,26 +140,64 @@ export default function FormInput({ department }: any) {
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsAgreed(e.target.checked);
   };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const api_url = process.env.NEXT_PUBLIC_API_URL;
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!isAgreed) {
-      setErrors((prev) => ({
-        ...prev,
-        terms: "Please agree to the terms and conditions",
-      }));
+    // Validasi file
+    if (!cvFile || !workExperienceFile) {
+      alert("Both CV and Work Experience PDF files are required.");
+      return;
+    }
+
+    if (
+      cvFile.type !== "application/pdf" ||
+      workExperienceFile.type !== "application/pdf"
+    ) {
+      alert("Both files must be in PDF format.");
       return;
     }
 
     try {
+      // Validasi form data
       const validatedData = formSchema.parse(formData);
 
-      // Menambahkan log data form yang sudah tervalidasi
-      console.log(validatedData);
+      // Convert files to base64
+      const cvBase64 = await fileToBase64(cvFile);
+      const certificateBase64 = await fileToBase64(workExperienceFile);
 
-      const dataToSubmit = { ...validatedData, cvFile, workExperienceFile };
-      console.log(dataToSubmit); // Jika ingin log data yang akan disubmit
+      // Prepare data for API
+      const apiData = {
+        fullname: validatedData.firstName,
+        lastname: validatedData.lastName,
+        dateOfBirth: validatedData.dateOfBirth,
+        gender: validatedData.gender,
+        passportNumber: validatedData.passportId,
+        email: validatedData.email,
+        phoneNumber: validatedData.whatsapp,
+        department: validatedData.department,
+        position: validatedData.position,
+        cv: cvBase64,
+        certificate: certificateBase64,
+      };
+
+      // Make API call
+      const response = await fetch(`${api_url}/candidate`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(apiData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+
+      const result: ApiResponse = await response.json();
+      console.log("Submission successful:", result);
+
+      // Navigate to success page
       router.push("/candidate/finish");
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -158,11 +208,18 @@ export default function FormInput({ department }: any) {
           }
         });
         setErrors(newErrors);
+      } else {
+        console.error("Submission error:", error);
+        // You might want to show an error message to the user
       }
     }
   };
 
   const handleFileUploadCv = (file: File | null) => {
+    if (file && file.type !== "application/pdf") {
+      alert("Please upload a valid PDF file for CV.");
+      return;
+    }
     setCvFile(file);
   };
 
@@ -174,8 +231,11 @@ export default function FormInput({ department }: any) {
     setFormData({ ...formData, whatsapp: value });
     validateField("whatsapp", value); // Pastikan validasi dijalankan
   };
-
   const handleFileUploadWorkExperience = (file: File | null) => {
+    if (file && file.type !== "application/pdf") {
+      alert("Please upload a valid PDF file for Work Experience.");
+      return;
+    }
     setWorkExperienceFile(file);
   };
 
