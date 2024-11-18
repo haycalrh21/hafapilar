@@ -1,101 +1,72 @@
-import { Box, Container, Typography, Link, Stack } from "@mui/material";
 import Image from "next/image";
 
 export default function Footer() {
   return (
-    <Box component="footer" sx={{ py: 6, mt: 8, color: "black" }}>
-      <Container maxWidth="lg">
-        <Stack
-          direction={{ xs: "column", md: "row" }} // Vertikal di mobile, horizontal di desktop
-          justifyContent="space-between"
-          alignItems="flex-start" // Agar semua elemen rata kiri
-          spacing={4}
-        >
+    <footer className="py-6 mt-8 mx-0 lg:mx-40 sm:mx-auto  text-black">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-6">
           {/* Logo dan Alamat */}
-          <Box sx={{ textAlign: { xs: "left", md: "left" } }}>
+          <div className="text-left">
             <Image
               src="/assets/logo.png"
               alt="Hafa Pilar Logo"
               width={150}
-              className="ml-0"
               height={50}
+              className="ml-0"
             />
-            <Typography
-              variant="body2"
-              paragraph
-              sx={{ mt: 2 }}
-              className="sm:ml-8 lg:ml-4"
-            >
+            <p className="mt-2 text-sm sm:ml-8 lg:ml-4">
               Jl. Bougenvile No.32, Jakarta Utara, Indonesia, 14230
-            </Typography>
-          </Box>
+            </p>
+          </div>
 
           {/* Get in Touch */}
-          <Box sx={{ textAlign: { xs: "left", md: "left" } }}>
-            <Typography variant="h6" gutterBottom fontWeight="bold">
-              Get in Touch
-            </Typography>
-            <Stack
-              direction={{ xs: "column", md: "row" }} // Vertikal di mobile, horizontal di desktop
-              spacing={3}
-              alignItems="flex-start" // Pastikan elemen "Get in Touch" rata kiri di mobile
-            >
-              <Link
+          <div className="text-left">
+            <h6 className="text-3xl font-bold mb-2">Get in Touch</h6>
+            <div className="flex flex-col md:flex-row gap-3 items-start">
+              <a
                 href="mailto:hrd@hafapilar.com"
-                color="inherit"
-                underline="none"
+                className="flex items-center gap-2 text-black no-underline"
               >
-                <Stack direction="row" alignItems="center" spacing={1}>
-                  <Image
-                    src="/assets/icon/email.png"
-                    alt="Email"
-                    width={30}
-                    height={30}
-                  />
-                  <Typography variant="body2">hrd@hafapilar.com</Typography>
-                </Stack>
-              </Link>
-              <Link
+                <Image
+                  src="/assets/icon/email.png"
+                  alt="Email"
+                  width={30}
+                  height={30}
+                />
+                <span className="text-sm">hrd@hafapilar.com</span>
+              </a>
+              <a
                 href="tel:+62-21-439-24782"
-                color="inherit"
-                underline="none"
+                className="flex items-center gap-2 text-black no-underline"
               >
-                <Stack direction="row" alignItems="center" spacing={1}>
-                  <Image
-                    src="/assets/icon/call.png"
-                    alt="Phone"
-                    width={30}
-                    height={30}
-                  />
-                  <Typography variant="body2">+62-21-439-24782</Typography>
-                </Stack>
-              </Link>
-              <Link
+                <Image
+                  src="/assets/icon/call.png"
+                  alt="Phone"
+                  width={30}
+                  height={30}
+                />
+                <span className="text-sm">+62-21-439-24782</span>
+              </a>
+              <a
                 href="https://www.instagram.com/hafapilarindonesia/"
-                color="inherit"
-                underline="none"
+                className="flex items-center gap-2 text-black no-underline"
               >
-                <Stack direction="row" alignItems="center" spacing={1}>
-                  <Image
-                    src="/assets/icon/ig.png"
-                    alt="Instagram"
-                    width={30}
-                    height={30}
-                  />
-                  <Typography variant="body2">instagram</Typography>
-                </Stack>
-              </Link>
-            </Stack>
-          </Box>
-        </Stack>
-        <hr className="my-4 " style={{ borderColor: "#0F4C5C" }} />
+                <Image
+                  src="/assets/icon/ig.png"
+                  alt="Instagram"
+                  width={30}
+                  height={30}
+                />
+                <span className="text-sm">instagram</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <hr className="my-4 border-t-2 border-[#0F4C5C]" />
+
         {/* Gambar footer */}
-        <Box
-          display="flex"
-          gap={2}
-          mt={4}
-          justifyContent="flex-start" // Pastikan gambar footer rata kiri di mobile
-        >
+        <div className="flex gap-4 mt-4 justify-start">
           <Image
             src="/assets/footerbot.png"
             alt="Lloyd's Register"
@@ -103,8 +74,8 @@ export default function Footer() {
             height={50}
             className="sm:ml-auto lg:ml-3"
           />
-        </Box>
-      </Container>
-    </Box>
+        </div>
+      </div>
+    </footer>
   );
 }

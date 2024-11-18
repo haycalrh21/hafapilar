@@ -29,14 +29,20 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
         enableSearch={true}
         searchClass="w-full"
         containerClass="w-full"
-        inputClass="w-full p-2 border rounded"
+        containerStyle={{ width: "auto" }}
+        inputStyle={{
+          width: "100%",
+          maxWidth: "540px", // Default max width
+          height: "40px",
+          margin: "0 auto",
+        }}
         dropdownStyle={{
           height: "auto",
-          maxHeight: "300px", // Batasi tinggi dropdown
-          overflowY: "auto", // Scroll jika isi dropdown panjang
-          width: "80vw", // Gunakan 80% dari lebar viewport
-          maxWidth: "500px", // Maksimal lebar 500px
-          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Shadow dropdown
+          maxHeight: "300px",
+          overflowY: "auto",
+          width: "80vw",
+          maxWidth: "540px",
+          boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
           position: "absolute",
           zIndex: 50,
         }}

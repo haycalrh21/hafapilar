@@ -1,14 +1,13 @@
-import { Box, Grid, Typography } from "@mui/material";
-
 export default function ImpactCard() {
   return (
-    <div className="mx-auto">
-      <Typography
-        variant="h4"
-        component="h2"
-        gutterBottom
-        align="center"
-        fontWeight="bold"
+    <div className="mx-auto pt-20">
+      <h2
+        style={{
+          fontSize: "2.25rem", // Set to h4 equivalent
+          fontWeight: "bold",
+          textAlign: "center",
+          marginBottom: "1.5rem",
+        }}
       >
         Our{" "}
         <span
@@ -23,77 +22,145 @@ export default function ImpactCard() {
           Impact
         </span>{" "}
         So Far
-      </Typography>
-      <Box
-        sx={{
-          my: 8,
-          bgcolor: "#0F4C5C", // Menambahkan warna latar belakang
+      </h2>
+
+      <div
+        style={{
+          marginTop: "2rem",
+          marginBottom: "2rem",
+          backgroundColor: "#0F4C5C",
           backgroundImage: `url('/assets/left.png'), url('/assets/right.png')`,
           backgroundRepeat: "no-repeat",
-          backgroundPosition: "left center, right center", // Posisi gambar kiri dan kanan
-          backgroundSize: "300px 300px", // Ukuran gambar berbentuk lingkaran
+          backgroundPosition: "top left, bottom right", // Update positions
+          backgroundSize: "250px 250px", // Default size
           color: "white",
-          py: 6,
-          borderRadius: 4,
+          padding: "2rem 0",
+          borderRadius: "1rem",
         }}
+        className="responsive-background"
       >
-        <Grid container spacing={4} justifyContent="center" className="px-auto">
-          <Grid item xs={12} sm={6} md={3}>
-            <Box sx={{ textAlign: "center" }}>
-              <Typography
-                variant="h4"
-                component="div"
-                fontWeight="bold"
-                className="text-yellow-400"
-              >
-                9000+
-              </Typography>
-              <Typography variant="body1">Deployed Abroad</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Box sx={{ textAlign: "center" }}>
-              <Typography
-                variant="h4"
-                component="div"
-                fontWeight="bold"
-                className="text-yellow-400"
-              >
-                4+
-              </Typography>
-              <Typography variant="body1">Big Clients</Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Box sx={{ textAlign: "center" }}>
-              <Typography
-                variant="h4"
-                component="div"
-                fontWeight="bold"
-                className="text-yellow-400"
-              >
-                30 Years
-              </Typography>
-              <Typography variant="body1">
-                of Operations in Indonesia
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <Box sx={{ textAlign: "center" }}>
-              <Typography
-                variant="h4"
-                component="div"
-                fontWeight="bold"
-                className="text-yellow-400"
-              >
-                90%
-              </Typography>
-              <Typography variant="body1">Successful Placement Rate</Typography>
-            </Box>
-          </Grid>
-        </Grid>
-      </Box>
+        <style>
+          {`
+            @media (max-width: 768px) {
+              .responsive-background {
+                background-size: 150px 150px; /* Smaller size for mobile */
+                background-position: top left, bottom right; /* Maintain position */
+              }
+            }
+          `}
+        </style>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {/* 9000+ */}
+          <div
+            style={{
+              textAlign: "center",
+              flex: "1 1 200px",
+              margin: "1rem",
+            }}
+          >
+            <h4
+              style={{
+                fontWeight: "bold",
+                color: "#F2AF29",
+                fontSize: "2rem",
+              }}
+            >
+              9000+
+            </h4>
+            <p
+              style={{
+                fontSize: "1.125rem",
+              }}
+            >
+              Deployed Abroad
+            </p>
+          </div>
+
+          {/* 4+ */}
+          <div
+            style={{
+              textAlign: "center",
+              flex: "1 1 200px",
+              margin: "1rem",
+            }}
+          >
+            <h4
+              style={{
+                fontWeight: "bold",
+                color: "#F2AF29",
+                fontSize: "2rem",
+              }}
+            >
+              4+
+            </h4>
+            <p
+              style={{
+                fontSize: "1.125rem",
+              }}
+            >
+              Big Clients
+            </p>
+          </div>
+
+          {/* 30 Years */}
+          <div
+            style={{
+              textAlign: "center",
+              flex: "1 1 200px",
+              margin: "1rem",
+            }}
+          >
+            <h4
+              style={{
+                fontWeight: "bold",
+                color: "#F2AF29",
+                fontSize: "2rem",
+              }}
+            >
+              30 Years
+            </h4>
+            <p
+              style={{
+                fontSize: "1.125rem",
+              }}
+            >
+              of Operations in Indonesia
+            </p>
+          </div>
+
+          {/* 90% */}
+          <div
+            style={{
+              textAlign: "center",
+              flex: "1 1 200px",
+              margin: "1rem",
+            }}
+          >
+            <h4
+              style={{
+                fontWeight: "bold",
+                color: "#F2AF29",
+                fontSize: "2rem",
+              }}
+            >
+              90%
+            </h4>
+            <p
+              style={{
+                fontSize: "1.125rem",
+              }}
+            >
+              Successful Placement Rate
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

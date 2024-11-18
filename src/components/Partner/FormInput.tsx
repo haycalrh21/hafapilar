@@ -129,7 +129,7 @@ export default function FormInputPartner() {
         {/* Full Name and Last Name */}
         <div className="flex flex-col sm:flex-row gap-4 pb-4">
           <div className="flex-1">
-            <label htmlFor="firstName" className="font-bold block">
+            <label htmlFor="firstName" className="font-medium block mb-4">
               Full Name *
             </label>
             <input
@@ -146,7 +146,7 @@ export default function FormInputPartner() {
             )}
           </div>
           <div className="flex-1">
-            <label htmlFor="lastName" className="font-bold block">
+            <label htmlFor="lastName" className="font-medium block mb-4">
               Last Name *
             </label>
             <input
@@ -167,7 +167,7 @@ export default function FormInputPartner() {
         {/* Email Address and Whatsapp Number */}
         <div className="flex gap-4 pb-4 flex-col sm:flex-row">
           <div className="flex-1">
-            <label htmlFor="email" className=" font-bold block">
+            <label htmlFor="email" className=" font-medium block mb-4">
               Business Email*
             </label>
             <input
@@ -185,7 +185,7 @@ export default function FormInputPartner() {
             )}
           </div>
           <div className="flex-1">
-            <label htmlFor="whatsapp" className=" font-bold block">
+            <label htmlFor="whatsapp" className=" font-medium block mb-4">
               Phone Number *
             </label>
             <PhoneNumberInput
@@ -197,8 +197,8 @@ export default function FormInputPartner() {
 
         {/* Job Function and Country */}
         <div className="flex gap-4 pb-4 flex-col sm:flex-row">
-          <div className="flex-1">
-            <label htmlFor="jobfunction" className="font-bold  block">
+          {/* <div className="flex-1">
+            <label htmlFor="jobfunction" className="font-medium  block">
               Job Function *
             </label>
             <select
@@ -218,10 +218,10 @@ export default function FormInputPartner() {
             {errors.jobfunction && (
               <span className="text-red-500 text-sm">{errors.jobfunction}</span>
             )}
-          </div>
+          </div> */}
 
           <div className="flex-1">
-            <label htmlFor="country" className=" font-bold block">
+            <label htmlFor="country" className=" font-medium block mb-4">
               Country *
             </label>
             <select
@@ -246,7 +246,7 @@ export default function FormInputPartner() {
 
         {/* Message */}
         <div className="flex-1">
-          <label htmlFor="Message" className=" font-bold block">
+          <label htmlFor="Message" className=" font-medium block mb-4">
             Message*
           </label>
           <textarea
@@ -265,7 +265,7 @@ export default function FormInputPartner() {
 
         <button
           type="submit"
-          className="bg-[#0F4C5C] text-white py-2 rounded-md font-bold mb-4 hover:bg-white border-2 hover:text-[#0F4C5C]"
+          className="bg-[#0F4C5C] text-white py-2 rounded-md font-medium mb-4 hover:bg-white border-2 hover:text-[#0F4C5C]"
         >
           Submit
         </button>

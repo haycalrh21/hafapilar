@@ -1,26 +1,64 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* Gunakan untuk memastikan input PhoneInput memenuhi lebar penuh */
-.react-tel-input {
-  width: 100% !important;
+/* Warna tanggal ketika dipilih */
+.react-calendar__tile--active {
+  background-color: #0f4c5c !important;
+  color: #fff !important;
 }
 
-.react-tel-input .form-control {
-  width: 100% !important;
-  padding: 1.2rem; /* Sama dengan p-2 di Tailwind */
-  border: 1px solid #d1d5db; /* Border untuk keseragaman dengan Tailwind */
-  border-radius: 0.375rem; /* Rounded untuk keseragaman */
+/* Untuk hover pada tanggal yang dipilih */
+.react-calendar__tile--active:hover {
+  background-color: #0f4c5c !important;
+  opacity: 0.8 !important;
 }
 
-@media (min-width: 768px) {
-  .react-tel-input .form-control {
-    width: 500px !important; /* Lebar untuk perangkat dengan layar lebih besar */
-  }
-  .react-tel-input .PhoneInputCountry {
-    width: 500px !important; /* Lebar dropdown untuk layar lebih besar */
-  }
-  .react-tel-input .PhoneInputCountry .dropdown {
-    width: 500px !important; /* Lebar dropdown */
-  }
+/* Hover efek untuk tanggal lainnya */
+.react-calendar__tile:hover {
+  background-color: rgba(15, 76, 92, 0.1) !important;
+  color: #000 !important; /* Warna teks menjadi hitam saat di-hover */
+}
+
+/* Menghilangkan warna default tanggal hari ini */
+.react-calendar__tile--now {
+  background-color: transparent !important; /* Tidak ada warna */
+  color: inherit !important; /* Warna teks default */
+  border: none !important; /* Menghilangkan border jika ada */
+}
+/* Menghilangkan warna biru saat memilih option pada browser */
+select option {
+  background-color: #ffffff; /* Ganti dengan warna latar belakang pilihan */
+  color: #333333; /* Ganti dengan warna teks yang kamu inginkan */
+}
+
+/* Menambahkan hover pada option */
+select option:hover {
+  background-color: #0f4c5c;
+  color: #ffffff;
+}
+
+/* Menghilangkan warna biru default pada select */
+select {
+  -webkit-appearance: none; /* Menghapus tampilan default di Chrome/Safari */
+  -moz-appearance: none; /* Menghapus tampilan default di Firefox */
+  appearance: none; /* Menghapus tampilan default di browser lain */
+  border: 1px solid #ccc; /* Menambahkan border custom */
+  padding-right: 24px; /* Agar tidak ada panah di dalam select */
+}
+
+/* Menghilangkan outline biru saat select di-click atau focus */
+select:focus {
+  outline: none;
+  border-color: #0f4c5c; /* Border saat focus */
+}
+
+/* Menambahkan styling untuk dropdown */
+select::-ms-expand {
+  display: none; /* Menghilangkan panah default di IE */
+}
+
+/* Kustomisasi elemen Option saat dipilih, menghilangkan warna biru */
+select option:checked {
+  background-color: #0f4c5c;
+  color: #ffffff;
 }

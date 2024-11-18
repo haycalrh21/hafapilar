@@ -46,18 +46,18 @@ const departments = [
 
 const DepartmentCards = () => {
   return (
-    <div className="p-8 text-center">
+    <div className="p-8 text-center  ">
       <h1 className="text-normal sm:text-2xl md:text-4xl lg:text-normal text-center font-bold mt-10 mb-10">
         Select your preferred department
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center ">
         {departments.map((department, index) => (
           <div
             key={index}
-            className="max-w-sm w-full bg-white shadow-lg rounded-lg flex flex-col justify-between"
+            className="max-w-sm w-full border-[#4993a6] border-2 bg-white shadow-lg rounded-lg flex flex-col justify-between  "
           >
             <img
-              className="rounded-t-lg h-48 object-cover w-full"
+              className="rounded-t-lg py-4 px-4 object-contain w-full"
               src={department.image}
               alt={department.title}
             />
@@ -73,7 +73,7 @@ const DepartmentCards = () => {
                 query: { department: department.title },
               }}
             >
-              <button className="w-11/12 mx-auto bg-[#0F4C5C] text-white py-2 rounded-md font-bold mb-4 hover:bg-white border-2 hover:text-[#0F4C5C]">
+              <button className="w-10/12 px-2 py-4 mb-4 mx-auto text-white rounded-2xl shadow-md border-teal-600 border-2 font-semibold text-xs lg:text-sm bg-[#0F4C5C] hover:bg-white hover:text-[#0F4C5C] hover:shadow-amber-400">
                 Apply
               </button>
             </Link>

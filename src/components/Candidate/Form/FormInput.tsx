@@ -25,7 +25,7 @@ const formSchema = z.object({
   }),
   passportId: z
     .string()
-    .min(16, "Minimum 16 character *")
+    .min(8, "Minimum 8 character *")
     .regex(
       /^[A-Za-z0-9]+$/,
       "Passport ID must contain only letters and numbers"
@@ -185,7 +185,10 @@ export default function FormInput({ department }: any) {
         {/* Full Name and Last Name */}
         <div className="flex flex-col sm:flex-row gap-4 mb-12">
           <div className="flex-1">
-            <label htmlFor="firstName" className="block text-sm font-semibold">
+            <label
+              htmlFor="firstName"
+              className="block text-sm font-medium mb-4"
+            >
               Full Name *
             </label>
             <input
@@ -205,7 +208,10 @@ export default function FormInput({ department }: any) {
           </div>
 
           <div className="flex-1">
-            <label htmlFor="lastName" className="block text-sm font-semibold">
+            <label
+              htmlFor="lastName"
+              className="block text-sm font-medium mb-4"
+            >
               Last Name *
             </label>
             <input
@@ -230,12 +236,12 @@ export default function FormInput({ department }: any) {
           <div className="flex-1">
             <label
               htmlFor="dateOfBirth"
-              className="block text-sm font-semibold"
+              className="block text-sm font-medium mb-4"
             >
               Date of Birth *
             </label>
             <DatePicker
-              dateFormat="dd-MMM-yyyy"
+              dateFormat="dd-mm-yyyy"
               value={formData.dateOfBirth}
               onDateChange={(_, formattedDate) => {
                 setFormData((prev) => ({
@@ -251,7 +257,7 @@ export default function FormInput({ department }: any) {
           </div>
 
           <div className="flex-1">
-            <label className="block text-sm font-semibold mb-2">Gender *</label>
+            <label className="block text-sm font-medium mb-4">Gender *</label>
             <div className="flex  gap-20  items-center">
               <label className="flex items-center space-x-2">
                 <input
@@ -284,7 +290,10 @@ export default function FormInput({ department }: any) {
 
         {/* Passport ID */}
         <div className="mb-12">
-          <label htmlFor="passportId" className="block text-sm font-semibold">
+          <label
+            htmlFor="passportId"
+            className="block text-sm font-medium mb-4"
+          >
             Passport ID *
           </label>
           <input
@@ -306,7 +315,7 @@ export default function FormInput({ department }: any) {
         {/* Email Address and Whatsapp Number */}
         <div className="flex flex-col sm:flex-row gap-4 mb-12">
           <div className="flex-1">
-            <label htmlFor="email" className="block text-sm font-semibold">
+            <label htmlFor="email" className="block text-sm font-medium mb-4">
               Email Address *
             </label>
             <input
@@ -327,7 +336,10 @@ export default function FormInput({ department }: any) {
           </div>
 
           <div className="flex-1">
-            <label htmlFor="whatsapp" className="block text-sm font-semibold">
+            <label
+              htmlFor="whatsapp"
+              className="block text-sm font-medium mb-4"
+            >
               Whatsapp Number *
             </label>
             <PhoneNumberInput
@@ -343,7 +355,10 @@ export default function FormInput({ department }: any) {
         {/* Department and Position */}
         <div className="flex flex-col sm:flex-row gap-4 mb-12">
           <div className="flex-1">
-            <label htmlFor="department" className="block text-sm font-semibold">
+            <label
+              htmlFor="department"
+              className="block text-sm font-medium mb-4"
+            >
               Department *
             </label>
             <select
@@ -368,7 +383,10 @@ export default function FormInput({ department }: any) {
           </div>
 
           <div className="flex-1">
-            <label htmlFor="position" className="block text-sm font-semibold">
+            <label
+              htmlFor="position"
+              className="block text-sm font-medium mb-4"
+            >
               Position *
             </label>
             <select
@@ -379,15 +397,16 @@ export default function FormInput({ department }: any) {
               required
               className={`w-full p-2 border rounded-md ${
                 errors.position ? "border-red-500" : ""
-              }`}
+              } hover:border-[#0F4C5C] focus:border-[#0F4C5C]`}
             >
               <option value="">Select {formData.department} Position</option>
               {positions.map((pos, index) => (
-                <option key={index} value={pos}>
+                <option key={index} id={`position-${index}`} value={pos}>
                   {pos}
                 </option>
               ))}
             </select>
+
             {errors.position && (
               <span className="text-red-500 text-xs">{errors.position}</span>
             )}

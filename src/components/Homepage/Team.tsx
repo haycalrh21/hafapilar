@@ -1,91 +1,56 @@
-import { Box, Typography, Card, CardContent, Container } from "@mui/material";
 import Image from "next/image";
 
 export default function TeamCard() {
+  const teamMembers = [
+    {
+      name: "Hanni Utfa",
+      position: "Founder",
+      image: "/assets/team/HaeniUlfa.png",
+      university: "B.Sc Environmental Studies, University of Oregon, USA",
+    },
+    {
+      name: "Frian Mandang",
+      position: "Co-Founder",
+      image: "/assets/team/FrianMardhani.png",
+      university: "B.Sc Environmental Studies, University of Oregon, USA",
+    },
+    {
+      name: "Susanna Kina",
+      position: "Brand Director",
+      image: "/assets/team/SyeanneHioe.png",
+      university: "B.Sc Environmental Studies, University of Oregon, USA",
+    },
+  ];
+
   return (
-    <Box
-      sx={{ my: 8 }}
-      className="mx-5 border-9  border-black border-primary-main"
-    >
-      <Typography
-        variant="h4"
-        component="h2"
-        gutterBottom
-        align="center"
-        fontWeight="bold"
-      >
-        Meet the Team
-      </Typography>
-      <Typography
-        variant="body1"
-        paragraph
-        align="center"
-        sx={{ maxWidth: "800px", mx: "auto", mb: 4 }}
-      >
+    <div className=" mx-5">
+      <h2 className="text-3xl font-bold text-center mb-4">Meet the Team</h2>
+      <p className="text-center max-w-3xl mx-auto mb-8">
         We bring a fresh, dynamic approach, uniting global recruitment
         expertise, deep local market insight, and reliable support to ensure
-        success for international candidates
-      </Typography>
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          gap: 4,
-        }}
-      >
-        {[
-          {
-            name: "Hanni Utfa",
-            position: "Founder",
-            image: "/assets/team/HaeniUlfa.png",
-            university: "B.Sc Environmental Studies, University of Oregon, USA",
-          },
-          {
-            name: "Frian Mandang",
-            position: "Co-Founder",
-            image: "/assets/team/FrianMardhani.png",
-            university: "B.Sc Environmental Studies, University of Oregon, USA",
-          },
-          {
-            name: "Susanna Kina",
-            position: "Brand Director",
-            image: "/assets/team/SyeanneHioe.png",
-            university: "B.Sc Environmental Studies, University of Oregon, USA",
-          },
-        ].map((member, index) => (
-          <Card
+        success for international candidates.
+      </p>
+      <div className="flex flex-wrap justify-center gap-8">
+        {teamMembers.map((member, index) => (
+          <div
             key={index}
-            elevation={1}
-            sx={{
-              width: { xs: "100%", sm: "250px" },
-              borderRadius: 4,
-              overflow: "hidden",
-              textAlign: "center",
-            }}
+            className="w-full sm:w-[250px] bg-white rounded-lg shadow-md overflow-hidden text-center  border-[#4993a6] border-2"
           >
-            <Box sx={{ position: "relative", paddingTop: "100%" }}>
-              <Image
+            <div className="relative w-full pt-[1%]">
+              <img
                 src={member.image}
                 alt={member.name}
-                layout="fill"
-                objectFit="cover"
+                className="rounded-t-lg py-4 px-4 object-contain w-full"
               />
-            </Box>
-            <CardContent>
-              <Typography variant="h6" component="div">
-                {member.name}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {member.position}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {member.university}
-              </Typography>
-            </CardContent>
-          </Card>
+            </div>
+            <div className="p-4">
+              <h3 className="text-lg font-semibold">{member.name}</h3>
+              <p className="text-sm text-gray-600">{member.position}</p>
+              <p className="text-sm text-gray-600">{member.university}</p>
+            </div>
+          </div>
         ))}
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 }

@@ -1,119 +1,66 @@
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  Card,
-  CardContent,
-  Grid,
-  Container,
-  Box,
-} from "@mui/material";
+import React from "react";
+
+const services = [
+  {
+    image: "/assets/services/talent.png",
+    title: "Talent Acquisition & Recruitment",
+    description:
+      "We specialize in sourcing and recruiting top talent to drive your business forward",
+  },
+  {
+    image: "/assets/services/training.png",
+    title: "Training Center Facility & Language Courses",
+    description:
+      "Investing in your team is essential. We provide a fully equipped training center and diverse language courses to enhance professional skills and communication",
+  },
+  {
+    image: "/assets/services/employee.png",
+    title: "Employee Onboarding & Management",
+    description:
+      "We handle all aspects of manpower onboarding, from contract signing and orientation to government registrations, visa processing, background checks, and medical clearances",
+  },
+];
 
 export default function Services() {
   return (
-    <Box className="flex flex-col md:flex-cold justify-between items-center relative overflow-hidden mb-6 mx-4 -top-20">
-      <Typography
-        variant="h4"
-        component="h2"
-        gutterBottom
-        align="center"
-        fontWeight="bold"
-        style={{ position: "relative" }}
-      >
+    <div className="flex flex-col items-center relative overflow-hidden mb-6 mx-4 top-10 sm:top-20 lg:top-0">
+      <h2 className="text-2xl md:text-4xl font-bold text-center relative mb-8">
         We Offer{" "}
         <span
           style={{
             backgroundColor: "#F2AF29CC",
-            padding: "2px 0px 20px",
+            padding: "2px 2px 20px",
+            marginRight: "10px",
             display: "inline-block",
             lineHeight: "0.1",
           }}
         >
           Best Services
         </span>
-      </Typography>
+      </h2>
 
-      <Grid container spacing={4} justifyContent="center">
-        {[
-          {
-            icon: (
-              <Box
-                component="img"
-                src="/assets/services/talent.png"
-                alt="Hero Image"
-                sx={{
-                  width: "100%",
-                  height: "auto",
-                  maxWidth: "600px",
-                  borderRadius: "0 0 0 50%",
-                }}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
+        {services.map((service, index) => (
+          <div
+            key={index}
+            className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center border-[#4993a6] border-2 min-h-[300px]"
+          >
+            <div className="mb-4 flex-grow-0">
+              <img
+                src={service.image}
+                alt={service.title}
+                className="w-20 h-20 object-contain"
               />
-            ),
-            title: "Talent Acquisition & Recruitment",
-          },
-          {
-            icon: (
-              <Box
-                component="img"
-                src="/assets/services/training.png"
-                alt="Hero Image"
-                sx={{
-                  width: "100%",
-                  height: "auto",
-                  maxWidth: "600px",
-                  borderRadius: "0 0 0 50%",
-                }}
-              />
-            ),
-            title: "Training Center Facility & Language Courses",
-          },
-          {
-            icon: (
-              <Box
-                component="img"
-                src="/assets/services/employee.png"
-                alt="Hero Image"
-                sx={{
-                  width: "100%",
-                  height: "auto",
-                  maxWidth: "600px",
-                  borderRadius: "0 0 0 50%",
-                }}
-              />
-            ),
-            title: "Employee Onboarding & Management",
-          },
-        ].map((service, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card
-              elevation={1}
-              sx={{
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                p: 3,
-                borderRadius: 4,
-              }}
-            >
-              <Box sx={{ mb: 2 }}>{service.icon}</Box>
-              <Typography
-                variant="h6"
-                component="h3"
-                align="center"
-                gutterBottom
-              >
-                {service.title}
-              </Typography>
-              <Typography variant="body2" color="text.secondary" align="center">
-                We specialize in sourcing and recruiting top talent to drive
-                your business forward
-              </Typography>
-            </Card>
-          </Grid>
+            </div>
+            <h3 className="text-lg font-semibold text-center mb-2 flex-grow-0">
+              {service.title}
+            </h3>
+            <p className="text-sm text-gray-600 text-center flex-grow">
+              {service.description}
+            </p>
+          </div>
         ))}
-      </Grid>
-    </Box>
+      </div>
+    </div>
   );
 }
