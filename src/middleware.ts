@@ -1,12 +1,11 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { cookies } from "next/headers";
+import { getToken } from "next-auth/jwt"; // Menggunakan next-auth untuk mendapatkan token
 
 export async function middleware(req: NextRequest) {
-  const cookieStore = cookies();
-  const token = cookieStore.get("next-auth.session-token")?.value;
+  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET }); // Mendapatkan token dengan next-auth
   const { pathname } = req.nextUrl;
-
+  console.log(token);
   // Abaikan validasi untuk halaman login (/admin)
   if (pathname === "/admin") {
     // Jika ada token, redirect ke /admin/dashboard
@@ -17,6 +16,7 @@ export async function middleware(req: NextRequest) {
     }
     return NextResponse.next();
   }
+
   // Redirect ke halaman login jika tidak ada token
   if (!token) {
     const loginUrl = req.nextUrl.clone();
@@ -25,7 +25,7 @@ export async function middleware(req: NextRequest) {
     return NextResponse.redirect(loginUrl);
   }
 
-  // Kalau token ada, lanjutkan request
+  // Jika semua validasi aman, lanjutkan request
   return NextResponse.next();
 }
 

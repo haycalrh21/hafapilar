@@ -20,3 +20,5 @@ export default async function page() {
     return <div>Failed to load</div>;
   }
 }
+
+export const dynamic = "force-dynamic";
