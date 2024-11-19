@@ -20,6 +20,7 @@ const config: Config = {
       },
       colors: {
         hijau: "#0F4C5C",
+        hero: "#07242B",
         cardtesti: "#0F4C5C80",
         testi: "#07242B",
         testi2: "#63767A",

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const HeroSection = () => {
   return (
-    <div className="relative w-full h-auto flex flex-col items-center md:flex-col lg:flex-row-reverse lg:justify-center">
+    <div className="relative font-['Poppins'] w-full h-auto flex flex-col items-center md:flex-col lg:flex-row-reverse lg:justify-center">
       {/* Gambar - Di kanan pada desktop, atas pada mobile dan iPad */}
       <div className="w-full md:w-3/4 lg:w-1/2 h-auto relative">
         <Image
@@ -19,13 +19,14 @@ const HeroSection = () => {
       </div>
 
       {/* Teks - Di bawah gambar pada mobile dan iPad, di kiri pada desktop */}
-      <div className="w-full lg:w-1/2 px-4 mt-[-4rem] md:mt-[-8rem] lg:mt-0 flex flex-col items-center lg:items-start text-center lg:text-left">
-        <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold font-['Poppins']  text-black mb-2 leading-tight">
+      <div className="w-full lg:w-1/2 px-4 mt-[-4rem ]  md:mt-[-8rem] lg:mt-0 flex flex-col items-center lg:items-start text-center lg:text-left">
+        <h1 className="text-[24px] font-bold font-['Poppins'] md:text-[24px] lg:text-2xl xl:text-5xl text-hero mb-2 leading-tight">
           Connecting Potential, <br /> Creating Opportunity
         </h1>
+
         <p
           className="text-sm font-['Poppins'] md:text-base lg:text-[24px] text-black mt-2 max-w-md md:max-w-xl lg:max-w-lg"
-          style={{ lineHeight: "36px" }}
+          style={{ lineHeight: "30px" }}
         >
           Hafa Pilar Indonesia is dedicated to elevating manpower solutions in
           hospitality

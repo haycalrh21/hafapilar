@@ -14,7 +14,6 @@ export default async function page() {
     console.log(data);
     return <AdminPartnerPage data={data} />;
   } catch (error) {
-    console.error(error); // log error for debugging
     return <div>Failed to load</div>;
   }
 }
