@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+/* html {
   font-family: var(--font-poppins), sans-serif;
-}
+} */
 
 .icon-wa {
   filter: brightness(0) saturate(100%) invert(1);
