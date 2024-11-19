@@ -1,5 +1,3 @@
-"use server";
-
 import AdminPartnerPage from "@/components/Admin/partner/partnerPage";
 
 export default async function page() {
