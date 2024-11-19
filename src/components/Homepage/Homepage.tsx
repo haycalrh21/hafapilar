@@ -7,6 +7,7 @@ import Testimonial from "./Testimonial";
 import TeamCard from "./Team";
 import PartnerCard from "./Partner";
 import Footer from "./Footer";
+import MarqueeDemo from "./MarqueeLogo";
 
 export function BlockPage() {
   return (
@@ -22,6 +23,7 @@ export function BlockPage() {
         <Services />
         <ImpactCard />
         <Testimonial />
+        <MarqueeDemo />
         <TeamCard />
         <PartnerCard />
       </div>
