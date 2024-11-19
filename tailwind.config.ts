@@ -15,6 +15,15 @@ const config: Config = {
         lg: "1024px",
         xl: "1280px",
       },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
+      colors: {
+        hijau: "#0F4C5C",
+        cardtesti: "#0F4C5C80",
+        testi: "#07242B",
+        testi2: "#63767A",
+      },
       fontWeight: {
         thin: "100",
         hairline: "100",

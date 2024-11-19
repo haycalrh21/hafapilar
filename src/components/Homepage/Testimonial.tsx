@@ -39,7 +39,7 @@ export default function Testimonial() {
   };
 
   return (
-    <div className="mx-4 md:mx-20 md:pt-20">
+    <div className="mx-4 md:mx-20 md:pt-20 font-['Poppins']  ">
       <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-4">
         {/* Left Section */}
         <div className="w-full md:w-1/5 lg:w-1/2 text-center md:text-left">
@@ -65,7 +65,7 @@ export default function Testimonial() {
             </span>
           </h2>
           <Link href="/partner">
-            <button className="px-8 py-4 text-white rounded-2xl shadow-md border-teal-600 border-2 font-semibold text-xs lg:text-sm bg-[#0F4C5C] hover:bg-white hover:text-[#0F4C5C] hover:shadow-amber-400">
+            <button className="px-8 py-4 text-white rounded-2xl shadow-md border-hijau border-[1px] font-['Poppins'] font-semibold text-xs lg:text-sm bg-hijau hover:bg-white hover:text-[#0F4C5C] hover:shadow-amber-400">
               Be Our Partner
             </button>
           </Link>
@@ -77,35 +77,35 @@ export default function Testimonial() {
             {/* Card Container */}
             <div className="relative h-[400px] md:h-[500px]">
               {/* Main Card */}
-              <div className="bg-white rounded-2xl shadow-lg p-8  z-20 w-[85%] absolute left-0 top-0 border-[#4993a6] border-2">
-                <p className="mb-4 font-normal text-sm md:text-base">
+              <div className="bg-white rounded-2xl shadow-lg p-8 z-20 w-[85%] absolute left-0 top-0 border-hijau border-[1px]">
+                <p className="text-testi mb-4 font-medium text-sm md:text-base">
                   {testimonials[currentIndex].text}
                 </p>
-                <p className="text-gray-600 font-normal">
+                <p className="text-testi font-medium">
                   {testimonials[currentIndex].author}
                 </p>
-                <p className="text-gray-600 font-normal text-sm">
+                <p className="text-testi2 font-medium text-sm">
                   {testimonials[currentIndex].position}
                 </p>
               </div>
 
               {/* Background Card */}
-              <div className="absolute z-10 w-[85%] right-0 top-[25%] h-[80%]  sm:h-[50%] md:h-[70%] lg:h-[45%] xl:h-[45%] rounded-2xl bg-[#0F4C5C80] opacity-60 shadow-xl border-[#4993a6] border-2">
+              <div className="absolute z-0 w-[85%] right-0 top-[25%] h-[75%]  sm:h-[50%] md:h-[70%] lg:h-[75%] xl:h-[50%] rounded-2xl bg-cardtesti  border-hijau border-[1px]">
                 <div className="p-6 font-thin h-full flex flex-col justify-between">
-                  <div className="text-white mb-4 line-clamp-[8] text-sm">
+                  <div className="text-testi font-medium mb-4 line-clamp-[8] text-sm md:text-base">
                     {
                       testimonials[(currentIndex + 1) % testimonials.length]
                         .text
                     }
                   </div>
                   <div className="mt-auto">
-                    <div className="text-white font-normal">
+                    <div className="text-testi font-medium">
                       {
                         testimonials[(currentIndex + 1) % testimonials.length]
                           .author
                       }
                     </div>
-                    <div className="text-white font-thin text-sm mt-1">
+                    <div className="text-testi2 font-medium text-sm">
                       {
                         testimonials[(currentIndex + 1) % testimonials.length]
                           .position

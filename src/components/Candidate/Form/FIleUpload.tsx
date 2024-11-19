@@ -58,7 +58,7 @@ const FileUpload = ({
   });
 
   return (
-    <div className="w-[95%] mx-auto">
+    <div className="w-[95%] mx-auto  font-['Poppins']">
       <label className="block text-sm font-medium text-gray-700 mb-2">
         Upload Your Work Experience Certificate*
       </label>

@@ -17,7 +17,13 @@ const formSchema = z.object({
     .string()
     .email("Invalid email address")
     .min(1, "Business Email is required"),
-  whatsapp: z.string().min(1, "Phone Number is required").or(z.literal("")),
+  whatsapp: z
+    .string()
+    .min(1, "WhatsApp number is required *")
+    .regex(
+      /^\+[0-9]{1,15}$/,
+      "Invalid phone number format. Must start with +."
+    ),
 
   country: z.string().min(1, "Country is required"),
   Message: z.string().min(1, "Message is required"),
@@ -26,6 +32,7 @@ const formSchema = z.object({
 export default function FormInputPartner() {
   const router = useRouter();
   const [countries, setCountries] = useState<Country[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
     const data = await fetch("https://restcountries.com/v3.1/all").then((res) =>
@@ -74,12 +81,18 @@ export default function FormInputPartner() {
   };
 
   const handlePhoneChange = (value: string) => {
-    setFormData({ ...formData, whatsapp: value }); // Kirim data whatsapp dari PhoneNumberInput
+    // Check if the value starts with "+" and is numeric
+    if (value && !value.startsWith("+")) {
+      value = `+${value}`;
+    }
+
+    setFormData({ ...formData, whatsapp: value });
   };
 
   const api_url = process.env.NEXT_PUBLIC_API_URL;
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
     // Cek apakah whatsapp kosong
     if (!formData.whatsapp || formData.whatsapp === "") {
@@ -87,38 +100,24 @@ export default function FormInputPartner() {
         ...errors,
         whatsapp: "Phone number is required",
       };
-
       setErrors(formattedErrors);
-
-      // Log error jika whatsapp kosong
-      console.log("Phone number is required");
-      return; // stop form submission jika whatsapp kosong
+      setLoading(false);
+      return;
     }
 
-    const updatedFormData = {
-      ...formData,
-    };
-
-    // Log data sebelum validasi
-    console.log("Form data before validation:", updatedFormData);
-
+    // Check if phone number format is valid
     try {
-      // Validasi form data dengan Zod
-      formSchema.parse(updatedFormData);
-      console.log("Form data is valid:", updatedFormData);
+      formSchema.parse(formData); // Validate form data including phone number
+      console.log("Form data is valid:", formData);
 
-      // Data valid, lanjutkan dengan submit
-      console.log("Form data submitted:", updatedFormData);
-
-      // Send the form data to the backend (Express API)
+      // Submit form data
       const response = await fetch(`${api_url}/partner`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           fullname: formData.firstName,
           lastname: formData.lastName,
+          phoneNumber: formData.whatsapp,
           email: formData.email,
           country: formData.country,
           message: formData.Message,
@@ -126,9 +125,10 @@ export default function FormInputPartner() {
       });
 
       if (response.ok) {
-        // Redirect to the success page on success
+        setLoading(false);
         router.push("/partner/finish");
       } else {
+        setLoading(false);
         const errorData = await response.json();
         console.error("Error creating partner:", errorData.error);
       }
@@ -138,20 +138,17 @@ export default function FormInputPartner() {
         error.errors.forEach((err) => {
           formattedErrors[err.path[0]] = err.message;
         });
-
-        // Log error validasi
-        console.log("Validation errors:", formattedErrors);
-
+        setLoading(false);
         setErrors(formattedErrors);
       }
     }
   };
 
   return (
-    <div className="mx-auto border border-[#0F4C5C] rounded-lg font-sans">
+    <div className="mx-auto rounded-lg font-['Poppins']">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 p-4 bg-white border-2 border-blue-300 rounded-lg"
+        className="flex flex-col gap-4 p-4 bg-white border-[1px] border-hijau rounded-lg"
       >
         {/* Full Name and Last Name */}
         <div className="flex flex-col sm:flex-row gap-4 pb-4">
@@ -292,9 +289,10 @@ export default function FormInputPartner() {
 
         <button
           type="submit"
-          className="bg-[#0F4C5C] text-white py-2 rounded-md font-medium mb-4 hover:bg-white border-2 hover:text-[#0F4C5C]"
+          disabled={loading}
+          className="w-full font-['Poppins'] text-[16px] bg-hijau text-white py-2 rounded-md font-semibold mb-4 hover:bg-white border-2 hover:text-hijau"
         >
-          Submit
+          {loading ? "Loading..." : "Become a Partner"}
         </button>
       </form>
     </div>

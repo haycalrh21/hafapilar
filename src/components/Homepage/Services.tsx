@@ -23,7 +23,7 @@ const services = [
 
 export default function Services() {
   return (
-    <div className="flex flex-col items-center relative overflow-hidden mb-6 mx-4 top-10 sm:top-20 lg:top-0">
+    <div className="flex flex-col items-center relative overflow-hidden mb-6 mx-4 top-5 sm:top-10 lg:top-0 font-['Poppins']">
       <h2 className="text-2xl md:text-4xl font-bold text-center relative mb-8">
         We Offer{" "}
         <span
@@ -43,7 +43,7 @@ export default function Services() {
         {services.map((service, index) => (
           <div
             key={index}
-            className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center border-[#4993a6] border-2 min-h-[300px]"
+            className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center border-hijau border-[1px] min-h-[300px]"
           >
             <div className="mb-4 flex-grow-0">
               <img

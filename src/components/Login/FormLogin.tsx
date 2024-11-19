@@ -38,10 +38,10 @@ export default function FormLogin() {
 
         if (res?.status === 401) {
           console.log(res);
-          alert(res.error);
+          alert("Login failed!");
         } else {
+          router.push("/admin/dashboard");
           alert("Login success!");
-          router.push("/admin/panel");
         }
       } catch (error) {
         console.error(error);
@@ -54,8 +54,8 @@ export default function FormLogin() {
   };
 
   return (
-    <div className="flex justify-center items-center ">
-      <div className="p-8 rounded-lg shadow-md w-80">
+    <div className="flex justify-center items-center  ">
+      <div className="p-8 rounded-lg shadow-md w-80 border-hijau border-[1px] bg-white">
         <form onSubmit={handleSubmit}>
           {/* Email */}
           <div className="mb-4">
@@ -102,10 +102,11 @@ export default function FormLogin() {
           </div>
 
           {/* Submit Button */}
+
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
             disabled={loading}
+            className="w-full px-2 py-4 mt-4 mx-auto text-white rounded-2xl shadow-md border-hijau border-[1px] font-semibold text-xs lg:text-sm bg-[#0F4C5C] hover:bg-white hover:text-[#0F4C5C] hover:shadow-amber-400"
           >
             {loading ? "Loading..." : "Login"}
           </button>

@@ -1,6 +1,6 @@
 export default function ImpactCard() {
   return (
-    <div className="mx-auto pt-20">
+    <div className="mx-auto pt-20 font-['Poppins']">
       <h2
         style={{
           fontSize: "2.25rem", // Set to h4 equivalent
@@ -13,6 +13,7 @@ export default function ImpactCard() {
         <span
           style={{
             backgroundColor: "#F2AF29CC",
+            font: "Poppins",
             padding: "2px 2px 20px",
             marginRight: "10px",
             display: "inline-block",
@@ -29,10 +30,10 @@ export default function ImpactCard() {
           marginTop: "2rem",
           marginBottom: "2rem",
           backgroundColor: "#0F4C5C",
-          backgroundImage: `url('/assets/left.png'), url('/assets/right.png')`,
+          backgroundImage: `url('/assets/left2.png'), url('/assets/right2.png')`,
           backgroundRepeat: "no-repeat",
-          backgroundPosition: "top left, bottom right", // Update positions
-          backgroundSize: "250px 250px", // Default size
+          backgroundPosition: "top left, bottom right",
+          backgroundSize: "250px 250px",
           color: "white",
           padding: "2rem 0",
           borderRadius: "1rem",
@@ -43,8 +44,8 @@ export default function ImpactCard() {
           {`
             @media (max-width: 768px) {
               .responsive-background {
-                background-size: 150px 150px; /* Smaller size for mobile */
-                background-position: top left, bottom right; /* Maintain position */
+                background-size: 150px 150px;
+                background-position: top left, bottom right;
               }
             }
           `}

@@ -33,11 +33,11 @@ export default function CandidateForm() {
       <HeaderNotButton />
       <Container maxWidth="lg" sx={{ pb: 10 }}>
         <div>
-          <h1 className="text-3xl pt-40 font-bold sm:text-2xl sm:font-bold md:text-5xl lg:text-6xl text-center  ">
+          <h1 className="text-3xl pt-40  font-['Poppins'] font-bold sm:text-2xl sm:font-bold md:text-5xl lg:text-6xl text-center  ">
             Apply with Us Today
           </h1>
 
-          <p className=" text-1xl mt-4 mb-20 sm:mb-10 md:mb-20 lg:mb-20 sm:text-sm md:text-base lg:text-2xl text-center   ">
+          <p className=" text-1xl  font-['Poppins'] mt-4 mb-20 sm:mb-10 md:mb-20 lg:mb-20 sm:text-sm md:text-base lg:text-2xl text-center   ">
             Discover the Career of Your Dreams
           </p>
         </div>

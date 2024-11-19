@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -23,7 +24,7 @@ export default function Footer() {
           <div className="text-left">
             <h6 className="text-3xl font-bold mb-2">Get in Touch</h6>
             <div className="flex flex-col md:flex-row gap-3 items-start">
-              <a
+              <Link
                 href="mailto:hrd@hafapilar.com"
                 className="flex items-center gap-2 text-black no-underline"
               >
@@ -34,20 +35,25 @@ export default function Footer() {
                   height={30}
                 />
                 <span className="text-sm">hrd@hafapilar.com</span>
-              </a>
-              <a
+              </Link>
+              <Link
                 href="tel:+62-21-439-24782"
                 className="flex items-center gap-2 text-black no-underline"
               >
-                <Image
-                  src="/assets/icon/call.png"
-                  alt="Phone"
-                  width={30}
-                  height={30}
-                />
+                <div className="bg-hijau -p-1 rounded-md">
+                  {" "}
+                  {/* Wrapper div */}
+                  <Image
+                    src="/assets/icon/wa.png"
+                    alt="WhatsApp"
+                    className="icon-wa"
+                    width={30}
+                    height={30}
+                  />
+                </div>
                 <span className="text-sm">+62-21-439-24782</span>
-              </a>
-              <a
+              </Link>
+              <Link
                 href="https://www.instagram.com/hafapilarindonesia/"
                 className="flex items-center gap-2 text-black no-underline"
               >
@@ -57,8 +63,8 @@ export default function Footer() {
                   width={30}
                   height={30}
                 />
-                <span className="text-sm">instagram</span>
-              </a>
+                <span className="text-sm">@hafapilarindonesia</span>
+              </Link>
             </div>
           </div>
         </div>

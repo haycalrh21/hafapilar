@@ -1,5 +1,4 @@
 import React from "react";
-import { Container, Box } from "@mui/material";
 import Header from "./Header";
 import Hero from "./Hero";
 import Services from "./Services";
@@ -11,21 +10,22 @@ import Footer from "./Footer";
 
 export function BlockPage() {
   return (
-    <Box
-      sx={{ bgcolor: "background.default" }}
-      className="h-fit bg-cover w-full mx-auto"
-      style={{ backgroundImage: "url('/assets/homepage.png')" }}
+    <div
+      className="bg-cover w-full mx-auto"
+      style={{
+        backgroundImage: "url('/assets/homepage.png')",
+        backgroundColor: "#ECECEC",
+      }}
     >
-      <Container maxWidth="lg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
         <Hero />
         <Services />
         <ImpactCard />
         <Testimonial />
         <TeamCard />
         <PartnerCard />
-      </Container>
-
+      </div>
       <Footer />
-    </Box>
+    </div>
   );
 }

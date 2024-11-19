@@ -58,6 +58,9 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export default function FormInput({ department }: any) {
+  const api_url = process.env.NEXT_PUBLIC_API_URL;
+
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
@@ -140,9 +143,9 @@ export default function FormInput({ department }: any) {
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsAgreed(e.target.checked);
   };
-  const api_url = process.env.NEXT_PUBLIC_API_URL;
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
     // Validasi file
     if (!cvFile || !workExperienceFile) {
@@ -191,15 +194,18 @@ export default function FormInput({ department }: any) {
       });
 
       if (!response.ok) {
+        setLoading(false);
         throw new Error(`API error: ${response.status}`);
       }
 
+      setLoading(false);
       const result: ApiResponse = await response.json();
       console.log("Submission successful:", result);
 
       // Navigate to success page
       router.push("/candidate/finish");
     } catch (error) {
+      setLoading(false);
       if (error instanceof z.ZodError) {
         const newErrors: Partial<Record<keyof FormData, string>> = {};
         error.errors.forEach((err) => {
@@ -240,10 +246,10 @@ export default function FormInput({ department }: any) {
   };
 
   return (
-    <div className="mx-auto bg-white font-sans border-2 border-[#4993a6] rounded-lg p-6">
+    <div className="mx-auto bg-white font-sans border-2 border-hijau rounded-lg p-6">
       <form onSubmit={handleSubmit}>
         {/* Full Name and Last Name */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row gap-4 font-['Poppins'] mb-12">
           <div className="flex-1">
             <label
               htmlFor="firstName"
@@ -292,7 +298,7 @@ export default function FormInput({ department }: any) {
         </div>
 
         {/* Date of Birth and Gender */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-12">
+        <div className="flex flex-col font-['Poppins'] sm:flex-row gap-4 mb-12">
           <div className="flex-1">
             <label
               htmlFor="dateOfBirth"
@@ -349,7 +355,7 @@ export default function FormInput({ department }: any) {
         </div>
 
         {/* Passport ID */}
-        <div className="mb-12">
+        <div className="mb-12 font-['Poppins']">
           <label
             htmlFor="passportId"
             className="block text-sm font-medium mb-4"
@@ -373,7 +379,7 @@ export default function FormInput({ department }: any) {
         </div>
 
         {/* Email Address and Whatsapp Number */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row gap-4 mb-12 font-['Poppins']">
           <div className="flex-1">
             <label htmlFor="email" className="block text-sm font-medium mb-4">
               Email Address *
@@ -413,7 +419,7 @@ export default function FormInput({ department }: any) {
         </div>
 
         {/* Department and Position */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row gap-4 mb-12 font-['Poppins']">
           <div className="flex-1">
             <label
               htmlFor="department"
@@ -515,9 +521,10 @@ export default function FormInput({ department }: any) {
         <div className="w-full mx-auto">
           <button
             type="submit"
-            className="w-full bg-[#0F4C5C] text-white py-2 rounded-md font-bold mb-4 hover:bg-white border-2 hover:text-[#0F4C5C]"
+            disabled={loading}
+            className="w-full font-['Poppins'] text-[16px] bg-hijau text-white py-2 rounded-md font-semibold mb-4 hover:bg-white border-2 hover:text-hijau"
           >
-            Submit
+            {loading ? "Loading..." : "Submit Application"}
           </button>
         </div>
       </form>

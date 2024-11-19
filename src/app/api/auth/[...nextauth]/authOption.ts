@@ -28,7 +28,7 @@ export interface CustomUser {
 export const authOptions: AuthOptions = {
   secret: nextAuthSecret,
   pages: {
-    signIn: "/admin/login",
+    signIn: "/admin",
   },
   callbacks: {
     async jwt({ token, user, trigger, session }) {

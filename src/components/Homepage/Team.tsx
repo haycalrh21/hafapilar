@@ -23,8 +23,10 @@ export default function TeamCard() {
   ];
 
   return (
-    <div className=" mx-5">
-      <h2 className="text-3xl font-bold text-center mb-4">Meet the Team</h2>
+    <div className=" mx-5 font-['Poppins']">
+      <h2 className="text-[24px] sm:text-[24px] lg:text-[50px] font-bold font-['Poppins'] text-center mb-4">
+        Meet the Team
+      </h2>
       <p className="text-center max-w-3xl mx-auto mb-8">
         We bring a fresh, dynamic approach, uniting global recruitment
         expertise, deep local market insight, and reliable support to ensure
@@ -34,7 +36,7 @@ export default function TeamCard() {
         {teamMembers.map((member, index) => (
           <div
             key={index}
-            className="w-full sm:w-[250px] bg-white rounded-lg shadow-md overflow-hidden text-center  border-[#4993a6] border-2"
+            className="w-full sm:w-[250px] bg-white rounded-lg shadow-md overflow-hidden text-center  border-hijau border-[1px]"
           >
             <div className="relative w-full pt-[1%]">
               <img

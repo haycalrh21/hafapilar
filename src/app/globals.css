@@ -1,6 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: var(--font-poppins), sans-serif;
+}
+
+.icon-wa {
+  filter: brightness(0) saturate(100%) invert(1);
+}
+
 /* Warna tanggal ketika dipilih */
 .react-calendar__tile--active {
   background-color: #0f4c5c !important;

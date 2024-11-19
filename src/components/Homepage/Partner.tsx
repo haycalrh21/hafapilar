@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function PartnerCard() {
   return (
     <div>
-      <div className="my-20 bg-[#0F4C5C] text-white py-6 rounded-lg text-center mx-5 border border-black">
+      <div className="my-20 bg-hijau font-['Poppins'] text-white py-6 rounded-lg text-center mx-5 border border-hijau">
         <h2 className="text-3xl font-bold mb-4">Work with Us</h2>
         <p className="mb-6">Let's work together to build your team</p>
         <Link href="/partner">
