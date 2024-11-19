@@ -20,10 +20,12 @@ const config: Config = {
       },
       colors: {
         hijau: "#0F4C5C",
+        departement: "#63767A",
         hero: "#07242B",
         cardtesti: "#0F4C5C80",
         testi: "#07242B",
         testi2: "#63767A",
+        impact: "#F2AF29",
       },
       fontWeight: {
         thin: "100",

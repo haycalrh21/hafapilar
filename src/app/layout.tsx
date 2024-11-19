@@ -7,8 +7,9 @@ import Authprovider from "@/components/provider";
 const poppins = Poppins({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-poppins",
+  variable: "--poppins-font",
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal"],
 });
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export default function RootLayout({
       <Authprovider>
         <head>{/* Fonts are now loaded by next/font */}</head>
         {/* <Provider> */}
-        <body className={`${poppins.variable}`}>{children}</body>
+        <body className="font-['Poppins']">{children}</body>
       </Authprovider>
     </html>
   );

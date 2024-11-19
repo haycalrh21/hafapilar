@@ -65,13 +65,7 @@ export default function ImpactCard() {
               margin: "1rem",
             }}
           >
-            <h4
-              style={{
-                fontWeight: "bold",
-                color: "#F2AF29",
-                fontSize: "2rem",
-              }}
-            >
+            <h4 className="text-impact text-[36px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-2">
               9000+
             </h4>
             <p
@@ -91,13 +85,7 @@ export default function ImpactCard() {
               margin: "1rem",
             }}
           >
-            <h4
-              style={{
-                fontWeight: "bold",
-                color: "#F2AF29",
-                fontSize: "2rem",
-              }}
-            >
+            <h4 className="text-impact text-[36px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-2">
               4+
             </h4>
             <p
@@ -117,13 +105,7 @@ export default function ImpactCard() {
               margin: "1rem",
             }}
           >
-            <h4
-              style={{
-                fontWeight: "bold",
-                color: "#F2AF29",
-                fontSize: "2rem",
-              }}
-            >
+            <h4 className="text-impact text-[36px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-2">
               30 Years
             </h4>
             <p
@@ -143,13 +125,7 @@ export default function ImpactCard() {
               margin: "1rem",
             }}
           >
-            <h4
-              style={{
-                fontWeight: "bold",
-                color: "#F2AF29",
-                fontSize: "2rem",
-              }}
-            >
+            <h4 className="text-impact text-[36px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-2">
               90%
             </h4>
             <p

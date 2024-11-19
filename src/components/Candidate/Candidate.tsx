@@ -27,7 +27,7 @@ export function CandidatePage() {
 
       <Container maxWidth="lg" sx={{ p: 0 }}>
         <div>
-          <h1 className="text-3xl pt-40 font-['Poppins'] font-bold sm:text-2xl sm:font-bold md:text-5xl lg:text-6xl text-center  ">
+          <h1 className="text-[24px] pt-40 font-['Poppins'] font-bold sm:text-2xl sm:font-bold md:text-5xl lg:text-6xl text-center  ">
             Apply with Us Today
           </h1>
 

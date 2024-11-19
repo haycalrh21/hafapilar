@@ -46,24 +46,24 @@ const departments = [
 
 const DepartmentCards = () => {
   return (
-    <div className="p-8 text-center  ">
-      <h1 className="text-[24px] sm:text-[24px] md:text-[24px] lg:text-normal text-center font-['Poppins']  font-bold mt-10 mb-10">
+    <div className="p-8 text-center">
+      <h1 className="text-[24px] sm:text-[24px] md:text-[24px] lg:text-normal text-center font-['Poppins'] font-bold mt-10 mb-10">
         Select your preferred department
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
         {departments.map((department, index) => (
           <div
             key={index}
-            className="max-w-sm w-full border-hijau border-[1px] bg-white shadow-lg rounded-lg flex flex-col justify-between  "
+            className="max-w-sm w-full border-hijau border-[1px] bg-white shadow-lg rounded-lg flex flex-col justify-between"
           >
             <img
               className="rounded-t-lg py-4 px-4 object-contain w-full"
               src={department.image}
               alt={department.title}
             />
-            <div className="p-4">
-              <h6 className="text-lg font-semibold">{department.title}</h6>
-              <p className="text-sm text-gray-600">
+            <div className="p-4 mb-20 text-left ">
+              <h6 className="text-lg font-semibold mb-4">{department.title}</h6>
+              <p className="text-[16px] font-medium text-departement">
                 Positions: {department.positions}
               </p>
             </div>

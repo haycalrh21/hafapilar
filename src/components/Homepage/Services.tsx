@@ -24,7 +24,7 @@ const services = [
 export default function Services() {
   return (
     <div className="flex flex-col items-center relative overflow-hidden mb-6 mx-4 top-5 sm:top-10 lg:top-0 font-['Poppins']">
-      <h2 className="text-2xl md:text-4xl font-bold text-center relative mb-8">
+      <h2 className="text-[36px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-8">
         We Offer{" "}
         <span
           style={{
@@ -43,7 +43,7 @@ export default function Services() {
         {services.map((service, index) => (
           <div
             key={index}
-            className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center border-hijau border-[1px] min-h-[300px]"
+            className="bg-white shadow-md rounded-[20px] p-7 py-10 flex flex-col items-center border-hijau border-[1px] min-h-[400px]"
           >
             <div className="mb-4 flex-grow-0">
               <img
@@ -52,10 +52,10 @@ export default function Services() {
                 className="w-20 h-20 object-contain"
               />
             </div>
-            <h3 className="text-lg font-semibold text-center mb-2 flex-grow-0">
+            <h3 className="text-[20px] font-semibold text-center mb-2 flex-grow-0">
               {service.title}
             </h3>
-            <p className="text-sm text-gray-600 text-center flex-grow">
+            <p className="text-[14px] text-gray-600 text-center flex-grow">
               {service.description}
             </p>
           </div>
