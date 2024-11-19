@@ -143,6 +143,7 @@ export default function FormInput({ department }: any) {
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsAgreed(e.target.checked);
   };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
