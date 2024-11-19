@@ -15,9 +15,7 @@ const config: Config = {
         lg: "1024px",
         xl: "1280px",
       },
-      fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
-      },
+
       colors: {
         hijau: "#0F4C5C",
         departement: "#63767A",

@@ -20,14 +20,14 @@ const HeroSection = () => {
 
       {/* Teks - Di bawah gambar pada mobile dan iPad, di kiri pada desktop */}
       <div className="w-full lg:w-1/2 px-4 mt-[-4rem ]  md:mt-[-8rem] lg:mt-0 flex flex-col items-center lg:items-start text-center lg:text-left">
-        <h1 className="text-[24px] font-['Poppins'] font-bold md:text-[36px] lg:text-[48px] xl:text-[48px] text-hero mb-2 leading-tight lg:leading-[40px]  ">
+        <h1 className="text-[24px] font-bold md:text-[36px] lg:text-[48px] xl:text-[48px] text-hero mb-2 leading-tight lg:leading-[70px]  ">
           Connecting Potential,
           <br />
           Creating Opportunity
         </h1>
 
         <span
-          className="font-['Poppins'] text-black mt-2 max-w-md md:max-w-xl lg:max-w-lg"
+          className=" text-black mt-2 max-w-md md:max-w-xl lg:max-w-lg"
           style={{ lineHeight: "30px", fontSize: "20px" }}
         >
           Hafa Pilar Indonesia is dedicated to elevating manpower solutions in
