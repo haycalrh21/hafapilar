@@ -44,9 +44,9 @@ const HeroSection = () => {
       </div>
 
       {/* Tombol Apply - Di kanan atas */}
-      <div className="absolute top-4 right-4 lg:right-12 lg:top-12">
-        <Link href="/candidate">
-          <button className="px-4 py-2 text-[12px] sm:text-[12px] md:text-[12px] lg:text-[20px] text-hijau rounded-lg shadow-md bg-white border-[1px] border-hijau font-semibold font-['Poppins']  text-xs lg:text-sm hover:bg-[#0F4C5C] hover:text-white">
+      <div className="absolute top-6 right-4  lg:right-12 lg:top-12">
+        <Link href="/candidate" className="">
+          <button className="px-4 py-2 text-[12px]   sm:text-[12px] md:text-[12px] lg:text-[20px] text-hijau rounded-lg shadow-md bg-white border-[1px] border-hijau font-semibold font-['Poppins']  text-xs lg:text-sm hover:bg-[#0F4C5C] hover:text-white">
             Apply as a Candidate
           </button>
         </Link>
