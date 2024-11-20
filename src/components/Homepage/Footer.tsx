@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="py-6 mt-8 mx-auto  sm:mx-auto md:mx-0  lg:mx-20 xl:md-48 text-black">
+    <footer className="py-6 mt-8 max-w-6xl  sm:mx-auto md:mx-auto  lg:mx-auto text-black">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-start gap-6">
           {/* Logo dan Alamat */}
