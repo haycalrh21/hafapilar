@@ -30,11 +30,11 @@ export default function TeamCard() {
       <p className="text-center max-w-3xl mx-auto mb-8">
         We bring a fresh, dynamic approach, uniting global recruitment expertise, deep local market insight, and reliable support to ensure success for international candidates.
       </p>
-      <div className="flex flex-wrap justify-center w-full gap-20 sm:gap-20 lg:gap-40">
+      <div className="flex flex-wrap justify-center w-full">
         {teamMembers.map((member, index) => (
           <div
             key={index}
-            className="w-full sm:w-[260px] lg:w-[250px] h-auto bg-white rounded-2xl shadow-md overflow-hidden text-center border-hijau border-[1px]"
+            className="w-full sm:w-[300px] lg:w-[350px] h-auto bg-white rounded-2xl shadow-md overflow-hidden text-center border-hijau border-[1px] m-[0.5rem]"
           >
             <div className="relative w-full pt-[1%]">
               <img
