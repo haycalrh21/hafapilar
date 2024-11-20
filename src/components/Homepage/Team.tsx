@@ -30,7 +30,7 @@ export default function TeamCard() {
       <p className="text-center max-w-3xl mx-auto mb-8">
         We bring a fresh, dynamic approach, uniting global recruitment expertise, deep local market insight, and reliable support to ensure success for international candidates.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full"> {/* Grid layout */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20 sm:gap-0 lg:gap-20 w-full"> {/* Grid layout */}
         {teamMembers.map((member, index) => (
           <div
             key={index}
