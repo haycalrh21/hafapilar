@@ -81,6 +81,8 @@ export default function Testimonial() {
                 <p className="text-testi mb-4 font-medium text-sm md:text-base">
                   {testimonials[currentIndex].text}
                 </p>
+              {/* <br/> */}
+
                 <p className="text-testi font-medium">
                   {testimonials[currentIndex].author}
                 </p>
