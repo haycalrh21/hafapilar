@@ -13,9 +13,9 @@ export default function Footer() {
               alt="Hafa Pilar Logo"
               width={150}
               height={50}
-              className="ml-0"
+              className="ml-0 lg:ml-1"
             />
-            <p className="mt-2 text-sm sm:ml-8 lg:ml-4">
+            <p className="mt-4 text-sm sm:ml-0  lg:ml-1">
               Jl. Bougenvile No.32, Jakarta Utara, Indonesia, 14230
             </p>
           </div>
@@ -69,16 +69,16 @@ export default function Footer() {
           </div>
         </div>
 
-        <hr className="my-4 border-t-2 border-[#0F4C5C]" />
+        <hr className="my-4 border-t-2 border-hijau" />
 
         {/* Gambar footer */}
-        <div className="flex gap-4 mt-4 justify-start">
+        <div className="flex gap-4 mt-4   sm:justify-start md:justify-center lg:justify-start">
           <Image
             src="/assets/footerbot.png"
             alt="Lloyd's Register"
             width={500}
             height={50}
-            className="sm:ml-auto lg:ml-3"
+            className=""
           />
         </div>
       </div>
