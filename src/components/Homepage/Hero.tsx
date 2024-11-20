@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const HeroSection = () => {
   return (
-    <div className="relative font-['Poppins'] w-full h-auto flex flex-col items-center md:flex-col lg:flex-row-reverse lg:justify-center">
+    <div className="relative font-['Poppins'] w-full h-auto mb-20 sm:mb-20 lg:-mb-10 flex flex-col items-center md:flex-col lg:flex-row-reverse lg:justify-center">
       {/* Gambar - Di kanan pada desktop, atas pada mobile dan iPad */}
       <div className="w-full md:w-3/4 lg:w-1/2 h-auto relative">
         <Image

@@ -39,11 +39,11 @@ export default function Testimonial() {
   };
 
   return (
-    <div className="mx-4 md:mx-20 md:pt-20 font-['Poppins']  ">
+    <div className="mx-4 mt-20 md:mx-20 md:pt-10 font-['Poppins']  ">
       <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-4">
         {/* Left Section */}
         <div className="w-full md:w-1/5 lg:w-1/2 text-center md:text-left">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
+          <h2 className="text-[24px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold  relative mb-8">
             {/* Teks satu baris di mobile */}
             <span className="block md:hidden">
               Our{" "}

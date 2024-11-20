@@ -6,7 +6,8 @@ export default function TeamCard() {
       name: "Hanni Utfa",
       position: "Founder",
       image: "/assets/team/HaeniUlfa.png",
-      university: "B.Sc Environmental Studies, University of Oregon, USA",
+      university:
+        "B.S International Business Management, University of Oregon, USA",
     },
     {
       name: "Frian Mandang",
@@ -36,7 +37,7 @@ export default function TeamCard() {
         {teamMembers.map((member, index) => (
           <div
             key={index}
-            className="w-full sm:w-[250px] bg-white rounded-lg shadow-md overflow-hidden text-center  border-hijau border-[1px]"
+            className="w-full sm:w-[250px] bg-white rounded-2xl shadow-md overflow-hidden text-center  border-hijau border-[1px]"
           >
             <div className="relative w-full pt-[1%]">
               <img
@@ -46,9 +47,9 @@ export default function TeamCard() {
               />
             </div>
             <div className="p-4">
-              <h3 className="text-lg font-semibold">{member.name}</h3>
-              <p className="text-sm text-gray-600">{member.position}</p>
-              <p className="text-sm text-gray-600">{member.university}</p>
+              <h3 className="text-[20px] font-semibold">{member.name}</h3>
+              <p className="text-sm text-gray-600 italic">{member.position}</p>
+              <p className="text-[16px] text-gray-600">{member.university}</p>
             </div>
           </div>
         ))}

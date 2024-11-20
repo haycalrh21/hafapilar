@@ -1,14 +1,7 @@
 export default function ImpactCard() {
   return (
     <div className="mx-auto pt-20 font-['Poppins']">
-      <h2
-        style={{
-          fontSize: "2.25rem", // Set to h4 equivalent
-          fontWeight: "bold",
-          textAlign: "center",
-          marginBottom: "1.5rem",
-        }}
-      >
+      <h2 className="text-[24px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-8">
         Our{" "}
         <span
           style={{

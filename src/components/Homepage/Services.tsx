@@ -24,12 +24,12 @@ const services = [
 export default function Services() {
   return (
     <div className="flex flex-col items-center relative overflow-hidden mb-6 mx-4 top-5 sm:top-10 lg:top-0 font-['Poppins']">
-      <h2 className="text-[36px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-8">
+      <h2 className="text-[24px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-8">
         We Offer{" "}
         <span
           style={{
             backgroundColor: "#F2AF29CC",
-            padding: "2px 2px 20px",
+            padding: "1px 2px 20px",
             marginRight: "10px",
             display: "inline-block",
             lineHeight: "0.1",
