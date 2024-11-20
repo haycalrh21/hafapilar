@@ -17,6 +17,7 @@ const formSchema = z.object({
     .string()
     .email("Invalid email address")
     .min(1, "Business Email is required"),
+    companyWebite:z.string().min(1,"Website is required"),
   whatsapp: z
     .string()
     .min(1, "WhatsApp number is required *")
@@ -60,7 +61,7 @@ export default function FormInputPartner() {
     email: "",
     gender: "",
     Message: "",
-
+CompanyWebsite:"",
     whatsapp: "",
     department: "",
     position: "",
@@ -118,6 +119,7 @@ export default function FormInputPartner() {
           fullname: formData.firstName,
           lastname: formData.lastName,
           phoneNumber: formData.whatsapp,
+          companyWebsite:formData.CompanyWebsite,
           email: formData.email,
           country: formData.country,
           message: formData.Message,
@@ -218,7 +220,43 @@ export default function FormInputPartner() {
             />
           </div>
         </div>
-
+        <div className="flex flex-col sm:flex-row gap-4 pb-4">
+        <div className="flex-1">
+            <label htmlFor="companywebsite" className="font-medium block mb-4">
+              Job Function *
+            </label>
+            <input
+              id="companywebsite"
+              name="companywebsite"
+              value={formData.CompanyWebsite}
+              onChange={handleChange}
+              placeholder="Job function"
+              required
+              className="w-full p-2 border rounded"
+            />
+            {errors.CompanyWebsite && (
+              <span className="text-red-500 text-sm">{errors.CompanyWebsite}</span>
+            )}
+          </div>
+          <div className="flex-1">
+            <label htmlFor="companywebsite" className="font-medium block mb-4">
+              Company Website *
+            </label>
+            <input
+              id="companywebsite"
+              name="companywebsite"
+              value={formData.CompanyWebsite}
+              onChange={handleChange}
+              placeholder="www.example.com"
+              required
+              className="w-full p-2 border rounded"
+            />
+            {errors.CompanyWebsite && (
+              <span className="text-red-500 text-sm">{errors.CompanyWebsite}</span>
+            )}
+          </div>
+         
+        </div>
         {/* Job Function and Country */}
         <div className="flex gap-4 pb-4 flex-col sm:flex-row">
           {/* <div className="flex-1">

@@ -72,7 +72,7 @@ export default function Testimonial() {
         </div>
 
         {/* Right Section */}
-        <div className="w-full my-20 sm:my-20 md:w-2/3 lg:my-0 relative ">
+        <div className="w-full my-20 sm:my-20 md:w-3/5 lg:my-0 relative ">
           <div className="relative w-full max-w-xl mx-auto">
             {/* Card Container */}
             <div className="relative h-[400px] md:h-[500px]">
@@ -90,9 +90,9 @@ export default function Testimonial() {
               </div>
 
               {/* Background Card */}
-              <div className="absolute z-0 w-[85%] right-0 top-[25%] h-[75%]  sm:h-[50%] md:h-[70%] lg:h-[75%] xl:h-[50%] rounded-2xl bg-cardtesti  border-hijau border-[1px]">
+              <div className="absolute z-0 w-[85%] right-0 top-[25%] h-[100%]  sm:h-[60%] md:h-[60%] lg:h-[65%] xl:h-[52%] rounded-2xl bg-cardtesti  border-hijau border-[1px]">
                 <div className="p-6 font-thin h-full flex flex-col justify-between">
-                  <div className="text-testi font-medium mb-4 line-clamp-[8] text-sm md:text-base">
+                  <div className="text-testi font-medium mb-4  text-[14px] md:text-[14px]">
                     {
                       testimonials[(currentIndex + 1) % testimonials.length]
                         .text

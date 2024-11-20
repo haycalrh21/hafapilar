@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="py-6 mt-8 mx-0 lg:mx-40 sm:mx-auto  text-black">
+    <footer className="py-6 mt-8 mx-auto  sm:mx-auto md:mx-0  lg:mx-20 xl:md-40 text-black">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-start gap-6">
           {/* Logo dan Alamat */}
@@ -23,7 +23,7 @@ export default function Footer() {
           {/* Get in Touch */}
           <div className="text-left">
             <h6 className="text-3xl font-bold mb-2">Get in Touch</h6>
-            <div className="flex flex-col md:flex-row gap-3 items-start">
+            <div className="flex flex-col md:flex-row-3 lg:flex-row gap-3 items-start">
               <Link
                 href="mailto:hrd@hafapilar.com"
                 className="flex items-center gap-2 text-black no-underline"
