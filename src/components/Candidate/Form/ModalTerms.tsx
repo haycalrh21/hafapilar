@@ -17,8 +17,14 @@ const ModalTerms: React.FC<ModalTermsProps> = ({ open, onClose }) => {
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
       <DialogContent>
         <DialogContentText
-          className="text-left text-3xl mb-8 font-bold"
-          style={{ color: "#0F4C5C" }}
+          className="text-left text-3xl  font-bold"
+          style={{
+            color: "#0F4C5C",
+            fontFamily: "Poppins",
+            marginBottom: "20px",
+            fontSize: "24px",
+            fontStyle: "bold",
+          }}
         >
           Terms and Conditions
         </DialogContentText>
