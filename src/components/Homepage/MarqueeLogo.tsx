@@ -48,9 +48,9 @@ const MarqueLogo = ({ img, id }: { img: string; id: number }) => {
 
 export default function MarqueeDemo() {
   return (
-    <div className="relative flex h-[400px] w-full flex-col items-center justify-center overflow-hidden mb-40  ">
+    <div className="relative flex h-[400px] w-full flex-col items-center justify-center overflow-hidden lg:mb-10  ">
       <h1 className="text-[24px] font-bold md:text-[36px] lg:text-[48px] xl:text-[48px] text-hero mb-2 leading-tight lg:leading-[70px]  ">
-        Our Partner
+        Our Clients
       </h1>
       <Marquee pauseOnHover className="[--duration:20s] mt-10">
         {firstRow.map((review) => (
