@@ -17,7 +17,7 @@ const formSchema = z.object({
     .string()
     .email("Invalid email address")
     .min(1, "Business Email is required"),
-    companyWebite:z.string().min(1,"Website is required"),
+  companyWebite: z.string().min(1, "Website is required"),
   whatsapp: z
     .string()
     .min(1, "WhatsApp number is required *")
@@ -61,7 +61,7 @@ export default function FormInputPartner() {
     email: "",
     gender: "",
     Message: "",
-CompanyWebsite:"",
+    CompanyWebsite: "",
     whatsapp: "",
     department: "",
     position: "",
@@ -119,7 +119,7 @@ CompanyWebsite:"",
           fullname: formData.firstName,
           lastname: formData.lastName,
           phoneNumber: formData.whatsapp,
-          companyWebsite:formData.CompanyWebsite,
+          companyWebsite: formData.CompanyWebsite,
           email: formData.email,
           country: formData.country,
           message: formData.Message,
@@ -221,21 +221,23 @@ CompanyWebsite:"",
           </div>
         </div>
         <div className="flex flex-col sm:flex-row gap-4 pb-4">
-        <div className="flex-1">
+          <div className="flex-1">
             <label htmlFor="companywebsite" className="font-medium block mb-4">
-              Job Function *
+              Company Name *
             </label>
             <input
               id="companywebsite"
               name="companywebsite"
               value={formData.CompanyWebsite}
               onChange={handleChange}
-              placeholder="Job function"
+              placeholder="Company Name"
               required
               className="w-full p-2 border rounded"
             />
             {errors.CompanyWebsite && (
-              <span className="text-red-500 text-sm">{errors.CompanyWebsite}</span>
+              <span className="text-red-500 text-sm">
+                {errors.CompanyWebsite}
+              </span>
             )}
           </div>
           <div className="flex-1">
@@ -252,10 +254,11 @@ CompanyWebsite:"",
               className="w-full p-2 border rounded"
             />
             {errors.CompanyWebsite && (
-              <span className="text-red-500 text-sm">{errors.CompanyWebsite}</span>
+              <span className="text-red-500 text-sm">
+                {errors.CompanyWebsite}
+              </span>
             )}
           </div>
-         
         </div>
         {/* Job Function and Country */}
         <div className="flex gap-4 pb-4 flex-col sm:flex-row">

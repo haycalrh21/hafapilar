@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import { Dialog, DialogActions, DialogContent, Button } from "@mui/material";
 
 interface ModalRecruitmentProps {
   open: boolean;
@@ -11,27 +10,30 @@ const ModalRecruitment: React.FC<ModalRecruitmentProps> = ({
   open,
   onClose,
 }) => {
+  if (!open) return null;
+
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
-      <DialogContent>
-        <Image
-          src="/assets/recruitment.png"
-          alt="recruitment"
-          width={500}
-          height={300}
-          style={{ width: "100%", height: "auto" }}
-        />
-      </DialogContent>
-      <DialogActions>
-        <button
-          onClick={onClose}
-          className="w-full font-serif text-white py-2 bg-[#0F4C5C] lg:font-light"
-          // style={{ backgroundColor: "#0F4C5C", fontStyle: "initial" }}
-        >
-          Close
-        </button>
-      </DialogActions>
-    </Dialog>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white rounded-lg shadow-lg w-full max-w-lg">
+        <div className="p-4">
+          <Image
+            src="/assets/recruitment.png"
+            alt="recruitment"
+            width={500}
+            height={300}
+            className="w-full h-auto rounded-lg"
+          />
+        </div>
+        <div className="flex justify-end p-4">
+          <button
+            onClick={onClose}
+            className="w-full py-2 bg-hijau text-white rounded-[8px] font-['Poppins'] hover:bg-[#093745] transition-all"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 

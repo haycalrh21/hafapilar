@@ -1,11 +1,4 @@
 import React from "react";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  Button,
-} from "@mui/material";
 
 interface ModalTermsProps {
   open: boolean;
@@ -13,22 +6,15 @@ interface ModalTermsProps {
 }
 
 const ModalTerms: React.FC<ModalTermsProps> = ({ open, onClose }) => {
+  if (!open) return null;
+
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
-      <DialogContent>
-        <DialogContentText
-          className="text-left text-3xl  font-bold"
-          style={{
-            color: "#0F4C5C",
-            fontFamily: "Poppins",
-            marginBottom: "20px",
-            fontSize: "24px",
-            fontStyle: "bold",
-          }}
-        >
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white rounded-lg shadow-lg w-full max-w-lg p-6">
+        <h2 className="text-left text-3xl font-['Poppins'] font-bold text-hijau mb-4">
           Terms and Conditions
-        </DialogContentText>
-        <DialogContentText>
+        </h2>
+        <p className="text-sm text-gray-700 mb-6 font-['Poppins']">
           By submitting this application, I confirm that I meet the eligibility
           criteria and that the information provided is accurate. I understand
           that false information may lead to disqualification. PT Hafa Pilar
@@ -39,18 +25,17 @@ const ModalTerms: React.FC<ModalTermsProps> = ({ open, onClose }) => {
           recruitment purposes. I acknowledge that submitting this application
           does not guarantee employment, and deadlines may change. I have read
           and accept these terms and conditions.
-        </DialogContentText>
-      </DialogContent>
-      <DialogActions>
-        <button
-          onClick={onClose}
-          className="w-full font-serif text-white py-2 bg-[#0F4C5C] lg:font-light"
-          // style={{ backgroundColor: "#0F4C5C", fontStyle: "initial" }}
-        >
-          Close
-        </button>
-      </DialogActions>
-    </Dialog>
+        </p>
+        <div className="flex justify-end">
+          <button
+            onClick={onClose}
+            className="w-full py-2 bg-hijau text-white rounded-lg font-['Poppins'] hover:bg-[#093745] transition-all"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 
