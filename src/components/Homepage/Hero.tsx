@@ -34,7 +34,7 @@ const HeroSection = () => {
         </span>
 
         <Link href="/partner">
-          <button className="px-4 py-3 mt-4 text-[14px] sm:text-[12px] lg:text-[18px] font-['Poppins'] text-white rounded-lg shadow-md border-hijau border-[1px]    bg-[#0F4C5C] hover:bg-white hover:text-[#0F4C5C] transition-colors duration-200">
+          <button className="px-4 py-3 mt-4  text-white rounded-2xl shadow-md border-hijau border-[1px] font-['Poppins'] font-semibold  lg:text-[18px] bg-hijau hover:bg-white hover:text-[#0F4C5C] ">
             Be Our Partner
           </button>
         </Link>

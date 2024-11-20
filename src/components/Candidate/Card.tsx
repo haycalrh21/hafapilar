@@ -54,26 +54,31 @@ const DepartmentCards = () => {
         {departments.map((department, index) => (
           <div
             key={index}
-            className="max-w-sm w-full border-hijau border-[1px] bg-white shadow-lg rounded-lg flex flex-col justify-between"
+            className="py-2 max-w-sm w-full border-hijau border-[1px] bg-white shadow-lg rounded-lg flex flex-col"
           >
+            {/* Gambar */}
             <img
               className="rounded-t-lg py-4 px-4 object-contain w-full"
               src={department.image}
               alt={department.title}
             />
-            <div className="p-4 mb-20 text-left ">
+
+            {/* Konten (Title dan Positions) */}
+            <div className="p-4 mt-2 mb-10 flex-grow text-left">
               <h6 className="text-lg font-semibold mb-4">{department.title}</h6>
-              <p className="text-[16px] font-medium text-departement">
+              <p className="text-[16px] font-medium text-departement min-h-[72px]">
                 Positions: {department.positions}
               </p>
             </div>
+
+            {/* Tombol */}
             <Link
               href={{
                 pathname: "/candidate/form",
                 query: { department: department.title },
               }}
             >
-              <button className="w-10/12 px-2 py-4 mb-4 mx-auto text-white rounded-2xl shadow-md border-hijau border-[1px] font-['Poppins'] font-semibold text-xs lg:text-sm bg-[#0F4C5C] hover:bg-white hover:text-[#0F4C5C] hover:shadow-amber-400">
+              <button className="max-w-sm w-[306px] sm:w-[206px] md:w-[250px] lg:w-[306px] py-3 mb-4 mx-auto text-white rounded-md shadow-md border-hijau border-[1px] font-['Poppins'] font-semibold text-xs lg:text-sm bg-[#0F4C5C] hover:bg-white hover:text-[#0F4C5C] hover:shadow-amber-400">
                 Apply
               </button>
             </Link>

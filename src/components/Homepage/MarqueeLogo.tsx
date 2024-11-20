@@ -36,12 +36,10 @@ const firstRow = reviews; // Ambil semua logo tanpa pemotongan
 
 const MarqueLogo = ({ img, id }: { img: string; id: number }) => {
   return (
-    <figure>
+    <figure className="flex items-center justify-center w-[128px] h-[128px] mx-4 overflow-hidden ">
       <img
-        className="rounded-full object-contain"
-        width="128" // Ubah ukuran sesuai kebutuhan
-        height="128" // Ubah ukuran sesuai kebutuhan
-        alt=""
+        className="object-contain w-full h-full"
+        alt={`Partner logo ${id}`}
         src={img}
       />
     </figure>
@@ -50,7 +48,7 @@ const MarqueLogo = ({ img, id }: { img: string; id: number }) => {
 
 export default function MarqueeDemo() {
   return (
-    <div className="relative flex h-[200px] w-full flex-col items-center justify-center overflow-hidden mb-40  ">
+    <div className="relative flex h-[400px] w-full flex-col items-center justify-center overflow-hidden mb-40  ">
       <h1 className="text-[24px] font-bold md:text-[36px] lg:text-[48px] xl:text-[48px] text-hero mb-2 leading-tight lg:leading-[70px]  ">
         Our Partner
       </h1>
