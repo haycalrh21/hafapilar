@@ -48,11 +48,14 @@ const MarqueLogo = ({ img, id }: { img: string; id: number }) => {
 
 export default function MarqueeDemo() {
   return (
-    <div className="relative flex  mt-10 sm:mt-10 lg:mt-10 w-full flex-col items-center justify-center overflow-hidden lg:mb-10  ">
+    <div className="relative flex mt-10 sm:mt-10 lg:mt-10 w-full flex-col items-center justify-center overflow-hidden lg:mb-10  ">
       <h1 className="text-[24px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold  relative mb-8">
         Our Clients
       </h1>
-      <Marquee pauseOnHover className="[--duration:20s] py-10">
+      <Marquee
+        pauseOnHover
+        className="[--duration:20s] max-w-[300px] sm:max-w-[1100px]  lg:max-w-[1120px] mx-auto py-10"
+      >
         {firstRow.map((review) => (
           <MarqueLogo key={review.id} {...review} />
         ))}
