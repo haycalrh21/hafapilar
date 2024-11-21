@@ -247,7 +247,7 @@ export default function FormInput({ department }: any) {
   };
 
   return (
-    <div className="mx-auto bg-white font-sans border-2 border-hijau rounded-lg p-6">
+    <div className="max-w-6xl mx-auto bg-white font-sans border-2 border-hijau rounded-xl p-6">
       <form onSubmit={handleSubmit}>
         {/* Full Name and Last Name */}
         <div className="flex flex-col sm:flex-row gap-4 font-['Poppins'] mb-12">
@@ -265,7 +265,7 @@ export default function FormInput({ department }: any) {
               value={formData.firstName}
               onChange={handleChange}
               required
-              className={`w-full p-2 border rounded-md ${
+              className={`w-full p-2 border rounded-xl ${
                 errors.firstName ? "border-red-500" : ""
               }`}
             />
@@ -288,7 +288,7 @@ export default function FormInput({ department }: any) {
               value={formData.lastName}
               onChange={handleChange}
               required
-              className={`w-full p-2 border rounded-md ${
+              className={`w-full p-2 border rounded-xl ${
                 errors.lastName ? "border-red-500" : ""
               }`}
             />
@@ -370,7 +370,7 @@ export default function FormInput({ department }: any) {
             value={formData.passportId}
             onChange={handleChange}
             required
-            className={`w-full p-2 border rounded-md ${
+            className={`w-full p-2 border rounded-xl ${
               errors.passportId ? "border-red-500" : ""
             }`}
           />
@@ -393,7 +393,7 @@ export default function FormInput({ department }: any) {
               value={formData.email}
               onChange={handleChange}
               required
-              className={`w-full p-2 border rounded-md ${
+              className={`w-full p-2 border rounded-xl ${
                 errors.email ? "border-red-500" : ""
               }`}
             />
@@ -434,7 +434,7 @@ export default function FormInput({ department }: any) {
               value={formData.department}
               onChange={handleChange}
               required
-              className={`w-full p-2 border rounded-md ${
+              className={`w-full p-2 border rounded-xl ${
                 errors.department ? "border-red-500" : ""
               }`}
             >
@@ -462,7 +462,7 @@ export default function FormInput({ department }: any) {
               value={formData.position}
               onChange={handleChange}
               required
-              className={`w-full p-2 border rounded-md ${
+              className={`w-full p-2 border rounded-xl ${
                 errors.position ? "border-red-500" : ""
               } hover:border-[#0F4C5C] focus:border-[#0F4C5C]`}
             >
@@ -523,7 +523,7 @@ export default function FormInput({ department }: any) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full font-['Poppins'] text-[16px] bg-hijau text-white py-2 rounded-md font-semibold mb-4 hover:bg-white border-2 hover:text-hijau"
+            className="w-full font-['Poppins'] text-[16px] bg-hijau text-white py-2 rounded-xl font-semibold mb-4 hover:bg-white border-2 hover:text-hijau"
           >
             {loading ? "Loading..." : "Submit Application"}
           </button>

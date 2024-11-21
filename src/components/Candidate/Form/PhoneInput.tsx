@@ -35,6 +35,7 @@ const PhoneNumberInput: React.FC<PhoneNumberInputProps> = ({
           maxWidth: "540px", // Default max width
           height: "40px",
           margin: "0 auto",
+          borderRadius: "10px",
         }}
         dropdownStyle={{
           height: "auto",

@@ -147,10 +147,10 @@ export default function FormInputPartner() {
   };
 
   return (
-    <div className="mx-auto rounded-lg font-['Poppins']">
+    <div className="mx-auto rounded-xl font-['Poppins']">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 p-4 bg-white border-[1px] border-hijau rounded-lg"
+        className="flex flex-col gap-4 p-4 bg-white border-[1px] border-hijau rounded-xl"
       >
         {/* Full Name and Last Name */}
         <div className="flex flex-col sm:flex-row gap-4 pb-4">
@@ -165,7 +165,7 @@ export default function FormInputPartner() {
               onChange={handleChange}
               placeholder="First Name"
               required
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded-xl"
             />
             {errors.firstName && (
               <span className="text-red-500 text-sm">{errors.firstName}</span>
@@ -182,7 +182,7 @@ export default function FormInputPartner() {
               placeholder="Last Name"
               onChange={handleChange}
               required
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded-xl"
             />
             {errors.lastName && (
               <span className="text-red-500 text-sm">{errors.lastName}</span>
@@ -204,7 +204,7 @@ export default function FormInputPartner() {
               onChange={handleChange}
               required
               type="email"
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded-xl"
             />
             {errors.email && (
               <span className="text-red-500 text-sm">{errors.email}</span>
@@ -232,7 +232,7 @@ export default function FormInputPartner() {
               onChange={handleChange}
               placeholder="Company Name"
               required
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded-xl"
             />
             {errors.CompanyWebsite && (
               <span className="text-red-500 text-sm">
@@ -251,7 +251,7 @@ export default function FormInputPartner() {
               onChange={handleChange}
               placeholder="www.example.com"
               required
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded-xl"
             />
             {errors.CompanyWebsite && (
               <span className="text-red-500 text-sm">
@@ -295,7 +295,7 @@ export default function FormInputPartner() {
               value={formData.country}
               onChange={handleSelectChange}
               required
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded-xl"
             >
               {sortedCountries.map((countryItem, index) => (
                 <option key={index} value={countryItem.name.common}>
@@ -321,7 +321,7 @@ export default function FormInputPartner() {
             onChange={handleChange}
             placeholder="Leave a message for us"
             required
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded-xl"
           />
           {errors.Message && (
             <span className="text-red-500 text-sm">{errors.Message}</span>
@@ -331,7 +331,7 @@ export default function FormInputPartner() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full font-['Poppins'] text-[16px] bg-hijau text-white py-2 rounded-md font-semibold mb-4 hover:bg-white border-2 hover:text-hijau"
+          className="w-full font-['Poppins'] text-[16px] bg-hijau text-white py-2 rounded-xl font-semibold mb-4 hover:bg-white border-2 hover:text-hijau"
         >
           {loading ? "Loading..." : "Become a Partner"}
         </button>

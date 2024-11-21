@@ -19,7 +19,7 @@ export default function DatePicker({
   return (
     <div className="relative">
       <div
-        className="border border-black rounded-md relative p-0"
+        className="border border-black rounded-lg cursor-pointer p-0"
         onClick={() => setIsCalendarOpen(!isCalendarOpen)}
       >
         <Input
@@ -28,7 +28,7 @@ export default function DatePicker({
           type="text"
           placeholder={dateFormat}
           required
-          className="m-0 p-[13px] w-full"
+          className="m-0 p-[10px] w-full"
           readOnly
           value={value}
         />

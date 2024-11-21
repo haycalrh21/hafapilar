@@ -50,7 +50,7 @@ const HeroSection = () => {
       </div>
 
       {/* Logo - Pojok Kiri Atas */}
-      <div className="absolute top-4 left-4 lg:left-12 lg:top-12">
+      <div className="absolute top-4 left-4 lg:left-4 lg:top-12">
         <Link href="/">
           <Image
             src="/logo.png"
