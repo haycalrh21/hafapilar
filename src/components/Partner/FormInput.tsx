@@ -156,7 +156,7 @@ export default function FormInputPartner() {
         <div className="flex flex-col sm:flex-row gap-4 pb-4">
           <div className="flex-1">
             <label htmlFor="firstName" className="font-medium block mb-4">
-              Full Name *
+              First Name *
             </label>
             <input
               id="firstName"

@@ -256,7 +256,7 @@ export default function FormInput({ department }: any) {
               htmlFor="firstName"
               className="block text-sm font-medium mb-4"
             >
-              Full Name *
+              First Name *
             </label>
             <input
               id="firstName"
@@ -426,7 +426,7 @@ export default function FormInput({ department }: any) {
               htmlFor="department"
               className="block text-sm font-medium mb-4"
             >
-              Department *
+              Department Applied*
             </label>
             <select
               id="department"

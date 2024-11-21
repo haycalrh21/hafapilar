@@ -15,7 +15,7 @@ export default function Footer() {
               height={50}
               className="ml-0 lg:ml-1"
             />
-            <p className="mt-4 text-[13px] sm:ml-0  lg:ml-1">
+            <p className="mt-4 text-[11px] sm:ml-0  lg:ml-1">
               Jl. Bougenvile No.32, Jakarta Utara, Indonesia, 14230
             </p>
           </div>

@@ -72,7 +72,7 @@ export default function Testimonial() {
         </div>
 
         {/* Right Section */}
-        <div className="w-full my-20 sm:my-20 md:w-3/5 lg:my-0 relative ">
+        <div className="w-full my-4 sm:my-20 md:w-3/5 lg:my-0 relative ">
           <div className="relative w-full max-w-xl mx-auto">
             {/* Card Container */}
             <div className="relative h-[400px] md:h-[500px]">
@@ -81,7 +81,7 @@ export default function Testimonial() {
                 <p className="text-testi mb-4 font-medium text-sm md:text-base">
                   {testimonials[currentIndex].text}
                 </p>
-              {/* <br/> */}
+                {/* <br/> */}
 
                 <p className="text-testi font-medium">
                   {testimonials[currentIndex].author}

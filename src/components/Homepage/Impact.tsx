@@ -61,7 +61,7 @@ export default function ImpactCard() {
               <h4 className="text-impact text-[36px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-2">
                 9000+
               </h4>
-              <p className=" text-[24px] sm:text-[14px] lg:text-[24px]">
+              <p className=" text-[16px] sm:text-[14px] lg:text-[24px]">
                 Deployed Abroad
               </p>
             </div>
@@ -77,7 +77,7 @@ export default function ImpactCard() {
               <h4 className="text-impact text-[36px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-2">
                 4+
               </h4>
-              <p className=" text-[24px] sm:text-[14px] lg:text-[24px]">
+              <p className=" text-[16px] sm:text-[14px] lg:text-[24px]">
                 Big Clients
               </p>
             </div>
@@ -93,7 +93,7 @@ export default function ImpactCard() {
               <h4 className="text-impact text-[36px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-2">
                 30 Years
               </h4>
-              <p className=" text-[24px] sm:text-[14px] lg:text-[24px]">
+              <p className=" text-[16px] sm:text-[14px] lg:text-[24px]">
                 of Operations in Indonesia
               </p>
             </div>
@@ -109,7 +109,7 @@ export default function ImpactCard() {
               <h4 className="text-impact text-[36px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-2">
                 90%
               </h4>
-              <p className=" text-[24px] sm:text-[14px] lg:text-[24px]">
+              <p className=" text-[16px] sm:text-[14px] lg:text-[24px]">
                 Successful Placement Rate
               </p>
             </div>

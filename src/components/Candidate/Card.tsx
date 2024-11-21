@@ -46,8 +46,8 @@ const departments = [
 
 const DepartmentCards = () => {
   return (
-    <div className="p-8 text-center">
-      <h1 className="text-[14px] sm:text-[24px] md:text-[24px] lg:text-normal text-center font-['Poppins'] font-bold mt-10 mb-4">
+    <div className="p-3 text-center">
+      <h1 className="text-[16px] sm:text-[24px] md:text-[24px] lg:text-normal text-center font-['Poppins'] font-bold mt-20 mb-4">
         Select your preferred department
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-0 lg:gap-10 w-full">
@@ -64,9 +64,11 @@ const DepartmentCards = () => {
             />
 
             {/* Konten (Title dan Positions) */}
-            <div className="p-6 mt-2 mb-10 flex-grow text-left">
-              <h6 className="text-lg font-semibold mb-4">{department.title}</h6>
-              <p className="text-[16px] font-medium text-departement min-h-[72px]">
+            <div className="p-6  mb-10 flex-grow text-left">
+              <h6 className="text-lg -mt-8 font-semibold mb-4">
+                {department.title}
+              </h6>
+              <p className="text-[14px] font-medium text-departement min-h-[72px]">
                 Positions: {department.positions}
               </p>
             </div>
