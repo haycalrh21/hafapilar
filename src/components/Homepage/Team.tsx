@@ -24,7 +24,7 @@ export default function TeamCard() {
   ];
 
   return (
-    <div className="mx-5 font-['Poppins'] mt-20">
+    <div className="mx-5 font-['Poppins'] mt-10">
       <h2 className="text-[24px] sm:text-[24px] lg:text-[50px] font-bold text-center mb-4">
         Meet the Team
       </h2>
