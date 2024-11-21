@@ -52,10 +52,7 @@ export default function MarqueeDemo() {
       <h1 className="text-[24px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold  relative mb-8">
         Our Clients
       </h1>
-      <Marquee
-        pauseOnHover
-        className="[--duration:20s] mt-0 mb-0 sm:mb-10 sm:mt-10 lg:mt-10 lg:mb-10"
-      >
+      <Marquee pauseOnHover className="[--duration:20s] py-10">
         {firstRow.map((review) => (
           <MarqueLogo key={review.id} {...review} />
         ))}
