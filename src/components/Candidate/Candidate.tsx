@@ -1,17 +1,30 @@
 import React from "react";
 import DepartmentCards from "./Card";
 import HeaderNotButton from "./HeaderNotButton";
+import clsx from "clsx";
 
 export function CandidatePage() {
   return (
     <div
-      className="bg-no-repeat"
+      // className="bg-no-repeat"
       style={{
-        backgroundImage: "url('/assets/nexttpage.png')",
+        // backgroundImage: "url('/assets/nexttpage.png')",
+        backgroundColor: "lightgray",
         backgroundPosition: "center top",
-        backgroundSize: "160% auto",
+        // backgroundSize: "160% auto",
       }}
+      className="relative"
     >
+      <img
+        src={'/assets/vectorcandidate.png'}
+        className={clsx(
+          "absolute",
+          // mobile
+          "top-[-3px] left-[-28px] w-[358.71px] h-[281.33px] rotate-[-2.2deg]",
+          // desktop
+          "md:top-[-20px] md:left-[-50px] md:w-[358.71px] md:h-[281.33px] md:rotate-[-23.2deg]",
+        )}
+      />
       <HeaderNotButton />
       <div className="max-w-6xl mx-auto ">
         <div>
