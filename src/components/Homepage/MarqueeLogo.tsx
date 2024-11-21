@@ -48,7 +48,7 @@ const MarqueLogo = ({ img, id }: { img: string; id: number }) => {
 
 export default function MarqueeDemo() {
   return (
-    <div className="relative flex mt-10 sm:mt-10 lg:mt-10 w-full flex-col items-center justify-center overflow-hidden lg:mb-10  ">
+    <div className="relative flex mt-20 sm:mt-10 lg:mt-10 w-full flex-col items-center justify-center overflow-hidden lg:mb-10  ">
       <h1 className="text-[24px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold  relative mb-8">
         Our Clients
       </h1>

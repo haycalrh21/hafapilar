@@ -23,13 +23,14 @@ const services = [
 
 export default function Services() {
   return (
-    <div className="flex flex-col items-center relative overflow-hidden mb-6 mx-4 top-5 sm:top-10 lg:top-0 font-['Poppins']">
-      <h2 className="text-[24px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-8">
+    <div className="flex flex-col items-center relative overflow-hidden -mb-20 sm:-mb-20 lg:mb-6 mx-4 top-0 sm:top-20 lg:top-0 font-['Poppins']">
+      <h2 className="text-[18px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-2 sm:mb-3 lg:mb-20">
         We Offer{" "}
         <span
+          className="text-[18px] sm:text-[24px]  md:text-[50px] lg:text-[50px]"
           style={{
             backgroundColor: "#F2AF29CC",
-            padding: "1px 2px 20px",
+            padding: "1px 1px 20px",
             marginRight: "10px",
             display: "inline-block",
             lineHeight: "0.1",
@@ -39,25 +40,25 @@ export default function Services() {
         </span>
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20 sm:gap-0 lg:gap-20 w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-20 sm:mb-4 lg:mb-20 gap-5 sm:-gap-10 lg:gap-20 w-full">
         {" "}
         {/* Grid layout */}
         {services.map((service, index) => (
           <div
             key={index}
-            className="bg-white shadow-md rounded-[20px] p-7 py-10 flex flex-col items-center border-hijau border-[1px] min-h-[400px]"
+            className="bg-white shadow-md rounded-[20px] p-7 py-10 flex flex-col items-center border-hijau border-[1px] min-h-[200px]"
           >
             <div className="mb-4 flex-grow-0">
               <img
                 src={service.image}
                 alt={service.title}
-                className="w-20 h-20 object-contain"
+                className="w-20 h-10 sm:w-20 sm:h-10 md:w-40 md:h-40 lg:w-20 lg:h-20 object-contain"
               />
             </div>
-            <h3 className="text-[20px] font-semibold text-center mb-2 flex-grow-0">
+            <h3 className="text-[13px] sm:text-[13px] lg:text-[20px] font-semibold text-center mb-2 ">
               {service.title}
             </h3>
-            <p className="text-[14px] text-gray-600 text-center flex-grow">
+            <p className="text-[11px] sm:text-[13px] lg:text-[16px]  text-gray-600 text-center ">
               {service.description}
             </p>
           </div>

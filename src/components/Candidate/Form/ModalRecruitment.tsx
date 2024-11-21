@@ -13,15 +13,15 @@ const ModalRecruitment: React.FC<ModalRecruitmentProps> = ({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-lg">
+    <div className="fixed p-4 inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white rounded-2xl shadow-lg w-full max-w-lg">
         <div className="p-4">
           <Image
             src="/assets/recruitment.png"
             alt="recruitment"
-            width={500}
+            width={800}
             height={300}
-            className="w-full h-auto rounded-lg"
+            className="w-full h-auto rounded-2xl border-[1px] border-hijau"
           />
         </div>
         <div className="flex justify-end p-4">

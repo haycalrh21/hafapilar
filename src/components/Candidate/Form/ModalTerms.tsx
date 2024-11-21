@@ -9,9 +9,9 @@ const ModalTerms: React.FC<ModalTermsProps> = ({ open, onClose }) => {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-lg p-6">
-        <h2 className="text-left text-3xl font-['Poppins'] font-bold text-hijau mb-4">
+    <div className="fixed p-4 inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white rounded-2xl shadow-lg w-full max-w-lg p-6">
+        <h2 className="text-left text-[24px] font-['Poppins'] font-bold text-hijau mb-4">
           Terms and Conditions
         </h2>
         <p className="text-sm text-gray-700 mb-6 font-['Poppins']">

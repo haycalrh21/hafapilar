@@ -47,10 +47,10 @@ const departments = [
 const DepartmentCards = () => {
   return (
     <div className="p-8 text-center">
-      <h1 className="text-[24px] sm:text-[24px] md:text-[24px] lg:text-normal text-center font-['Poppins'] font-bold mt-10 mb-10">
+      <h1 className="text-[14px] sm:text-[24px] md:text-[24px] lg:text-normal text-center font-['Poppins'] font-bold mt-10 mb-4">
         Select your preferred department
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-20 sm:gap-0 lg:gap-10 w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-0 lg:gap-10 w-full">
         {departments.map((department, index) => (
           <div
             key={index}

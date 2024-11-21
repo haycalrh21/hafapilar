@@ -1,30 +1,40 @@
 import React from "react";
 import DepartmentCards from "./Card";
 import HeaderNotButton from "./HeaderNotButton";
+import { Box, Container } from "@mui/system";
 
 export function CandidatePage() {
   return (
-    <div
-      className="bg-background-default bg-[url('/assets/nexttpage.png')] bg-no-repeat min-h-screen"
-      style={{
-        backgroundPosition: "center top",
-        backgroundSize: "100% 100%",
+    <Box
+      sx={{
+        bgcolor: "background.default",
+        backgroundImage: "url('/assets/nexttpage.png')",
+        backgroundPosition: {
+          xs: "-400px 0px", // Mobile: geser ke kiri 500px dari top
+          md: "center top",
+          lg: "center top",
+        },
+        backgroundSize: {
+          xs: "280% 1600px ", // Mobile: full width, auto height
+          md: "100% 100% ", // Desktop: full width, auto height
+        },
+        backgroundRepeat: "no-repeat",
+        minHeight: "200vh",
       }}
     >
       <HeaderNotButton />
-
-      <div className="max-w-6xl mx-auto p-0">
+      <Container maxWidth="lg" sx={{ pb: 10 }}>
         <div>
-          <h1 className="text-[24px] pt-40 font-['Poppins'] font-bold sm:text-2xl md:text-5xl lg:text-6xl text-center">
+          <h1 className="text-3xl pt-40  font-['Poppins'] font-bold sm:text-2xl sm:font-bold md:text-5xl lg:text-6xl text-center  ">
             Apply with Us Today
           </h1>
 
-          <p className="text-xl mt-4 mb-20 sm:mb-10 md:mb-20 lg:mb-20 sm:text-sm md:text-base lg:text-2xl text-center font-['Poppins']">
+          <p className=" text-1xl  font-['Poppins'] mt-4  sm:mb-10 md:mb-20 lg:mb-20 sm:text-sm md:text-base lg:text-2xl text-center   ">
             Discover the Career of Your Dreams
           </p>
         </div>
         <DepartmentCards />
-      </div>
-    </div>
+      </Container>
+    </Box>
   );
 }

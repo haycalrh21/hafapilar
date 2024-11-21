@@ -6,20 +6,20 @@ const HeroSection = () => {
   return (
     <div className="relative font-['Poppins'] w-full h-auto mb-20 sm:mb-20 lg:-mb-10 flex flex-col items-center md:flex-col lg:flex-row-reverse lg:justify-center">
       {/* Gambar - Di kanan pada desktop, atas pada mobile dan iPad */}
-      <div className="w-full md:w-3/4 lg:w-1/2 h-auto relative">
+      <div className="w-full  md:w-3/4 lg:w-1/2 h-auto relative">
         <Image
           src="/assets/hero.png"
           alt="Hero Image"
           layout="responsive"
           width={600}
-          height={300}
+          height={400}
           className="object-contain w-full h-auto"
           priority
         />
       </div>
 
       {/* Teks - Di bawah gambar pada mobile dan iPad, di kiri pada desktop */}
-      <div className="w-full lg:w-1/2 px-4 mt-[-4rem ]  md:mt-[-8rem] lg:mt-0 flex flex-col items-center lg:items-start text-center lg:text-left">
+      <div className="w-full lg:w-1/2 px-4 mt-[-4rem] sm:mt-[-20rem] md:mt-[-6rem] lg:mt-0 flex flex-col items-center lg:items-start text-center lg:text-left">
         <h1 className="text-[24px] font-bold md:text-[36px] lg:text-[48px] xl:text-[48px] text-hero mb-2 leading-tight lg:leading-[70px]  ">
           Connecting Potential,
           <br />
@@ -41,7 +41,7 @@ const HeroSection = () => {
       </div>
 
       {/* Tombol Apply - Di kanan atas */}
-      <div className="absolute top-6 right-4  lg:right-12 lg:top-12">
+      <div className="absolute top-10 right-4 sm:top-20  lg:right-12 lg:top-12">
         <Link href="/candidate" className="">
           <button className="px-4 py-2 text-[12px]   sm:text-[12px] md:text-[12px] lg:text-[20px] text-hijau rounded-lg shadow-md bg-white border-[1px] border-hijau font-semibold font-['Poppins']  text-xs lg:text-sm hover:bg-[#0F4C5C] hover:text-white">
             Apply as a Candidate
@@ -50,15 +50,9 @@ const HeroSection = () => {
       </div>
 
       {/* Logo - Pojok Kiri Atas */}
-      <div className="absolute top-4 left-4 lg:left-4 lg:top-12">
+      <div className="absolute h-4 w-32    sm:w-20 md:w-40 lg:w-40 top-10 left-4 sm:top-20 md:top-20 lg:left-4 lg:top-12">
         <Link href="/">
-          <Image
-            src="/logo.png"
-            alt="Logo Hafa Pilar"
-            width={150}
-            height={200}
-            className="inline-block"
-          />
+          <img src="/logo.png" alt="Logo Hafa Pilar" className="inline-block" />
         </Link>
       </div>
     </div>

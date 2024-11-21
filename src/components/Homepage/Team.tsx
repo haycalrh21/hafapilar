@@ -28,12 +28,12 @@ export default function TeamCard() {
       <h2 className="text-[24px] sm:text-[24px] lg:text-[50px] font-bold text-center mb-4">
         Meet the Team
       </h2>
-      <p className="text-center max-w-3xl mx-auto mb-8">
+      <p className="text-center text-[12px] sm:text-[16px] lg:text-[18px] max-w-3xl mx-auto mb-8">
         We bring a fresh, dynamic approach, uniting global recruitment
         expertise, deep local market insight, and reliable support to ensure
         success for international candidates.
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  gap-20 sm:gap-0 lg:gap-20 w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-20 sm:mb-4 lg:mb-40 gap-5 sm:gap-0 lg:gap-20 w-full">
         {" "}
         {/* Grid layout */}
         {teamMembers.map((member, index) => (
@@ -49,9 +49,13 @@ export default function TeamCard() {
               />
             </div>
             <div className="p-4">
-              <h3 className="text-[20px] font-semibold">{member.name}</h3>
-              <p className="text-sm text-gray-600 italic">{member.position}</p>
-              <p className="text-[16px] text-gray-600">{member.university}</p>
+              <h3 className="text-[20px] font-semibold sm:font-normal lg:font-semibold">
+                {member.name}
+              </h3>
+              <p className="text-sm text-gray-600 italic mb-2">
+                {member.position}
+              </p>
+              <p className="text-[12px] text-gray-600">{member.university}</p>
             </div>
           </div>
         ))}
