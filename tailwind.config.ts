@@ -18,6 +18,7 @@ const config: Config = {
       colors: {
         hijau: "#0F4C5C",
         departement: "#63767A",
+        texttesti: "#07242B",
         hero: "#07242B",
         cardtesti: "#0F4C5C80",
         testi: "#07242B",

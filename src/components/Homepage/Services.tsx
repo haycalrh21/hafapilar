@@ -24,7 +24,7 @@ const services = [
 export default function Services() {
   return (
     <div className="flex flex-col items-center relative overflow-hidden -mb-20 sm:-mb-20 lg:mb-6 mx-4 top-0 sm:top-20 lg:top-0 font-['Poppins']">
-      <h2 className="text-[18px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-6 sm:mb-3 lg:mb-20">
+      <h2 className="text-[18px] text-texttesti sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-6 sm:mb-3 lg:mb-20">
         We Offer{" "}
         <span
           className="text-[18px] sm:text-[24px]  md:text-[50px] lg:text-[50px]"

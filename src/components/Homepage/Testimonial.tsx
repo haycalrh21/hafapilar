@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 
 const testimonials = [
   {
@@ -39,93 +40,89 @@ export default function Testimonial() {
   };
 
   return (
-    <div className="mx-4 mt-20 md:mx-20 md:pt-10 font-['Poppins']  ">
+    <div className="mx-4 mt-20 md:mx-20 md:pt-10 font-['Poppins']">
       <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-4">
         {/* Left Section */}
         <div className="w-full md:w-1/5 lg:w-1/2 text-center md:text-left">
-          <h2 className="text-[24px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold  relative mb-8">
-            {/* Teks satu baris di mobile */}
+          <h2 className="text-[24px] md:text-[50px] font-bold relative mb-8">
             <span className="block md:hidden">
               Our{" "}
-              <span className="inline-block bg-[#F2AF29CC] px-1 pb-1 md:pb-5 leading-3">
+              <span className="inline-block bg-[#F2AF29CC] px-1 pb-1">
                 Success
               </span>{" "}
               Stories
             </span>
-            {/* Teks dua baris di laptop */}
             <span className="hidden md:block">
-              <span>
-                Our{" "}
-                <span className="inline-block bg-[#F2AF29CC] px-1 pb-1 md:pb-5 leading-3">
-                  Success
-                </span>
-              </span>
-              <br />
-              <span>Stories</span>
+              Our{" "}
+              <span className="inline-block bg-[#F2AF29CC] px-1 pb-1">
+                Success
+              </span>{" "}
+              Stories
             </span>
           </h2>
           <Link href="/partner">
-            <button className="px-8 py-4 text-white rounded-2xl shadow-md border-hijau border-[1px] font-['Poppins'] font-semibold text-xs lg:text-sm bg-hijau hover:bg-white hover:text-[#0F4C5C] hover:shadow-amber-400">
+            <button className="px-8 py-4 text-white rounded-2xl shadow-md border-hijau border-[1px] font-semibold text-xs lg:text-sm bg-hijau hover:bg-white hover:text-[#0F4C5C]">
               Be Our Partner
             </button>
           </Link>
         </div>
 
         {/* Right Section */}
-        <div className="w-full my-4 sm:my-20 md:w-3/5 lg:my-0 relative ">
-          <div className="relative w-full max-w-xl mx-auto">
-            {/* Card Container */}
-            <div className="relative h-[400px] md:h-[500px]">
-              {/* Main Card */}
-              <div className="bg-white rounded-2xl shadow-lg p-8 z-20 w-[85%] absolute left-0 top-0 border-hijau border-[1px]">
-                <p className="text-testi mb-4 font-medium text-sm md:text-base">
-                  {testimonials[currentIndex].text}
-                </p>
-                {/* <br/> */}
-
-                <p className="text-testi font-medium">
-                  {testimonials[currentIndex].author}
-                </p>
-                <p className="text-testi2 font-medium text-sm">
-                  {testimonials[currentIndex].position}
-                </p>
-              </div>
-
-              {/* Background Card */}
-              <div className="absolute z-0 w-[85%] right-0 top-[25%] h-[100%]  sm:h-[60%] md:h-[60%] lg:h-[65%] xl:h-[52%] rounded-2xl bg-cardtesti  border-hijau border-[1px]">
-                <div className="p-6 font-thin h-full flex flex-col justify-between">
-                  <div className="text-testi font-medium mb-4  text-[14px] md:text-[14px]">
+        <div className="w-full my-4 sm:my-20 md:w-3/5 lg:my-0 relative">
+          <div className="relative w-full max-w-xl mx-8">
+            <div className="relative space-y-4">
+              {/* Card 2 (Background Card) */}
+              <Card className="absolute top-12 left-12 bg-cardtesti rounded-2xl p-3 shadow border border-gray-300 w-[300px] sm:w-1/2 md:1/3 lg:w-full h-[350px]  md:h-[320px] scale-95 z-0">
+                <CardContent>
+                  <p className="text-texttesti text-[13px] md:text-[17px]">
                     {
                       testimonials[(currentIndex + 1) % testimonials.length]
                         .text
                     }
-                  </div>
-                  <div className="mt-auto">
-                    <div className="text-testi font-medium">
-                      {
-                        testimonials[(currentIndex + 1) % testimonials.length]
-                          .author
-                      }
-                    </div>
-                    <div className="text-testi2 font-medium text-sm">
-                      {
-                        testimonials[(currentIndex + 1) % testimonials.length]
-                          .position
-                      }
-                    </div>
-                  </div>
-                </div>
-              </div>
+                  </p>
+                </CardContent>
+                <CardFooter className="flex flex-col mt-10 justify-center items-start">
+                  <p className="text-texttesti  text-[16px] font-bold">
+                    {
+                      testimonials[(currentIndex + 1) % testimonials.length]
+                        .author
+                    }
+                  </p>
+                  <p className="text-departement text-[12px]">
+                    {
+                      testimonials[(currentIndex + 1) % testimonials.length]
+                        .position
+                    }
+                  </p>
+                </CardFooter>
+              </Card>
+
+              {/* Card 1 (Front Card) */}
+              <Card className="relative bg-white rounded-2xl p-3 py-4  shadow-lg w-[300px] sm:w-1/2 md:1/3 lg:w-full h-[310px] md:h-[300px] z-30">
+                <CardContent>
+                  <p className="text-texttesti text-[12px] md:text-[17px] mb-4">
+                    {testimonials[currentIndex].text}
+                  </p>
+                </CardContent>
+                <CardFooter className="flex flex-col justify-center items-start">
+                  <p className="text-texttesti text-[16px] font-bold">
+                    {testimonials[currentIndex].author}
+                  </p>
+                  <p className="text-departement text-[12px]">
+                    {testimonials[currentIndex].position}
+                  </p>
+                </CardFooter>
+              </Card>
             </div>
 
             {/* Navigation Buttons */}
             <button
               onClick={prevTestimonial}
-              className="absolute left-[-20px] top-[30%] -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-30 hover:bg-gray-100"
+              className="absolute left-[-20px] top-1/2 transform -translate-y-1/2 bg-hijau z-40 rounded-full p-2 shadow-md hover:bg-gray-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 md:h-6 md:w-6"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -138,14 +135,13 @@ export default function Testimonial() {
                 />
               </svg>
             </button>
-
             <button
               onClick={nextTestimonial}
-              className="absolute right-[-20px] top-[55%] -translate-y-1/2 bg-white rounded-full p-2 shadow-md z-30 hover:bg-gray-100"
+              className="absolute right-[20px] md:right-[-50px] top-1/2 transform -translate-y-1/2 bg-white z-30 rounded-full p-2 shadow-md hover:bg-gray-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 md:h-6 md:w-6"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
