@@ -19,6 +19,7 @@ const config: Config = {
         hijau: "#0F4C5C",
         textlayout: "#07242B",
         departement: "#63767A",
+        textpartner: "#FFFFFE",
         texttesti: "#07242B",
         hero: "#07242B",
         cardtesti: "#0F4C5C80",

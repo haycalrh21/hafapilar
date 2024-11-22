@@ -17,7 +17,7 @@ export function CandidatePage() {
         src={"/assets/vectorcandidate.png"}
         className={clsx(
           "absolute z-10",
-          "top-[-3px] left-[28px] w-[358.71px] h-[281.33px] rotate-[-2.2deg]",
+          "top-[-3px] left-[-18px] w-[358.71px] h-[281.33px] rotate-[-2.2deg]",
           "md:top-[-80px] md:left-[450px] md:w-[673.94px] md:h-[450.56px] md:rotate-[-23.2deg]"
         )}
       />
@@ -46,11 +46,11 @@ export function CandidatePage() {
       <HeaderNotButton />
       <div className="relative z-20 max-w-6xl mx-auto">
         <div>
-          <h1 className="text-3xl pt-40 font-['Poppins'] text-textlayout font-bold sm:text-2xl sm:font-bold md:text-5xl lg:text-6xl text-center">
+          <h1 className="text-[24px] pt-40 font-['Poppins'] text-textlayout font-bold sm:text-2xl sm:font-bold md:text-5xl lg:text-6xl text-center">
             Apply with Us Today
           </h1>
 
-          <p className="text-[14px] font-['Poppins'] text-textlayout mt-4 sm:mb-10 md:mb-20 lg:mb-20 sm:text-sm md:text-base lg:text-2xl text-center">
+          <p className="text-[11px] font-['Poppins'] text-textlayout mt-2 sm:mb-10 md:mb-20 lg:mb-20 sm:text-sm md:text-base lg:text-2xl text-center">
             Discover the Career of Your Dreams
           </p>
         </div>

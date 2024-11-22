@@ -51,7 +51,7 @@ export default function Testimonial() {
                 style={{
                   backgroundColor: "#F2AF29CC",
                   font: "Poppins",
-                  padding: "2px 2px 20px",
+                  padding: "2px 2px 10px",
                   marginRight: "1px",
                   display: "inline-block",
                   lineHeight: "0.1",
@@ -81,7 +81,7 @@ export default function Testimonial() {
             </span>
           </h2>
           <Link href="/partner">
-            <button className="px-8 py-4 text-white rounded-2xl shadow-md border-hijau border-[1px] font-semibold text-xs lg:text-sm bg-hijau hover:bg-white hover:text-[#0F4C5C]">
+            <button className="px-8 py-4 text-white rounded-2xl shadow-md border-hijau border-[1px] font-semibold text-xs lg:text-sm bg-hijau hover:bg-white hover:text-[#0F4C5C] hover:shadow-amber-400">
               Be Our Partner
             </button>
           </Link>
@@ -89,12 +89,12 @@ export default function Testimonial() {
 
         {/* Right Section */}
         <div className="w-full my-4 sm:my-20 md:w-3/5 lg:my-0 relative">
-          <div className="relative w-full max-w-xl mx-8">
-            <div className="relative space-y-4">
+          <div className="relative w-full max-w-xl mx-8  ">
+            <div className="relative space-y-4 ">
               {/* Card 2 (Background Card) */}
-              <Card className="absolute top-14 left-4 bg-cardtesti rounded-2xl p-3 py-4 shadow border border-gray-300 w-[300px] sm:w-1/2 md:1/3 lg:w-full h-[350px]  md:h-[320px] scale-95 z-0">
+              <Card className="absolute top-14 left-5 md:-left-4 bg-cardtesti rounded-2xl p-3 py-4  border-hijau border-[1px] w-[300px] sm:w-1/2 md:1/3 lg:w-full h-[350px]  md:h-[320px] scale-95 z-0 ">
                 <CardContent>
-                  <p className="text-texttesti text-[13px] md:text-[17px]">
+                  <p className="text-cardtesti opacity-0 text-[13px] md:text-[17px]">
                     {
                       testimonials[(currentIndex + 1) % testimonials.length]
                         .text
@@ -118,7 +118,7 @@ export default function Testimonial() {
               </Card>
 
               {/* Card 1 (Front Card) */}
-              <Card className="relative bg-white rounded-2xl p-3 py-4 right-8  shadow-lg w-[300px] sm:w-1/2 md:1/3 lg:w-full h-[310px] md:h-[300px] z-30">
+              <Card className="relative bg-white rounded-2xl p-3 py-4 right-4 md:right-14 border-hijau border-[1px] shadow-lg w-[300px] sm:w-1/2 md:1/3 lg:w-full h-[310px] md:h-[300px] z-30">
                 <CardContent>
                   <p className="text-texttesti text-[12px] md:text-[17px] mb-4">
                     {testimonials[currentIndex].text}
@@ -138,7 +138,7 @@ export default function Testimonial() {
             {/* Navigation Buttons */}
             <button
               onClick={prevTestimonial}
-              className="absolute left-[-50px] top-1/2 transform -translate-y-1/2 bg-white z-40 rounded-full p-2 shadow-md hover:bg-gray-100"
+              className="absolute left-[-30px] md:left-[-60px] top-1/2 transform -translate-y-1/2 bg-white z-40 rounded-full p-2 shadow-md hover:bg-gray-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -157,7 +157,7 @@ export default function Testimonial() {
             </button>
             <button
               onClick={nextTestimonial}
-              className="absolute right-[40px] md:right-[20px] top-1/2 transform -translate-y-1/2 bg-white z-30 rounded-full p-2 shadow-md hover:bg-gray-100"
+              className="absolute right-[30px] md:right-[20px] top-1/2 transform -translate-y-1/2 bg-white z-30 rounded-full p-2 shadow-md hover:bg-gray-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -25,18 +25,39 @@ export default function Services() {
   return (
     <div className="flex flex-col items-center relative overflow-hidden -mb-20 sm:-mb-20 lg:mb-6 mx-4 top-0 sm:top-20 lg:top-0 font-['Poppins']">
       <h2 className="text-[18px] text-texttesti sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-6 sm:mb-3 lg:mb-20">
-        We Offer{" "}
-        <span
-          className="text-[18px] sm:text-[24px]  md:text-[50px] lg:text-[50px]"
-          style={{
-            backgroundColor: "#F2AF29CC",
-            padding: "1px 1px 20px",
-            marginRight: "10px",
-            display: "inline-block",
-            lineHeight: "0.1",
-          }}
-        >
-          Best Services
+        <span className="block md:hidden text-textlayout">
+          We
+          <span className="mt-2"> Offer</span>{" "}
+          <p
+            style={{
+              backgroundColor: "#F2AF29CC",
+              font: "Poppins",
+              padding: "2px 2px 10px",
+              marginRight: "10px",
+              display: "inline-block",
+              lineHeight: "0.1",
+            }}
+            className="text-textlayout"
+          >
+            Best Services
+          </p>
+        </span>
+        <span className="hidden md:block">
+          We
+          <span className="mt-2">Offer</span>{" "}
+          <p
+            style={{
+              backgroundColor: "#F2AF29CC",
+              font: "Poppins",
+              padding: "2px 2px 20px",
+              marginRight: "10px",
+              display: "inline-block",
+              lineHeight: "0.1",
+            }}
+            className="text-textlayout"
+          >
+            Best Services
+          </p>
         </span>
       </h2>
 
@@ -55,7 +76,7 @@ export default function Services() {
                 className="w-20 h-10 sm:w-20 sm:h-10 md:w-40 md:h-40 lg:w-20 lg:h-20 object-contain"
               />
             </div>
-            <h3 className="text-[13px] sm:text-[13px] lg:text-[20px] font-semibold text-center mb-2 ">
+            <h3 className="text-[13px] sm:text-[13px] lg:text-[20px] text-textlayout font-semibold text-center mb-2 ">
               {service.title}
             </h3>
             <p className="text-[11px] sm:text-[13px] lg:text-[16px]  text-gray-600 text-center ">

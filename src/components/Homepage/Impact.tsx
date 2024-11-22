@@ -1,22 +1,43 @@
+import NumberTicker from "../ui/number-ticker";
+
 export default function ImpactCard() {
   return (
     <div className="mx-auto pt-10 font-['Poppins']">
       <h2 className="text-[24px] sm:text-[24px] text-textlayout  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-8">
-        Our{" "}
-        <span
-          style={{
-            backgroundColor: "#F2AF29CC",
-            font: "Poppins",
-            padding: "2px 2px 20px",
-            marginRight: "10px",
-            display: "inline-block",
-            lineHeight: "0.1",
-          }}
-          className="text-textlayout"
-        >
-          Impact
-        </span>{" "}
-        So Far
+        <span className="block md:hidden text-textlayout">
+          Our{" "}
+          <span
+            style={{
+              backgroundColor: "#F2AF29CC",
+              font: "Poppins",
+              padding: "2px 2px 15px",
+              marginRight: "1px",
+              display: "inline-block",
+              lineHeight: "0.1",
+            }}
+            className="text-textlayout"
+          >
+            Impact
+          </span>{" "}
+          So Far
+        </span>
+        <span className="hidden md:block">
+          Our{" "}
+          <span
+            style={{
+              backgroundColor: "#F2AF29CC",
+              font: "Poppins",
+              padding: "2px 2px 30px",
+              marginRight: "10px",
+              display: "inline-block",
+              lineHeight: "0.1",
+            }}
+            className="text-textlayout"
+          >
+            Impact
+          </span>{" "}
+          So Far
+        </span>
       </h2>
       <div className="max-w-[1120px] sm:w-full lg:w-[1120px] mx-auto ">
         <div
@@ -60,7 +81,7 @@ export default function ImpactCard() {
               }}
             >
               <h4 className="text-impact text-[36px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-2">
-                9000+
+                <NumberTicker value={9000} />+
               </h4>
               <p className=" text-[16px] sm:text-[14px] lg:text-[24px]">
                 Deployed Abroad
@@ -76,7 +97,7 @@ export default function ImpactCard() {
               }}
             >
               <h4 className="text-impact text-[36px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-2">
-                4+
+                <NumberTicker value={4} />+
               </h4>
               <p className=" text-[16px] sm:text-[14px] lg:text-[24px]">
                 Big Clients
@@ -92,7 +113,8 @@ export default function ImpactCard() {
               }}
             >
               <h4 className="text-impact text-[36px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-2">
-                30 Years
+                <NumberTicker value={30} />
+                Years
               </h4>
               <p className=" text-[16px] sm:text-[14px] lg:text-[24px]">
                 of Operations in Indonesia
@@ -108,7 +130,7 @@ export default function ImpactCard() {
               }}
             >
               <h4 className="text-impact text-[36px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-2">
-                90%
+                <NumberTicker value={90} />%
               </h4>
               <p className=" text-[16px] sm:text-[14px] lg:text-[24px]">
                 Successful Placement Rate

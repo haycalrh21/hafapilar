@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function TeamCard() {
   const teamMembers = [
     {
-      name: "Hanni Utfa",
+      name: "Hanni Ulfa",
       position: "Founder",
       image: "/assets/team/HaeniUlfa.png",
       university:
@@ -49,13 +49,15 @@ export default function TeamCard() {
               />
             </div>
             <div className="p-4">
-              <h3 className="text-[20px] font-semibold sm:font-normal lg:font-semibold">
+              <h3 className="text-[20px] text-hijau font-semibold sm:font-normal lg:font-semibold">
                 {member.name}
               </h3>
-              <p className="text-sm text-gray-600 italic mb-2">
+              <p className="text-sm text-departement italic mb-2">
                 {member.position}
               </p>
-              <p className="text-[12px] text-gray-600">{member.university}</p>
+              <p className="text-[12px] text-departement">
+                {member.university}
+              </p>
             </div>
           </div>
         ))}
