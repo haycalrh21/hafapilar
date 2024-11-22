@@ -1,7 +1,7 @@
 export default function ImpactCard() {
   return (
     <div className="mx-auto pt-10 font-['Poppins']">
-      <h2 className="text-[24px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-8">
+      <h2 className="text-[24px] sm:text-[24px] text-textlayout  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-8">
         Our{" "}
         <span
           style={{
@@ -12,6 +12,7 @@ export default function ImpactCard() {
             display: "inline-block",
             lineHeight: "0.1",
           }}
+          className="text-textlayout"
         >
           Impact
         </span>{" "}

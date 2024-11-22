@@ -25,10 +25,10 @@ export default function TeamCard() {
 
   return (
     <div className="mx-5 font-['Poppins'] mt-10">
-      <h2 className="text-[24px] sm:text-[24px] lg:text-[50px] font-bold text-center mb-4">
+      <h2 className="text-[24px] sm:text-[24px] text-textlayout lg:text-[50px] font-bold text-center mb-4">
         Meet the Team
       </h2>
-      <p className="text-center text-[12px] sm:text-[16px] lg:text-[18px] max-w-3xl mx-auto mb-8">
+      <p className="text-center text-[12px] text-textlayout sm:text-[16px] lg:text-[18px] max-w-3xl mx-auto mb-8">
         We bring a fresh, dynamic approach, uniting global recruitment
         expertise, deep local market insight, and reliable support to ensure
         success for international candidates.

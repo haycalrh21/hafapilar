@@ -44,17 +44,37 @@ export default function Testimonial() {
       <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-4">
         {/* Left Section */}
         <div className="w-full md:w-1/5 lg:w-1/2 text-center md:text-left">
-          <h2 className="text-[24px] md:text-[50px] font-bold relative mb-8">
-            <span className="block md:hidden">
+          <h2 className="text-[24px] md:text-[50px] font-bold relative mb-8 text-textlayout">
+            <span className="block md:hidden text-textlayout">
               Our{" "}
-              <span className="inline-block bg-[#F2AF29CC] px-1 pb-1">
+              <span
+                style={{
+                  backgroundColor: "#F2AF29CC",
+                  font: "Poppins",
+                  padding: "2px 2px 20px",
+                  marginRight: "1px",
+                  display: "inline-block",
+                  lineHeight: "0.1",
+                }}
+                className="text-textlayout"
+              >
                 Success
               </span>{" "}
               Stories
             </span>
             <span className="hidden md:block">
               Our{" "}
-              <span className="inline-block bg-[#F2AF29CC] px-1 pb-1">
+              <span
+                style={{
+                  backgroundColor: "#F2AF29CC",
+                  font: "Poppins",
+                  padding: "2px 2px 20px",
+                  marginRight: "10px",
+                  display: "inline-block",
+                  lineHeight: "0.1",
+                }}
+                className="text-textlayout"
+              >
                 Success
               </span>{" "}
               Stories
@@ -72,7 +92,7 @@ export default function Testimonial() {
           <div className="relative w-full max-w-xl mx-8">
             <div className="relative space-y-4">
               {/* Card 2 (Background Card) */}
-              <Card className="absolute top-12 left-12 bg-cardtesti rounded-2xl p-3 shadow border border-gray-300 w-[300px] sm:w-1/2 md:1/3 lg:w-full h-[350px]  md:h-[320px] scale-95 z-0">
+              <Card className="absolute top-14 left-4 bg-cardtesti rounded-2xl p-3 py-4 shadow border border-gray-300 w-[300px] sm:w-1/2 md:1/3 lg:w-full h-[350px]  md:h-[320px] scale-95 z-0">
                 <CardContent>
                   <p className="text-texttesti text-[13px] md:text-[17px]">
                     {
@@ -98,7 +118,7 @@ export default function Testimonial() {
               </Card>
 
               {/* Card 1 (Front Card) */}
-              <Card className="relative bg-white rounded-2xl p-3 py-4  shadow-lg w-[300px] sm:w-1/2 md:1/3 lg:w-full h-[310px] md:h-[300px] z-30">
+              <Card className="relative bg-white rounded-2xl p-3 py-4 right-8  shadow-lg w-[300px] sm:w-1/2 md:1/3 lg:w-full h-[310px] md:h-[300px] z-30">
                 <CardContent>
                   <p className="text-texttesti text-[12px] md:text-[17px] mb-4">
                     {testimonials[currentIndex].text}
@@ -118,7 +138,7 @@ export default function Testimonial() {
             {/* Navigation Buttons */}
             <button
               onClick={prevTestimonial}
-              className="absolute left-[-20px] top-1/2 transform -translate-y-1/2 bg-hijau z-40 rounded-full p-2 shadow-md hover:bg-gray-100"
+              className="absolute left-[-50px] top-1/2 transform -translate-y-1/2 bg-white z-40 rounded-full p-2 shadow-md hover:bg-gray-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -137,7 +157,7 @@ export default function Testimonial() {
             </button>
             <button
               onClick={nextTestimonial}
-              className="absolute right-[20px] md:right-[-50px] top-1/2 transform -translate-y-1/2 bg-white z-30 rounded-full p-2 shadow-md hover:bg-gray-100"
+              className="absolute right-[40px] md:right-[20px] top-1/2 transform -translate-y-1/2 bg-white z-30 rounded-full p-2 shadow-md hover:bg-gray-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
