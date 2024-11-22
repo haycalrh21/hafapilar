@@ -66,7 +66,7 @@ const DepartmentCards = () => {
 
               {/* Konten (Title dan Positions) */}
               <div className="p-6  mb-10 flex-grow text-left">
-                <h6 className="text-lg -mt-8 text-textlayout font-semibold mb-4">
+                <h6 className="text-lg -mt-4 text-textlayout font-semibold mb-4">
                   {department.title}
                 </h6>
                 <p className="text-[14px] font-medium text-departement min-h-[72px]">

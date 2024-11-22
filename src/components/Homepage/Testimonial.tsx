@@ -92,7 +92,7 @@ export default function Testimonial() {
           <div className="relative w-full max-w-xl mx-8  ">
             <div className="relative space-y-4 ">
               {/* Card 2 (Background Card) */}
-              <Card className="absolute top-14 left-5 md:-left-4 bg-cardtesti rounded-2xl p-3 py-4  border-hijau border-[1px] w-[300px] sm:w-1/2 md:1/3 lg:w-full h-[350px]  md:h-[320px] scale-95 z-0 ">
+              <Card className="absolute top-14 left-5 md:-left-4 bg-cardtesti bg-opacity-35 rounded-2xl p-3 py-4  border-hijau border-[1px] border-opacity-45 w-[300px] sm:w-1/2 md:1/3 lg:w-full h-[350px]  md:h-[320px] scale-95 z-0 ">
                 <CardContent>
                   <p className="text-cardtesti opacity-0 text-[13px] md:text-[17px]">
                     {
@@ -142,7 +142,7 @@ export default function Testimonial() {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
+                className="h-4 w-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -161,7 +161,7 @@ export default function Testimonial() {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
+                className="h-4 w-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
