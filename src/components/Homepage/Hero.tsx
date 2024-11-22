@@ -28,9 +28,9 @@ const HeroSection = () => {
 
         <span className="text-[16px] text-black mt-2 max-w-md md:max-w-xl lg:max-w-lg lg:leading-[25px] ">
           Hafa Pilar Indonesia is dedicated to elevating manpower solutions in
-          hospitality. With over 30 years of expertise we take pride in building
-          a business founded on excellence and a proven global recruitment
-          strategy
+          hospitality. With over 30 years of expertise, we take pride in
+          building a business founded on excellence and a proven global
+          recruitment strategy.
         </span>
 
         <Link href="/partner">

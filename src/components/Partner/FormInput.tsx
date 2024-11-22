@@ -147,7 +147,7 @@ export default function FormInputPartner() {
   };
 
   return (
-    <div className="mx-auto rounded-xl font-['Poppins']">
+    <div className="mx-auto px-4 mb-4 rounded-xl font-['Poppins']">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-4 p-4 bg-white border-[1px] border-hijau rounded-xl"

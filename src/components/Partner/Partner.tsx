@@ -3,39 +3,61 @@ import { Container, Box } from "@mui/material";
 import Header from "../Homepage/Header";
 import HeaderNotButton from "../Candidate/HeaderNotButton";
 import FormInputPartner from "./FormInput";
+import clsx from "clsx";
 
 export function PartnerPage() {
   return (
-    <Box
-      sx={{
-        bgcolor: "background.default",
-        backgroundImage: "url('/assets/lastpage.png')",
-        backgroundPosition: {
-          xs: "-400px 0px", // Mobile: geser ke kiri 500px dari top
-          md: "center top",
-          lg: "center top",
-        },
-        backgroundSize: {
-          xs: "280% 1600px ", // Mobile: full width, auto height
-          md: "100% 100% ", // Desktop: full width, auto height
-        },
-        backgroundRepeat: "no-repeat",
-        minHeight: "100vh",
+    <div
+      style={{
+        backgroundColor: "#ECECEC",
+        backgroundPosition: "center top",
       }}
+      className="relative overflow-hidden min-h-screen" // Nambahin overflow-hidden disini
     >
-      <HeaderNotButton />
+      {/* Background Vector */}
+      <img
+        src={"/assets/vectorpartner.png"}
+        className={clsx(
+          "absolute z-10",
+          "top-[-3px] left-[28px] w-[358.71px] h-[281.33px] rotate-[-2.2deg]",
+          "md:top-[-80px] md:left-[450px] md:w-[673.94px] md:h-[450.56px] md:rotate-[-23.2deg]"
+        )}
+      />
 
-      <Container maxWidth="lg" sx={{ pb: 10 }}>
-        <div>
-          <h1 className="text-3xl pt-20 font-['Poppins'] sm:text-2xl md:text-4xl lg:text-6xl text-center font-bold mt-20">
-            Become Our Partner
+      {/* Left Side Image */}
+      <img
+        src="/assets/leftside.png"
+        className={clsx(
+          "absolute z-0",
+          "top-[252.4px] left-[-145.01px] w-[363.87px] h-[261.94px]",
+          "md:top-[168px] md:left-[-250px] md:w-[715.22px] md:h-[717.55px]"
+        )}
+      />
+
+      {/* Bottom Right Image */}
+      <img
+        src="/assets/bottomright.png"
+        className={clsx(
+          "absolute",
+          "bottom-0 right-[-100px] w-[363.87px] h-[261.94px]", // Ubah positioning ke bottom
+          "md:bottom-0 md:right-[-100px] md:w-[315.22px] md:h-[500.55px]"
+        )}
+      />
+
+      {/* Content Wrapper */}
+      <HeaderNotButton />
+      <div className="relative z-20 max-w-6xl mx-auto">
+        <div className="mb-20">
+          <h1 className="text-3xl pt-40 font-['Poppins'] text-textlayout font-bold sm:text-2xl sm:font-bold md:text-5xl lg:text-6xl text-center">
+            Apply with Us Today
           </h1>
-          <p className="  text-center  font-['Poppins'] mt-4 mb-20 ">
-            Build the Dream Team You’ve Always Wanted
+
+          <p className="text-[14px] font-['Poppins'] text-textlayout mt-4 sm:mb-10 md:mb-20 lg:mb-20 sm:text-sm md:text-base lg:text-2xl text-center">
+            Discover the Career of Your Dreams
           </p>
         </div>
         <FormInputPartner />
-      </Container>
-    </Box>
+      </div>
+    </div>
   );
 }

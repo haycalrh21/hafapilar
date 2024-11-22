@@ -247,7 +247,7 @@ export default function FormInput({ department }: any) {
   };
 
   return (
-    <div className="max-w-6xl mx-auto bg-white font-sans border-2 border-hijau rounded-xl p-6">
+    <div className="max-w-6xl mx-4 mb-4 bg-white font-sans border-2 border-hijau rounded-xl p-6">
       <form onSubmit={handleSubmit}>
         {/* Full Name and Last Name */}
         <div className="flex flex-col sm:flex-row gap-4 font-['Poppins'] mb-12">
@@ -407,7 +407,7 @@ export default function FormInput({ department }: any) {
               htmlFor="whatsapp"
               className="block text-sm font-medium mb-4"
             >
-              Whatsapp Number *
+              WhatsApp Number *
             </label>
             <PhoneNumberInput
               error={errors.whatsapp}
