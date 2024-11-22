@@ -118,7 +118,7 @@ export default function Testimonial() {
               </Card>
 
               {/* Card 1 (Front Card) */}
-              <Card className="relative bg-white rounded-2xl p-3 py-4 right-4 md:right-14 border-hijau border-[1px] shadow-lg w-[300px] sm:w-1/2 md:1/3 lg:w-full h-[310px] md:h-[300px] z-30">
+              <Card className="relative bg-white rounded-2xl p-3 py-4 right-8 md:right-14 border-hijau border-[1px] shadow-lg w-[300px] sm:w-1/2 md:1/3 lg:w-full h-[310px] md:h-[300px] z-30">
                 <CardContent>
                   <p className="text-texttesti text-[12px] md:text-[17px] mb-4">
                     {testimonials[currentIndex].text}
@@ -138,7 +138,7 @@ export default function Testimonial() {
             {/* Navigation Buttons */}
             <button
               onClick={prevTestimonial}
-              className="absolute left-[-30px] md:left-[-60px] top-1/2 transform -translate-y-1/2 bg-white z-40 rounded-full p-2 shadow-md hover:bg-gray-100"
+              className="absolute left-[-50px] md:left-[-60px] top-1/2 transform -translate-y-1/2 bg-white z-40 rounded-full p-2 shadow-md hover:bg-gray-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -157,7 +157,7 @@ export default function Testimonial() {
             </button>
             <button
               onClick={nextTestimonial}
-              className="absolute right-[30px] md:right-[20px] top-1/2 transform -translate-y-1/2 bg-white z-30 rounded-full p-2 shadow-md hover:bg-gray-100"
+              className="absolute right-[25px] md:right-[20px] top-1/2 transform -translate-y-1/2 bg-white z-30 rounded-full p-2 shadow-md hover:bg-gray-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

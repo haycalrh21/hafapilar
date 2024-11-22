@@ -14,7 +14,7 @@ const ModalTerms: React.FC<ModalTermsProps> = ({ open, onClose }) => {
         <h2 className="text-left text-[24px] font-['Poppins'] font-bold text-hijau mb-4">
           Terms and Conditions
         </h2>
-        <p className="text-sm text-gray-700 mb-6 font-['Poppins']">
+        <p className="text-sm text-hero mb-6 font-['Poppins']">
           By submitting this application, I confirm that I meet the eligibility
           criteria and that the information provided is accurate. I understand
           that false information may lead to disqualification. PT Hafa Pilar

@@ -50,7 +50,7 @@ export function CandidatePage() {
             Apply with Us Today
           </h1>
 
-          <p className="text-[11px] font-['Poppins'] text-textlayout mt-2 sm:mb-10 md:mb-20 lg:mb-20 sm:text-sm md:text-base lg:text-2xl text-center">
+          <p className="text-[11px] font-['Poppins'] text-textlayout mt-1 md:mt-4 sm:mb-10 md:mb-20 lg:mb-20 md:text-base lg:text-2xl text-center">
             Discover the Career of Your Dreams
           </p>
         </div>

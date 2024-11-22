@@ -15,14 +15,14 @@ export default function Footer() {
               height={50}
               className="ml-0 lg:ml-1"
             />
-            <p className="mt-4 text-[11px] sm:ml-0  text-hijau lg:ml-1">
+            <p className="mt-4 text-[11px] sm:ml-0  text-hero lg:ml-1">
               Jl. Bougenvile No.32, Jakarta Utara, Indonesia, 14230
             </p>
           </div>
 
           {/* Get in Touch */}
           <div className="text-left">
-            <h6 className="text-3xl font-bold mb-2">Get in Touch</h6>
+            <h6 className="text-3xl text-hero font-bold mb-2">Get in Touch</h6>
             <div className="flex flex-col md:flex-row-3 lg:flex-row gap-3 items-start">
               <Link
                 href="mailto:hrd@hafapilar.com"
@@ -34,9 +34,7 @@ export default function Footer() {
                   width={30}
                   height={30}
                 />
-                <span className="text-[13px] text-hijau">
-                  hrd@hafapilar.com
-                </span>
+                <span className="text-[13px] text-hero">hrd@hafapilar.com</span>
               </Link>
               <Link
                 href="tel:+62-21-439-24782"
@@ -53,9 +51,7 @@ export default function Footer() {
                     height={30}
                   />
                 </div>
-                <span className="text-[13px] text-hijau ">
-                  +62-21-439-24782
-                </span>
+                <span className="text-[13px] text-hero ">+62-21-439-24782</span>
               </Link>
               <Link
                 href="https://www.instagram.com/hafapilarindonesia/"
@@ -67,7 +63,7 @@ export default function Footer() {
                   width={30}
                   height={30}
                 />
-                <span className="text-[13px] text-hijau">
+                <span className="text-[13px] text-hero">
                   @hafapilarindonesia
                 </span>
               </Link>

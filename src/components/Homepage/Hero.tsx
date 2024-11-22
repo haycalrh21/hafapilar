@@ -19,7 +19,7 @@ const HeroSection = () => {
       </div>
 
       {/* Teks - Di bawah gambar pada mobile dan iPad, di kiri pada desktop */}
-      <div className="w-full lg:w-1/2 px-4 mt-[-4rem] sm:mt-[-20rem] md:mt-[-6rem] lg:mt-0 flex flex-col items-center lg:items-start text-center lg:text-left">
+      <div className="w-full lg:w-1/2 px-4 mt-[-4rem]  md:mt-[-6rem] lg:mt-0 flex flex-col items-center lg:items-start text-center lg:text-left">
         <h1 className="text-[24px] font-bold md:text-[36px] lg:text-[48px] xl:text-[48px] text-hero mb-2 leading-tight lg:leading-[70px]  ">
           Connecting Potential,
           <br />
@@ -34,7 +34,7 @@ const HeroSection = () => {
         </span>
 
         <Link href="/partner">
-          <button className="px-8 py-3 mt-4  text-white rounded-2xl shadow-md border-hijau border-[1px] font-['Poppins'] font-semibold  lg:text-[18px] bg-hijau hover:bg-white hover:text-[#0F4C5C] ">
+          <button className="px-8 py-3 mt-10  text-white rounded-2xl shadow-md border-hijau border-[1px] font-['Poppins'] font-semibold  lg:text-[18px] bg-hijau hover:bg-white hover:text-[#0F4C5C] ">
             Be Our Partner
           </button>
         </Link>

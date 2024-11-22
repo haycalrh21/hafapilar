@@ -254,7 +254,7 @@ export default function FormInput({ department }: any) {
           <div className="flex-1">
             <label
               htmlFor="firstName"
-              className="block text-sm font-medium mb-4"
+              className="block text-sm text-hero font-medium mb-4"
             >
               First Name *
             </label>
@@ -277,7 +277,7 @@ export default function FormInput({ department }: any) {
           <div className="flex-1">
             <label
               htmlFor="lastName"
-              className="block text-sm font-medium mb-4"
+              className="block text-sm font-medium text-hero mb-4"
             >
               Last Name *
             </label>
@@ -299,7 +299,7 @@ export default function FormInput({ department }: any) {
         </div>
 
         {/* Date of Birth and Gender */}
-        <div className="flex flex-col font-['Poppins'] sm:flex-row gap-4 mb-12">
+        <div className="flex flex-col font-['Poppins'] text-hero sm:flex-row gap-4 mb-12">
           <div className="flex-1">
             <label
               htmlFor="dateOfBirth"
@@ -324,7 +324,9 @@ export default function FormInput({ department }: any) {
           </div>
 
           <div className="flex-1">
-            <label className="block text-sm font-medium mb-4">Gender *</label>
+            <label className="block text-hero text-sm font-medium mb-4">
+              Gender *
+            </label>
             <div className="flex  gap-20  items-center">
               <label className="flex items-center space-x-2">
                 <input
@@ -359,7 +361,7 @@ export default function FormInput({ department }: any) {
         <div className="mb-12 font-['Poppins']">
           <label
             htmlFor="passportId"
-            className="block text-sm font-medium mb-4"
+            className="block text-sm text-hero font-medium mb-4"
           >
             Passport ID *
           </label>
@@ -380,7 +382,7 @@ export default function FormInput({ department }: any) {
         </div>
 
         {/* Email Address and Whatsapp Number */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-12 font-['Poppins']">
+        <div className="flex flex-col text-hero sm:flex-row gap-4 mb-12 font-['Poppins']">
           <div className="flex-1">
             <label htmlFor="email" className="block text-sm font-medium mb-4">
               Email Address *
@@ -405,7 +407,7 @@ export default function FormInput({ department }: any) {
           <div className="flex-1">
             <label
               htmlFor="whatsapp"
-              className="block text-sm font-medium mb-4"
+              className="block text-hero text-sm font-medium mb-4"
             >
               WhatsApp Number *
             </label>
@@ -420,7 +422,7 @@ export default function FormInput({ department }: any) {
         </div>
 
         {/* Department and Position */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-12 font-['Poppins']">
+        <div className="flex flex-col sm:flex-row gap-4 text-hero mb-12 font-['Poppins']">
           <div className="flex-1">
             <label
               htmlFor="department"
@@ -498,8 +500,11 @@ export default function FormInput({ department }: any) {
             onChange={handleCheckboxChange}
             className="form-checkbox ml-4"
           />
-          <label htmlFor="terms" className="text-sm flex flex-wrap gap-1">
-            I agree to the{" "}
+          <label
+            htmlFor="terms"
+            className="text-sm flex text-hero flex-wrap gap-1"
+          >
+            By checking this box, I have read and agree to the
             <button
               type="button"
               onClick={() => setOpenTerms(true)}

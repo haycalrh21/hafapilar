@@ -153,9 +153,9 @@ export default function FormInputPartner() {
         className="flex flex-col gap-4 p-4 bg-white border-[1px] border-hijau rounded-xl"
       >
         {/* Full Name and Last Name */}
-        <div className="flex flex-col sm:flex-row gap-4 pb-4">
+        <div className="flex flex-col sm:flex-row gap-4 pb-4 text-hero">
           <div className="flex-1">
-            <label htmlFor="firstName" className="font-medium block mb-4">
+            <label htmlFor="firstName" className="font-medium block mb-4 ">
               First Name *
             </label>
             <input
@@ -191,7 +191,7 @@ export default function FormInputPartner() {
         </div>
 
         {/* Email Address and Whatsapp Number */}
-        <div className="flex gap-4 pb-4 flex-col sm:flex-row">
+        <div className="flex gap-4 pb-4 flex-col sm:flex-row text-hero">
           <div className="flex-1">
             <label htmlFor="email" className=" font-medium block mb-4">
               Business Email*
@@ -220,7 +220,7 @@ export default function FormInputPartner() {
             />
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row gap-4 pb-4">
+        <div className="flex flex-col sm:flex-row gap-4 pb-4 text-hero">
           <div className="flex-1">
             <label htmlFor="companywebsite" className="font-medium block mb-4">
               Company Name *
@@ -285,7 +285,7 @@ export default function FormInputPartner() {
             )}
           </div> */}
 
-          <div className="flex-1">
+          <div className="flex-1 text-hero">
             <label htmlFor="country" className=" font-medium block mb-4">
               Country *
             </label>
@@ -310,7 +310,7 @@ export default function FormInputPartner() {
         </div>
 
         {/* Message */}
-        <div className="flex-1">
+        <div className="flex-1 text-hero">
           <label htmlFor="Message" className=" font-medium block mb-4">
             Message*
           </label>

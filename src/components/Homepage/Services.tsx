@@ -5,19 +5,19 @@ const services = [
     image: "/assets/services/talent.png",
     title: "Talent Acquisition & Recruitment",
     description:
-      "We specialize in sourcing and recruiting top talent to drive your business forward",
+      "We specialize in sourcing and recruiting top talent to drive your business forward.",
   },
   {
     image: "/assets/services/training.png",
     title: "Training Center Facility & Language Courses",
     description:
-      "Investing in your team is essential. We provide a fully equipped training center and diverse language courses to enhance professional skills and communication",
+      "Investing in your team is essential. We provide a fully equipped training center and diverse language courses to enhance professional skills and communication.",
   },
   {
     image: "/assets/services/employee.png",
     title: "Employee Onboarding & Management",
     description:
-      "We handle all aspects of manpower onboarding, from contract signing and orientation to government registrations, visa processing, background checks, and medical clearances",
+      "We handle all aspects of manpower onboarding, from contract signing and orientation to government registrations, visa processing, background checks, and medical clearances.",
   },
 ];
 
@@ -67,13 +67,13 @@ export default function Services() {
         {services.map((service, index) => (
           <div
             key={index}
-            className="bg-white shadow-md rounded-[20px] p-7 py-10 flex flex-col items-center border-hijau border-[1px] min-h-[200px]"
+            className="bg-white shadow-md rounded-[20px] p-7 py-6 flex flex-col items-center border-hijau border-[1px] min-h-[200px]"
           >
-            <div className="mb-4 flex-grow-0">
+            <div className="mb-4 flex-grow-0 top-20">
               <img
                 src={service.image}
                 alt={service.title}
-                className="w-20 h-10 sm:w-20 sm:h-10 md:w-40 md:h-40 lg:w-20 lg:h-20 object-contain"
+                className="w-20 h-10 md:w-20 md:h-20  object-contain"
               />
             </div>
             <h3 className="text-[13px] sm:text-[13px] lg:text-[20px] text-textlayout font-semibold text-center mb-2 ">
