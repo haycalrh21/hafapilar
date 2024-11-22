@@ -10,13 +10,13 @@ export function CandidatePage() {
         backgroundColor: "#ECECEC",
         backgroundPosition: "center top",
       }}
-      className="relative min-h-screen mx-auto"
+      className="relative overflow-hidden min-h-screen" // Nambahin overflow-hidden disini
     >
       {/* Background Vector */}
       <img
         src={"/assets/vectorcandidate.png"}
         className={clsx(
-          "absolute z-10", // Tetap di depan elemen latar belakang
+          "absolute z-10",
           "top-[-3px] left-[28px] w-[358.71px] h-[281.33px] rotate-[-2.2deg]",
           "md:top-[-80px] md:left-[450px] md:w-[673.94px] md:h-[450.56px] md:rotate-[-23.2deg]"
         )}
@@ -26,18 +26,19 @@ export function CandidatePage() {
       <img
         src="/assets/leftside.png"
         className={clsx(
-          "absolute z-0", // Z-index lebih rendah agar berada di belakang DepartmentCards
+          "absolute z-0",
           "top-[252.4px] left-[-145.01px] w-[363.87px] h-[261.94px]",
           "md:top-[168px] md:left-[-250px] md:w-[715.22px] md:h-[717.55px]"
         )}
       />
 
+      {/* Bottom Right Image */}
       <img
         src="/assets/bottomright.png"
         className={clsx(
-          "absolute ", // Z-index lebih rendah agar berada di belakang DepartmentCards
-          "top-[3810.4px] left-[60.01px] w-[363.87px] h-[261.94px]",
-          "md:top-[1546.53px] md:left-[1200.45px] md:w-[315.22px] md:h-[500.55px]"
+          "absolute",
+          "bottom-0 right-[-100px] w-[363.87px] h-[261.94px]", // Ubah positioning ke bottom
+          "md:bottom-0 md:right-[-100px] md:w-[315.22px] md:h-[500.55px]"
         )}
       />
 

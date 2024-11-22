@@ -46,46 +46,48 @@ const departments = [
 
 const DepartmentCards = () => {
   return (
-    <div className="p-6 md:p-3 text-center">
-      <h1 className="text-[16px] sm:text-[24px] md:text-[24px] lg:text-normal text-center font-['Poppins'] font-bold mt-20 mb-4">
-        Select your preferred department
-      </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-0 lg:gap-10 w-full">
-        {departments.map((department, index) => (
-          <div
-            key={index}
-            className="py-2 max-w-sm w-full border-hijau border-[1px] bg-white shadow-lg rounded-2xl flex flex-col"
-          >
-            {/* Gambar */}
-            <img
-              className="rounded-2xl py-4 px-4 object-contain w-full"
-              src={department.image}
-              alt={department.title}
-            />
-
-            {/* Konten (Title dan Positions) */}
-            <div className="p-6  mb-10 flex-grow text-left">
-              <h6 className="text-lg -mt-8 font-semibold mb-4">
-                {department.title}
-              </h6>
-              <p className="text-[14px] font-medium text-departement min-h-[72px]">
-                Positions: {department.positions}
-              </p>
-            </div>
-
-            {/* Tombol */}
-            <Link
-              href={{
-                pathname: "/candidate/form",
-                query: { department: department.title },
-              }}
+    <div className="container mx-auto px-4">
+      <div className="p-3 text-center">
+        <h1 className="text-[16px] sm:text-[24px] md:text-[24px] lg:text-normal text-center font-['Poppins'] font-bold mt-20 mb-4">
+          Select your preferred department
+        </h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-0 lg:gap-10 w-full">
+          {departments.map((department, index) => (
+            <div
+              key={index}
+              className="py-2 max-w-sm w-full border-hijau border-[1px] bg-white shadow-lg rounded-2xl flex flex-col"
             >
-              <button className="max-w-md w-5/6 py-3 mb-4 mx-auto text-white rounded-2xl shadow-md border-hijau border-[1px] font-['Poppins'] font-semibold text-xs lg:text-sm bg-[#0F4C5C] hover:bg-white hover:text-[#0F4C5C] hover:shadow-amber-400">
-                Apply
-              </button>
-            </Link>
-          </div>
-        ))}
+              {/* Gambar */}
+              <img
+                className="rounded-2xl py-4 px-4 object-contain w-full"
+                src={department.image}
+                alt={department.title}
+              />
+
+              {/* Konten (Title dan Positions) */}
+              <div className="p-6  mb-10 flex-grow text-left">
+                <h6 className="text-lg -mt-8 font-semibold mb-4">
+                  {department.title}
+                </h6>
+                <p className="text-[14px] font-medium text-departement min-h-[72px]">
+                  Positions: {department.positions}
+                </p>
+              </div>
+
+              {/* Tombol */}
+              <Link
+                href={{
+                  pathname: "/candidate/form",
+                  query: { department: department.title },
+                }}
+              >
+                <button className="max-w-md w-5/6 py-3 mb-4 mx-auto text-white rounded-2xl shadow-md border-hijau border-[1px] font-['Poppins'] font-semibold text-xs lg:text-sm bg-[#0F4C5C] hover:bg-white hover:text-[#0F4C5C] hover:shadow-amber-400">
+                  Apply
+                </button>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
