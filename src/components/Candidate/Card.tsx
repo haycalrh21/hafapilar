@@ -46,7 +46,7 @@ const departments = [
 
 const DepartmentCards = () => {
   return (
-    <div className="p-3 text-center">
+    <div className="p-6 md:p-3 text-center">
       <h1 className="text-[16px] sm:text-[24px] md:text-[24px] lg:text-normal text-center font-['Poppins'] font-bold mt-20 mb-4">
         Select your preferred department
       </h1>

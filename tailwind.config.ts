@@ -17,6 +17,7 @@ const config: Config = {
       },
       colors: {
         hijau: "#0F4C5C",
+        textlayout: "#07242B",
         departement: "#63767A",
         texttesti: "#07242B",
         hero: "#07242B",

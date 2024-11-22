@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function HeaderNotButton() {
   return (
     <div className="bg-transparent">
-      <header className="w-full ">
+      <header className="w-full relative z-30">
         <div className="max-w-screen-lg mx-auto flex justify-between items-center relative">
           {/* <div className="absolute top-4 left-7 sm:right-20 sm:top-3 lg:top-12 lg:-left-12 "> */}
           {/* <div className="absolute top-4 left-7 sm:right-20 sm:top-3 lg:top-12 lg:-left-12 "> */}
@@ -13,7 +13,7 @@ export default function HeaderNotButton() {
               <img
                 src="/logo.png"
                 alt="Logo Hafa Pilar"
-                className="inline-block "
+                className="inline-block cursor-pointer "
               />
             </Link>
           </div>
