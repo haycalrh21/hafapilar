@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function TeamCard() {
   const teamMembers = [
     {
-      name: "Hanni Ulfa",
+      name: "Haeni Ulfa",
       position: "Founder",
       image: "/assets/team/HaeniUlfa.png",
       university:
