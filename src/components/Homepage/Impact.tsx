@@ -48,7 +48,7 @@ export default function ImpactCard() {
             backgroundImage: `url('/assets/left2.png'), url('/assets/right2.png')`,
             backgroundRepeat: "no-repeat",
             backgroundPosition: "top left, bottom right",
-            backgroundSize: "250px 250px",
+            backgroundSize: "370px 370px",
             color: "white",
             padding: "1rem 0",
             borderRadius: "1rem",
