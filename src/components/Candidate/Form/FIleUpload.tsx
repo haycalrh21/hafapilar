@@ -17,6 +17,7 @@ const FileUpload = ({
 
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
+      console.log("Dropped files:", acceptedFiles); // Logs the dropped files
       const selectedFile = acceptedFiles[0];
       setFile(selectedFile);
       setIsUploading(true);
@@ -27,6 +28,7 @@ const FileUpload = ({
         await new Promise((resolve) => setTimeout(resolve, 2000));
 
         // Mock successful upload
+        console.log("File successfully uploaded:", selectedFile); // Logs the file after successful upload
         setUploadStatus("success");
         onFileSelect(selectedFile);
       } catch (error) {
@@ -41,6 +43,7 @@ const FileUpload = ({
 
   const removeFile = (e: React.MouseEvent) => {
     e.stopPropagation();
+    console.log("Removing file:", file); // Logs file when removed
     setFile(null);
     setUploadStatus("idle");
   };
@@ -58,7 +61,7 @@ const FileUpload = ({
   });
 
   return (
-    <div className="w-[95%] mx-auto  font-['Poppins']">
+    <div className="w-[95%] mx-auto font-['Poppins']">
       <label className="block text-sm font-medium text-hero mb-2">
         Upload Your Work Experience Certificate*
       </label>

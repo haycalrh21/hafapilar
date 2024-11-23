@@ -7,7 +7,7 @@ body {
 }
 
 .icon-wa {
-  filter: brightness(0) saturate(100%) invert(1);
+  filter: brightness(10) saturate(100%) invert(1);
 }
 
 /* Warna tanggal ketika dipilih */

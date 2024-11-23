@@ -13,15 +13,6 @@ interface ApiResponse {
   message: string;
 }
 
-const fileToBase64 = (file: File): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = (error) => reject(error);
-  });
-};
-
 const formSchema = z.object({
   firstName: z
     .string()
@@ -148,7 +139,6 @@ export default function FormInput({ department }: any) {
     e.preventDefault();
     setLoading(true);
 
-    // Validasi file
     if (!cvFile || !workExperienceFile) {
       alert("Both CV and Work Experience PDF files are required.");
       return;
@@ -163,62 +153,38 @@ export default function FormInput({ department }: any) {
     }
 
     try {
-      // Validasi form data
       const validatedData = formSchema.parse(formData);
 
-      // Convert files to base64
-      const cvBase64 = await fileToBase64(cvFile);
-      const certificateBase64 = await fileToBase64(workExperienceFile);
-
-      // Prepare data for API
-      const apiData = {
-        fullname: validatedData.firstName,
-        lastname: validatedData.lastName,
-        dateOfBirth: validatedData.dateOfBirth,
-        gender: validatedData.gender,
-        passportNumber: validatedData.passportId,
-        email: validatedData.email,
-        phoneNumber: validatedData.whatsapp,
-        department: validatedData.department,
-        position: validatedData.position,
-        cv: cvBase64,
-        certificate: certificateBase64,
-      };
-
-      // Make API call
+      // Prepare FormData to be sent
+      const formDataToSend = new FormData();
+      formDataToSend.append("fullname", validatedData.firstName);
+      formDataToSend.append("lastname", validatedData.lastName);
+      formDataToSend.append("dateOfBirth", validatedData.dateOfBirth);
+      formDataToSend.append("gender", validatedData.gender);
+      formDataToSend.append("passportNumber", validatedData.passportId);
+      formDataToSend.append("email", validatedData.email);
+      formDataToSend.append("phoneNumber", validatedData.whatsapp);
+      formDataToSend.append("department", validatedData.department);
+      formDataToSend.append("position", validatedData.position);
+      formDataToSend.append("cv", cvFile);
+      formDataToSend.append("workExperienceFile", workExperienceFile);
+      console.log(validatedData);
       const response = await fetch(`${api_url}/candidate`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(apiData),
+        body: formDataToSend, // FormData automatically sets content-type to multipart/form-data
       });
 
       if (!response.ok) {
-        setLoading(false);
-        throw new Error(`API error: ${response.status}`);
+        throw new Error(`Error: ${response.statusText}`);
       }
 
-      setLoading(false);
-      const result: ApiResponse = await response.json();
-      console.log("Submission successful:", result);
+      const result = await response.json();
+      console.log(result);
 
-      // Navigate to success page
       router.push("/candidate/finish");
     } catch (error) {
       setLoading(false);
-      if (error instanceof z.ZodError) {
-        const newErrors: Partial<Record<keyof FormData, string>> = {};
-        error.errors.forEach((err) => {
-          if (err.path[0]) {
-            newErrors[err.path[0] as keyof FormData] = err.message;
-          }
-        });
-        setErrors(newErrors);
-      } else {
-        console.error("Submission error:", error);
-        // You might want to show an error message to the user
-      }
+      console.error(error);
     }
   };
 

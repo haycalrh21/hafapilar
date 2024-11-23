@@ -19,7 +19,7 @@ export default function TeamCard() {
       name: "Syeanne Hioe",
       position: "Brand Director",
       image: "/assets/team/SyeanneHioe.png",
-      university: "B.Sc Environmental Studies, University of Oregon, USA",
+      university: "B.A in Arts and Technology, University of Oregon, USA",
     },
   ];
 
@@ -52,10 +52,10 @@ export default function TeamCard() {
               <h3 className="text-[20px] text-hijau font-semibold sm:font-normal lg:font-semibold">
                 {member.name}
               </h3>
-              <p className="text-sm text-departement italic mb-2">
+              <p className="text-[20px] text-center text-departement italic mb-2">
                 {member.position}
               </p>
-              <p className="text-[12px] text-departement">
+              <p className="text-[16px] text-departement leading-[24px]">
                 {member.university}
               </p>
             </div>

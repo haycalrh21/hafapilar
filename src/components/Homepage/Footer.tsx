@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import { FaWhatsapp } from "react-icons/fa";
+import { MdOutlineEmail } from "react-icons/md";
+import { FaInstagram } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className="py-6 mt-8 max-w-6xl  sm:mx-auto md:mx-auto  lg:mx-auto text-black">
@@ -28,41 +30,32 @@ export default function Footer() {
                 href="mailto:hrd@hafapilar.com"
                 className="flex items-center gap-2 text-black no-underline"
               >
-                <Image
-                  src="/assets/icon/email.png"
-                  alt="Email"
-                  width={30}
-                  height={30}
-                />
+                <div className="bg-hijau h-8 w-8 flex items-center justify-center rounded-md">
+                  {/* Wrapper div */}
+
+                  <MdOutlineEmail className="h-6 w-6 text-white" />
+                </div>
                 <span className="text-[13px] text-hero">hrd@hafapilar.com</span>
               </Link>
               <Link
                 href="tel:+62-21-439-24782"
-                className="flex items-center gap-2 text-black no-underline"
+                className="flex items-center justify-center gap-2 text-black no-underline"
               >
-                <div className="bg-hijau -p-1 rounded-md">
-                  {" "}
+                <div className="bg-hijau h-8 w-8 flex items-center justify-center rounded-md">
                   {/* Wrapper div */}
-                  <Image
-                    src="/assets/icon/wa.png"
-                    alt="WhatsApp"
-                    className="icon-wa"
-                    width={30}
-                    height={30}
-                  />
+                  <FaWhatsapp className="h-6 w-6 text-white" />
                 </div>
-                <span className="text-[13px] text-hero ">+62-21-439-24782</span>
+                <span className="text-[13px] text-hero">+62-21-439-24782</span>
               </Link>
+
               <Link
                 href="https://www.instagram.com/hafapilarindonesia/"
                 className="flex items-center gap-2 text-black no-underline"
               >
-                <Image
-                  src="/assets/icon/ig.png"
-                  alt="Instagram"
-                  width={30}
-                  height={30}
-                />
+                <div className="bg-hijau h-8 w-8 flex items-center justify-center rounded-md">
+                  <FaInstagram className="h-6 w-6 text-white" />
+                </div>
+
                 <span className="text-[13px] text-hero">
                   @hafapilarindonesia
                 </span>
