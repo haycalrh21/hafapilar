@@ -10,7 +10,7 @@ export default function TeamCard() {
         "B.Sc International Business Management, University of Oregon, USA",
     },
     {
-      name: "Frian Mandang",
+      name: "Frian Mardhani",
       position: "Co-Founder",
       image: "/assets/team/FrianMardhani.png",
       university: "B.Sc Environmental Studies, University of Oregon, USA",
