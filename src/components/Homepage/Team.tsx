@@ -16,7 +16,7 @@ export default function TeamCard() {
       university: "B.Sc Environmental Studies, University of Oregon, USA",
     },
     {
-      name: "Susanna Kina",
+      name: "Syeanne Hioe",
       position: "Brand Director",
       image: "/assets/team/SyeanneHioe.png",
       university: "B.Sc Environmental Studies, University of Oregon, USA",
