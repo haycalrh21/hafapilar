@@ -26,7 +26,6 @@ export default function CandidateForm() {
         className={clsx(
           "absolute z-10",
           "top-[-3px] left-[-18px] w-[358.71px] h-[281.33px] rotate-[-2.2deg]",
-
           "md:top-[-80px] md:left-[450px] md:w-[673.94px] md:h-[450.56px] md:rotate-[-23.2deg]"
         )}
       />
@@ -37,7 +36,7 @@ export default function CandidateForm() {
         className={clsx(
           "absolute z-0",
           "top-[252.4px] left-[-145.01px] w-[363.87px] h-[261.94px]",
-          "md:top-[168px] md:left-[-250px] md:w-[715.22px] md:h-[717.55px]"
+          "md:top-[168px] md:left-[-40px] md:w-[500.22px] md:h-[677.55px]  md:rotate-[-2.2deg]"
         )}
       />
 
@@ -47,7 +46,7 @@ export default function CandidateForm() {
         className={clsx(
           "absolute",
           "bottom-0 right-[-100px] w-[363.87px] h-[261.94px]", // Ubah positioning ke bottom
-          "md:bottom-0 md:right-[-100px] md:w-[315.22px] md:h-[500.55px]"
+          "md:-bottom-10 md:right-[-10px] md:w-[315.22px] md:h-[500.55px] md:rotate-[-7.25deg]"
         )}
       />
 

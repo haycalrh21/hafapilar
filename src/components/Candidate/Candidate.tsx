@@ -38,7 +38,7 @@ export function CandidatePage() {
         className={clsx(
           "absolute",
           "bottom-0 right-[-100px] w-[363.87px] h-[261.94px]", // Ubah positioning ke bottom
-          "md:bottom-0 md:right-[-100px] md:w-[315.22px] md:h-[500.55px]"
+          "md:-bottom-10 md:right-[-10px] md:w-[315.22px] md:h-[500.55px] md:rotate-[-7.25deg]"
         )}
       />
 
