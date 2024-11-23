@@ -32,7 +32,7 @@ export default function Services() {
             style={{
               backgroundColor: "#F2AF29CC",
               font: "Poppins",
-              padding: "2px 2px 10px",
+              padding: "2px 2px 8px",
               marginRight: "10px",
               display: "inline-block",
               lineHeight: "0.1",
