@@ -1,4 +1,3 @@
-"use client";
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { IoCloudUploadOutline } from "react-icons/io5";
@@ -7,7 +6,7 @@ import { FiFile, FiX, FiCheck } from "react-icons/fi";
 const FileUploadCv = ({
   onFileSelect,
 }: {
-  onFileSelect: (file: File | null) => void;
+  onFileSelect: (file: File | null, fileUrl: string | null) => void;
 }) => {
   const [file, setFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
@@ -23,11 +22,35 @@ const FileUploadCv = ({
       setUploadStatus("idle");
 
       try {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        // Initialize FormData to send the file to Pinata
+        const formData = new FormData();
+        formData.append("file", selectedFile);
 
-        // Mock successful upload
-        setUploadStatus("success");
-        onFileSelect(selectedFile);
+        const res = await fetch(
+          "https://api.pinata.cloud/pinning/pinFileToIPFS",
+          {
+            method: "POST",
+            headers: {
+              pinata_api_key: "15c46cf6b49779ff3845",
+              pinata_secret_api_key:
+                "064d9845277628274f871985bb5871461419f3355a5aa7a824d639992153251a",
+            },
+            body: formData,
+          }
+        );
+
+        if (!res.ok) {
+          throw new Error("Pinata upload failed");
+        }
+
+        const result = await res.json();
+        if (result?.IpfsHash) {
+          const fileUrl = `https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`; // Construct the URL
+          setUploadStatus("success");
+          onFileSelect(selectedFile, fileUrl); // Send both file and URL to the parent
+        } else {
+          setUploadStatus("error");
+        }
       } catch (error) {
         setUploadStatus("error");
         console.error("Upload failed:", error);
@@ -57,7 +80,7 @@ const FileUploadCv = ({
   });
 
   return (
-    <div className="w-[95%] mx-auto  font-['Poppins']">
+    <div className="w-[95%] mx-auto font-['Poppins']">
       <label className="block text-sm font-medium text-hero mb-2">
         Upload Your CV*
       </label>

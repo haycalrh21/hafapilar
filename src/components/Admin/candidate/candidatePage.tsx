@@ -141,7 +141,7 @@ export default function AdminCandidatePage({ data }: { data: Candidate[] }) {
                 <td className="px-4 py-2">{candidate.position}</td>
                 <td className="px-4 py-2">
                   <Link
-                    href={candidate.cvUrl}
+                    href={candidate.cv}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -150,7 +150,7 @@ export default function AdminCandidatePage({ data }: { data: Candidate[] }) {
                 </td>
                 <td className="px-4 py-2">
                   <Link
-                    href={candidate.certificateUrl}
+                    href={candidate.certificate}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

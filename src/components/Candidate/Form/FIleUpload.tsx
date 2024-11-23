@@ -7,7 +7,7 @@ import { FiFile, FiX, FiCheck } from "react-icons/fi";
 const FileUpload = ({
   onFileSelect,
 }: {
-  onFileSelect: (file: File | null) => void;
+  onFileSelect: (file: File | null, fileUrl: string | null) => void;
 }) => {
   const [file, setFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
@@ -15,22 +15,46 @@ const FileUpload = ({
     "idle" | "success" | "error"
   >("idle");
 
+  // Initialize useDropzone hook
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop: (acceptedFiles) => onDrop(acceptedFiles),
+    maxSize: 10 * 1024 * 1024, // 10MB
+  });
+
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
-      console.log("Dropped files:", acceptedFiles); // Logs the dropped files
       const selectedFile = acceptedFiles[0];
       setFile(selectedFile);
       setIsUploading(true);
       setUploadStatus("idle");
 
       try {
-        // Simulate upload delay - replace with actual upload logic
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        const formData = new FormData();
+        formData.append("file", selectedFile);
 
-        // Mock successful upload
-        console.log("File successfully uploaded:", selectedFile); // Logs the file after successful upload
+        const res = await fetch(
+          "https://api.pinata.cloud/pinning/pinFileToIPFS",
+          {
+            method: "POST",
+            headers: {
+              pinata_api_key: "15c46cf6b49779ff3845",
+              pinata_secret_api_key:
+                "064d9845277628274f871985bb5871461419f3355a5aa7a824d639992153251a",
+            },
+            body: formData,
+          }
+        );
+
+        if (!res.ok) {
+          throw new Error("Pinata upload failed");
+        }
+
+        const result = await res.json();
+        const fileUrl = `https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`; // URL valid
+
+        console.log("Uploaded File URL:", fileUrl); // Debug output
         setUploadStatus("success");
-        onFileSelect(selectedFile);
+        onFileSelect(selectedFile, fileUrl); // Send file URL to parent component
       } catch (error) {
         setUploadStatus("error");
         console.error("Upload failed:", error);
@@ -40,25 +64,6 @@ const FileUpload = ({
     },
     [onFileSelect]
   );
-
-  const removeFile = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    console.log("Removing file:", file); // Logs file when removed
-    setFile(null);
-    setUploadStatus("idle");
-  };
-
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept: {
-      "image/jpeg": [".jpg", ".jpeg"],
-      "image/png": [".png"],
-      "application/pdf": [".pdf"],
-    },
-    maxSize: 10485760,
-    multiple: false,
-    disabled: isUploading,
-  });
 
   return (
     <div className="w-[95%] mx-auto font-['Poppins']">
@@ -78,7 +83,6 @@ const FileUpload = ({
           }`}
       >
         <input {...getInputProps()} />
-
         {!file ? (
           <div className="flex flex-col items-center gap-3">
             <IoCloudUploadOutline className="w-12 h-12 text-gray-400" />
@@ -90,12 +94,6 @@ const FileUpload = ({
                 JPG, PNG or PDF, file size no more than 10MB
               </p>
             </div>
-            <button
-              type="button"
-              className="mt-4 px-6 py-2 border border-teal-600 text-teal-600 rounded-md hover:bg-teal-50 transition-colors"
-            >
-              Select File
-            </button>
           </div>
         ) : (
           <div className="flex items-center justify-between p-4 bg-white rounded-lg">
@@ -121,14 +119,6 @@ const FileUpload = ({
               ) : uploadStatus === "error" ? (
                 <span className="text-red-500 text-sm">Upload failed</span>
               ) : null}
-
-              <button
-                onClick={removeFile}
-                className="p-1 rounded-full hover:bg-gray-100"
-                disabled={isUploading}
-              >
-                <FiX className="w-5 h-5 text-gray-500" />
-              </button>
             </div>
           </div>
         )}

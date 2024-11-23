@@ -5,7 +5,7 @@ import { getToken } from "next-auth/jwt"; // Menggunakan next-auth untuk mendapa
 export async function middleware(req: NextRequest) {
   const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET }); // Mendapatkan token dengan next-auth
   const { pathname } = req.nextUrl;
-  console.log(token);
+  // console.log(token);
   // Abaikan validasi untuk halaman login (/admin)
   if (pathname === "/admin") {
     // Jika ada token, redirect ke /admin/dashboard

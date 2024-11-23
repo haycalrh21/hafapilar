@@ -6,7 +6,7 @@ import { DepartmentsData } from "@/app/services/dummy";
 import FileUploadCv from "./FileUploadCV";
 import { useRouter } from "next/navigation";
 import DatePicker from "@/components/field/DatePicker";
-import { z } from "zod";
+import { set, z } from "zod";
 import PhoneNumberInput from "./PhoneInput";
 
 interface ApiResponse {
@@ -72,8 +72,8 @@ export default function FormInput({ department }: any) {
   const [openTerms, setOpenTerms] = useState(false);
   const [openRecruitment, setOpenRecruitment] = useState(false);
   const [positions, setPositions] = useState<string[]>([]);
-  const [cvFile, setCvFile] = useState<File | null>(null);
-  const [workExperienceFile, setWorkExperienceFile] = useState<File | null>(
+  const [cvFile, setCvFile] = useState<string | null>(null);
+  const [workExperienceFile, setWorkExperienceFile] = useState<string | null>(
     null
   );
 
@@ -135,6 +135,21 @@ export default function FormInput({ department }: any) {
     setIsAgreed(e.target.checked);
   };
 
+  const handleFileUploadCv = (file: File | null, fileUrl: string | null) => {
+    console.log("File selected:", file);
+    console.log("File URL received:", fileUrl);
+    setCvFile(fileUrl);
+  };
+
+  const handleFileUploadWorkExperience = (
+    file: File | null,
+    fileUrl: string | null
+  ) => {
+    console.log("File selected:", file);
+    console.log("File URL received:", fileUrl);
+    setWorkExperienceFile(fileUrl);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -144,34 +159,29 @@ export default function FormInput({ department }: any) {
       return;
     }
 
-    if (
-      cvFile.type !== "application/pdf" ||
-      workExperienceFile.type !== "application/pdf"
-    ) {
-      alert("Both files must be in PDF format.");
-      return;
-    }
-
     try {
-      const validatedData = formSchema.parse(formData);
+      const payload = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        dateOfBirth: formData.dateOfBirth,
+        gender: formData.gender,
+        passportId: formData.passportId,
+        email: formData.email,
+        phoneNumber: formData.whatsapp,
+        department: formData.department,
+        position: formData.position,
+        cvFile,
+        certificateFile: workExperienceFile,
+      };
 
-      // Prepare FormData to be sent
-      const formDataToSend = new FormData();
-      formDataToSend.append("fullname", validatedData.firstName);
-      formDataToSend.append("lastname", validatedData.lastName);
-      formDataToSend.append("dateOfBirth", validatedData.dateOfBirth);
-      formDataToSend.append("gender", validatedData.gender);
-      formDataToSend.append("passportNumber", validatedData.passportId);
-      formDataToSend.append("email", validatedData.email);
-      formDataToSend.append("phoneNumber", validatedData.whatsapp);
-      formDataToSend.append("department", validatedData.department);
-      formDataToSend.append("position", validatedData.position);
-      formDataToSend.append("cv", cvFile);
-      formDataToSend.append("workExperienceFile", workExperienceFile);
-      console.log(validatedData);
+      console.log("Payload to send:", payload);
+
       const response = await fetch(`${api_url}/candidate`, {
         method: "POST",
-        body: formDataToSend, // FormData automatically sets content-type to multipart/form-data
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
 
       if (!response.ok) {
@@ -188,28 +198,12 @@ export default function FormInput({ department }: any) {
     }
   };
 
-  const handleFileUploadCv = (file: File | null) => {
-    if (file && file.type !== "application/pdf") {
-      alert("Please upload a valid PDF file for CV.");
-      return;
-    }
-    setCvFile(file);
-  };
-
   const handlePhoneChange = (value: string) => {
-    // Menambahkan tanda + di depan jika belum ada
     if (!value.startsWith("+")) {
       value = `+${value}`;
     }
     setFormData({ ...formData, whatsapp: value });
-    validateField("whatsapp", value); // Pastikan validasi dijalankan
-  };
-  const handleFileUploadWorkExperience = (file: File | null) => {
-    if (file && file.type !== "application/pdf") {
-      alert("Please upload a valid PDF file for Work Experience.");
-      return;
-    }
-    setWorkExperienceFile(file);
+    validateField("whatsapp", value); // Ensure validation is triggered
   };
 
   return (

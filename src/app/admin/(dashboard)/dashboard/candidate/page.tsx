@@ -11,7 +11,7 @@ export default async function page() {
     }
 
     const data = await res.json();
-
+    console.log(data);
     return <AdminCandidatePage data={data} />;
   } catch (error) {
     console.error(error); // log error for debugging
