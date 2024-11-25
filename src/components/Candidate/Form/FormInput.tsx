@@ -17,11 +17,11 @@ const formSchema = z.object({
   firstName: z
     .string()
     .min(5, "Minimum 5 character *")
-    .max(50, "First name is too long"),
+    .max(20, "First name is too long"),
   lastName: z
     .string()
     .min(5, "Minimum 5 character *")
-    .max(50, "Last name is too long"),
+    .max(20, "Last name is too long"),
   dateOfBirth: z.string().min(1, "Date of birth is required"),
   gender: z.enum(["male", "female"], {
     required_error: "Please select a gender",
@@ -32,15 +32,18 @@ const formSchema = z.object({
     .regex(
       /^[A-Za-z0-9]+$/,
       "Passport ID must contain only letters and numbers"
-    ),
-  email: z.string().min(1, "Email is required").email("Invalid email address"),
+    )
+    .max(16, "Passport ID is too long"),
+  email: z
+    .string()
+    .min(1, "Email is required")
+    .email("Invalid email address")
+    .max(40, "Email is too long"),
   whatsapp: z
     .string()
     .min(1, "WhatsApp number is required *")
-    .regex(
-      /^\+[0-9]{1,15}$/,
-      "Invalid phone number format. Must start with +."
-    ),
+    .regex(/^\+[0-9]{1,15}$/, "Invalid phone number format. Must start with +.")
+    .max(13, "Phone number is too long"),
 
   department: z.string().min(1, "Department is required"),
   position: z.string().min(1, "Position is required"),
@@ -225,6 +228,7 @@ export default function FormInput({ department }: any) {
               value={formData.firstName}
               onChange={handleChange}
               required
+              maxLength={20}
               className={`w-full p-2 border rounded-xl ${
                 errors.firstName ? "border-red-500" : ""
               }`}
@@ -244,6 +248,7 @@ export default function FormInput({ department }: any) {
             <input
               id="lastName"
               name="lastName"
+              maxLength={20}
               placeholder="Last Name"
               value={formData.lastName}
               onChange={handleChange}
@@ -328,6 +333,7 @@ export default function FormInput({ department }: any) {
           <input
             id="passportId"
             name="passportId"
+            maxLength={16}
             placeholder="Passport ID"
             value={formData.passportId}
             onChange={handleChange}
@@ -350,6 +356,7 @@ export default function FormInput({ department }: any) {
             <input
               id="email"
               name="email"
+              maxLength={40}
               placeholder="john.doe@example.com"
               type="email"
               value={formData.email}

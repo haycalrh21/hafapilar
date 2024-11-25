@@ -32,15 +32,23 @@ const FileUpload = ({
         const formData = new FormData();
         formData.append("file", selectedFile);
 
+        const pinataApiKey = process.env.NEXT_PUBLIC_PINATA_API_KEY;
+        const pinataSecretApiKey =
+          process.env.NEXT_PUBLIC_PINATA_SECRET_API_KEY;
+
+        if (!pinataApiKey || !pinataSecretApiKey) {
+          throw new Error("Missing API keys in environment variables");
+        }
+
+        const headers = new Headers();
+        headers.append("pinata_api_key", pinataApiKey);
+        headers.append("pinata_secret_api_key", pinataSecretApiKey);
+
         const res = await fetch(
           "https://api.pinata.cloud/pinning/pinFileToIPFS",
           {
             method: "POST",
-            headers: {
-              pinata_api_key: "15c46cf6b49779ff3845",
-              pinata_secret_api_key:
-                "064d9845277628274f871985bb5871461419f3355a5aa7a824d639992153251a",
-            },
+            headers,
             body: formData,
           }
         );
@@ -64,6 +72,12 @@ const FileUpload = ({
     },
     [onFileSelect]
   );
+
+  const removeFile = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setFile(null);
+    setUploadStatus("idle");
+  };
 
   return (
     <div className="w-[95%] mx-auto font-['Poppins']">
@@ -91,9 +105,15 @@ const FileUpload = ({
                 Select a file or drag and drop here
               </p>
               <p className="text-sm text-gray-500 mt-1">
-                JPG, PNG or PDF, file size no more than 10MB
+                PDF size no more than 10MB
               </p>
             </div>
+            <button
+              type="button"
+              className="mt-4 px-6 py-2 border border-teal-600 text-teal-600 rounded-md hover:bg-teal-50 transition-colors"
+            >
+              Select File
+            </button>
           </div>
         ) : (
           <div className="flex items-center justify-between p-4 bg-white rounded-lg">
@@ -119,6 +139,13 @@ const FileUpload = ({
               ) : uploadStatus === "error" ? (
                 <span className="text-red-500 text-sm">Upload failed</span>
               ) : null}
+              <button
+                onClick={removeFile}
+                className="p-1 rounded-full hover:bg-gray-100"
+                disabled={isUploading}
+              >
+                <FiX className="w-5 h-5 text-gray-500" />
+              </button>
             </div>
           </div>
         )}

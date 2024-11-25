@@ -26,15 +26,22 @@ const FileUploadCv = ({
         const formData = new FormData();
         formData.append("file", selectedFile);
 
+        const pinataApiKey = process.env.NEXT_PUBLIC_PINATA_API_KEY;
+        const pinataSecretApiKey =
+          process.env.NEXT_PUBLIC_PINATA_SECRET_API_KEY;
+
+        if (!pinataApiKey || !pinataSecretApiKey) {
+          throw new Error("Missing API keys in environment variables");
+        }
+
+        const headers = new Headers();
+        headers.append("pinata_api_key", pinataApiKey);
+        headers.append("pinata_secret_api_key", pinataSecretApiKey);
         const res = await fetch(
           "https://api.pinata.cloud/pinning/pinFileToIPFS",
           {
             method: "POST",
-            headers: {
-              pinata_api_key: "15c46cf6b49779ff3845",
-              pinata_secret_api_key:
-                "064d9845277628274f871985bb5871461419f3355a5aa7a824d639992153251a",
-            },
+            headers,
             body: formData,
           }
         );
@@ -106,7 +113,7 @@ const FileUploadCv = ({
                 Select a file or drag and drop here
               </p>
               <p className="text-sm text-gray-500 mt-1">
-                JPG, PNG or PDF, file size no more than 10MB
+                PDF size no more than 10MB
               </p>
             </div>
             <button
