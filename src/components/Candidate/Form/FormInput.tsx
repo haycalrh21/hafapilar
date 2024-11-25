@@ -47,6 +47,8 @@ const formSchema = z.object({
 
   department: z.string().min(1, "Department is required"),
   position: z.string().min(1, "Position is required"),
+  cvFile: z.any(),
+  certificateFile: z.any(),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -66,6 +68,8 @@ export default function FormInput({ department }: any) {
     whatsapp: "",
     department: department || "",
     position: "",
+    cvFile: null,
+    certificateFile: null,
   });
 
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
@@ -157,10 +161,10 @@ export default function FormInput({ department }: any) {
     e.preventDefault();
     setLoading(true);
 
-    if (!cvFile || !workExperienceFile) {
-      alert("Both CV and Work Experience PDF files are required.");
-      return;
-    }
+    // if (!formData.cvFile || !formData.certificateFile) {
+    //   alert("tidak ada data dari depan");
+    //   setLoading(false);
+    // }
 
     try {
       const payload = {
@@ -173,11 +177,32 @@ export default function FormInput({ department }: any) {
         phoneNumber: formData.whatsapp,
         department: formData.department,
         position: formData.position,
-        cvFile,
+        cvFile: cvFile,
         certificateFile: workExperienceFile,
       };
+      if (
+        !payload.cvFile ||
+        !payload.certificateFile ||
+        !payload.firstName ||
+        !payload.lastName ||
+        !payload.dateOfBirth ||
+        !payload.gender ||
+        !payload.passportId ||
+        !payload.email ||
+        !payload.phoneNumber ||
+        !payload.department ||
+        !payload.position
+      ) {
+        alert("tidak ada data");
+        setLoading(false);
 
+        return;
+      }
       console.log("Payload to send:", payload);
+      if (!isAgreed) {
+        alert("You must agree to the terms and conditions");
+        setLoading(false);
+      }
 
       const response = await fetch(`${api_url}/candidate`, {
         method: "POST",

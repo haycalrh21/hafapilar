@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import DepartmentCards from "./Card";
 import HeaderNotButton from "./HeaderNotButton";
 import clsx from "clsx";
@@ -54,7 +54,9 @@ export function CandidatePage() {
             Discover the Career of Your Dreams
           </p>
         </div>
-        <DepartmentCards />
+        <Suspense fallback={<div>Loading...</div>}>
+          <DepartmentCards />
+        </Suspense>
       </div>
     </div>
   );

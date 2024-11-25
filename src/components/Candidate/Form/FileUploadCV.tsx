@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { IoCloudUploadOutline } from "react-icons/io5";
@@ -13,16 +15,32 @@ const FileUploadCv = ({
   const [uploadStatus, setUploadStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
+  const [error, setError] = useState<string | null>(null);
 
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
-      const selectedFile = acceptedFiles[0];
-      setFile(selectedFile);
-      setIsUploading(true);
+      // Reset state
+      setError(null);
+      setFile(null);
       setUploadStatus("idle");
 
+      if (!acceptedFiles || acceptedFiles.length === 0) {
+        alert("FIle not type pdf");
+        return;
+      }
+
+      const selectedFile = acceptedFiles[0];
+
+      // Validasi tipe file
+      if (selectedFile?.type !== "application/pdf") {
+        alert("Only PDF files are allowed.");
+        return;
+      }
+
+      setFile(selectedFile);
+      setIsUploading(true);
+
       try {
-        // Initialize FormData to send the file to Pinata
         const formData = new FormData();
         formData.append("file", selectedFile);
 
@@ -37,6 +55,7 @@ const FileUploadCv = ({
         const headers = new Headers();
         headers.append("pinata_api_key", pinataApiKey);
         headers.append("pinata_secret_api_key", pinataSecretApiKey);
+
         const res = await fetch(
           "https://api.pinata.cloud/pinning/pinFileToIPFS",
           {
@@ -52,14 +71,16 @@ const FileUploadCv = ({
 
         const result = await res.json();
         if (result?.IpfsHash) {
-          const fileUrl = `https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`; // Construct the URL
+          const fileUrl = `https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`;
           setUploadStatus("success");
-          onFileSelect(selectedFile, fileUrl); // Send both file and URL to the parent
+          onFileSelect(selectedFile, fileUrl);
         } else {
           setUploadStatus("error");
+          setError("Failed to upload file.");
         }
       } catch (error) {
         setUploadStatus("error");
+        setError("Failed to upload file.");
         console.error("Upload failed:", error);
       } finally {
         setIsUploading(false);
@@ -72,15 +93,12 @@ const FileUploadCv = ({
     e.stopPropagation();
     setFile(null);
     setUploadStatus("idle");
+    setError(null);
   };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    accept: {
-      "image/jpeg": [".jpg", ".jpeg"],
-      "image/png": [".png"],
-      "application/pdf": [".pdf"],
-    },
+    accept: { "application/pdf": [".pdf"] },
     maxSize: 10485760,
     multiple: false,
     disabled: isUploading,
@@ -113,7 +131,7 @@ const FileUploadCv = ({
                 Select a file or drag and drop here
               </p>
               <p className="text-sm text-gray-500 mt-1">
-                PDF size no more than 10MB
+                Only PDF files are allowed. Max size 10MB.
               </p>
             </div>
             <button
@@ -160,11 +178,7 @@ const FileUploadCv = ({
         )}
       </div>
 
-      {file && uploadStatus === "error" && (
-        <p className="mt-2 text-sm text-red-500">
-          Failed to upload file. Please try again.
-        </p>
-      )}
+      {error && <p className="mt-2 text-sm text-red-500">{error}</p>}
     </div>
   );
 };

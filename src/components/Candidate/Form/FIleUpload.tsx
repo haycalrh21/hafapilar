@@ -18,12 +18,28 @@ const FileUpload = ({
   // Initialize useDropzone hook
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop: (acceptedFiles) => onDrop(acceptedFiles),
-    maxSize: 10 * 1024 * 1024, // 10MB
+
+    accept: { "application/pdf": [".pdf"] },
+    maxSize: 10485760,
+    multiple: false,
+    disabled: isUploading,
   });
 
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
+      if (!acceptedFiles || acceptedFiles.length === 0) {
+        alert("No file selected.");
+        return;
+      }
+
       const selectedFile = acceptedFiles[0];
+
+      // Validasi tipe file
+      if (selectedFile.type !== "application/pdf") {
+        alert("Only PDF files are allowed.");
+        return;
+      }
+
       setFile(selectedFile);
       setIsUploading(true);
       setUploadStatus("idle");
@@ -60,7 +76,6 @@ const FileUpload = ({
         const result = await res.json();
         const fileUrl = `https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`; // URL valid
 
-        console.log("Uploaded File URL:", fileUrl); // Debug output
         setUploadStatus("success");
         onFileSelect(selectedFile, fileUrl); // Send file URL to parent component
       } catch (error) {

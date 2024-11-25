@@ -5,13 +5,12 @@ import { useSearchParams } from "next/navigation";
 
 import HeaderNotButton from "../HeaderNotButton";
 import clsx from "clsx";
+import { Suspense } from "react";
 
 export default function CandidateForm() {
   const searchParams = useSearchParams();
   const department = searchParams.get("department");
-  if (!department) {
-    return <div>Loading...</div>;
-  }
+
   return (
     <div
       style={{
@@ -62,7 +61,9 @@ export default function CandidateForm() {
             Discover the Career of Your Dreams
           </p>
         </div>
-        <FormInput />
+        <Suspense fallback={<div>Loading...</div>}>
+          <FormInput department={department} />
+        </Suspense>
       </div>
     </div>
   );
