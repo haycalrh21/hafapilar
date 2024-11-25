@@ -81,7 +81,7 @@ export default function ImpactCard() {
               }}
             >
               <h4 className="text-impact text-[36px] sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-2">
-                <NumberTicker value={9000} />+
+                <NumberTicker value={9000} delay={-1000000} direction="up" />+
               </h4>
               <p className=" text-[16px] sm:text-[14px] lg:text-[24px]">
                 Deployed Abroad
