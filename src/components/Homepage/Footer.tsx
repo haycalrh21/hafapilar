@@ -24,7 +24,7 @@ export default function Footer() {
 
           {/* Get in Touch */}
           <div className="text-left">
-            <h6 className="text-[24px] md:text-[44px] text-hero font-bold mb-2">
+            <h6 className="text-[24px] md:text-[44px] lg:text-[44px] font-bold text-hero mb-4">
               Get in Touch
             </h6>
             <div className="flex flex-col md:flex-row-3 lg:flex-row gap-3 items-start">
