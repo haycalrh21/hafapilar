@@ -17,14 +17,16 @@ export default function Footer() {
               height={50}
               className="ml-0 lg:ml-1"
             />
-            <p className="mt-4 text-[11px] sm:ml-0  text-hero lg:ml-1">
+            <p className="mt-4 text-[11px] md:text-[16px] sm:ml-0  text-hero lg:ml-1">
               Jl. Bougenvile No.32, Jakarta Utara, Indonesia, 14230
             </p>
           </div>
 
           {/* Get in Touch */}
           <div className="text-left">
-            <h6 className="text-3xl text-hero font-bold mb-2">Get in Touch</h6>
+            <h6 className="text-[24px] md:text-[44px] text-hero font-bold mb-2">
+              Get in Touch
+            </h6>
             <div className="flex flex-col md:flex-row-3 lg:flex-row gap-3 items-start">
               <Link
                 href="mailto:hrd@hafapilar.com"

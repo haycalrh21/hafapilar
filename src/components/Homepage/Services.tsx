@@ -25,13 +25,15 @@ export default function Services() {
   return (
     <div className="flex flex-col items-center relative overflow-hidden -mb-20 sm:-mb-20 lg:mb-6 mx-4 top-0 sm:top-20 lg:top-0 font-['Poppins']">
       <h2 className="text-[18px] text-texttesti sm:text-[24px]  md:text-[50px] lg:text-[50px] font-bold text-center relative mb-6 sm:mb-3 lg:mb-20">
-        <span className="block md:hidden text-textlayout">
+        <span className="block md:hidden text-textlayout text-[24px]">
           We
           <span className="mt-2"> Offer</span>{" "}
           <p
             style={{
               backgroundColor: "#F2AF29CC",
               font: "Poppins",
+              fontSize: "24px",
+
               padding: "2px 2px 8px",
               marginRight: "10px",
               display: "inline-block",
@@ -44,7 +46,7 @@ export default function Services() {
         </span>
         <span className="hidden md:block">
           We
-          <span className="mt-2">Offer</span>{" "}
+          <span className="mt-2 ml-2">Offer</span>{" "}
           <p
             style={{
               backgroundColor: "#F2AF29CC",
