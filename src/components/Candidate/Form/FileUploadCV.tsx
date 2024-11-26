@@ -147,8 +147,8 @@ const FileUploadCv = ({
               <div className="p-2 bg-gray-100 rounded-lg">
                 <FiFile className="w-8 h-8 text-gray-500" />
               </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate">
+              <div className="flex-1 min-w-0 max-w-[200px]">
+                <p className="text-sm font-medium text-gray-900 truncate max-w-[75px] md:max-w-[150px]">
                   {file.name}
                 </p>
                 <p className="text-sm text-gray-500">
