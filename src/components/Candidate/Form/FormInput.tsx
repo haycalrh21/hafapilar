@@ -143,8 +143,8 @@ export default function FormInput({ department }: any) {
   };
 
   const handleFileUploadCv = (file: File | null, fileUrl: string | null) => {
-    console.log("File selected:", file);
-    console.log("File URL received:", fileUrl);
+    // console.log("File selected:", file);
+    // console.log("File URL received:", fileUrl);
     setCvFile(fileUrl);
   };
 
@@ -152,8 +152,8 @@ export default function FormInput({ department }: any) {
     file: File | null,
     fileUrl: string | null
   ) => {
-    console.log("File selected:", file);
-    console.log("File URL received:", fileUrl);
+    // console.log("File selected:", file);
+    // console.log("File URL received:", fileUrl);
     setWorkExperienceFile(fileUrl);
   };
 
@@ -193,14 +193,14 @@ export default function FormInput({ department }: any) {
         !payload.department ||
         !payload.position
       ) {
-        alert("tidak ada data");
+        // alert("tidak ada data");
         setLoading(false);
 
         return;
       }
-      console.log("Payload to send:", payload);
+      // console.log("Payload to send:", payload);
       if (!isAgreed) {
-        alert("You must agree to the terms and conditions");
+        // alert("You must agree to the terms and conditions");
         setLoading(false);
       }
 
@@ -217,7 +217,7 @@ export default function FormInput({ department }: any) {
       }
 
       const result = await response.json();
-      console.log(result);
+      // console.log(result);
 
       router.push("/candidate/finish");
     } catch (error) {

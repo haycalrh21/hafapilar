@@ -1,9 +1,10 @@
 "use client";
-import { useSession } from "next-auth/react";
 import React from "react";
 
+import { useRouter } from "next/navigation";
 export default function page() {
-  const { data: session } = useSession();
-  // console.log(session);
+  const router = useRouter();
+
+  // (session);
   return <div>admin panel</div>;
 }

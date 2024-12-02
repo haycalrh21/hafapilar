@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const departments = [
+export const departments = [
   {
     title: "Bar",
     image: "/assets/candidate/bartender.png",

@@ -28,7 +28,7 @@ const FileUpload = ({
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
       if (!acceptedFiles || acceptedFiles.length === 0) {
-        alert("No file selected.");
+        // alert("No file selected.");
         return;
       }
 
@@ -36,7 +36,7 @@ const FileUpload = ({
 
       // Validasi tipe file
       if (selectedFile.type !== "application/pdf") {
-        alert("Only PDF files are allowed.");
+        // alert("Only PDF files are allowed.");
         return;
       }
 

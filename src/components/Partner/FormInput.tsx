@@ -5,9 +5,8 @@ import { z } from "zod";
 import PhoneNumberInput from "../Candidate/Form/PhoneInput";
 
 interface Country {
-  name: {
-    common: string;
-  };
+  id: number;
+  name: string;
 }
 
 const formSchema = z.object({
@@ -108,13 +107,12 @@ export default function FormInputPartner() {
     setTouched((prev) => ({ ...prev, whatsapp: true }));
     validateField("whatsapp", value);
   };
+  const api_url = process.env.NEXT_PUBLIC_API_URL;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    // Mark all fields as touched
-    // const allFields = Object.keys(formData);
     const allFields = Object.keys(formData);
     setTouched(
       allFields.reduce((acc, field) => ({ ...acc, [field]: true }), {})
@@ -122,7 +120,6 @@ export default function FormInputPartner() {
 
     try {
       const validatedData = formSchema.parse(formData);
-      const api_url = process.env.NEXT_PUBLIC_API_URL;
       const response = await fetch(`${api_url}/partner`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -154,20 +151,19 @@ export default function FormInputPartner() {
   // Fetch and sort countries
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch("https://restcountries.com/v3.1/all").then(
-        (res) => res.json()
-      );
+      const data = await fetch(`${api_url}/country`).then((res) => res.json());
+      // console.log(data);
       setCountries(data);
     };
     fetchData();
   }, []);
 
   const sortedCountries = countries.sort((a, b) => {
-    if (a.name.common < b.name.common) return -1;
-    if (a.name.common > b.name.common) return 1;
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1;
     return 0;
   });
-
+  // console.log(sortedCountries.name?)
   return (
     <div className="mx-auto px-4 mb-4 rounded-xl font-['Poppins']">
       <form
@@ -303,9 +299,9 @@ export default function FormInputPartner() {
               className="w-full p-2 border rounded-xl"
             >
               <option value="">Select a country</option>
-              {sortedCountries.map((countryItem, index) => (
-                <option key={index} value={countryItem.name.common}>
-                  {countryItem.name.common}
+              {sortedCountries.map((country) => (
+                <option key={country.id} value={country.name}>
+                  {loading ? "Loading..." : country.name}
                 </option>
               ))}
             </select>

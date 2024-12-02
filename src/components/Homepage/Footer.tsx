@@ -10,12 +10,10 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-start gap-6">
           {/* Logo dan Alamat */}
           <div className="text-left">
-            <Image
+            <img
               src="/assets/logo.png"
               alt="Hafa Pilar Logo"
-              width={150}
-              height={50}
-              className="ml-0 lg:ml-1"
+              className="h-[40px] w-[150px] md:h-[60px] md:w-[200px]  ml-0 lg:ml-1"
             />
             <p className="mt-4 text-[11px] md:text-[16px] sm:ml-0  text-hero lg:ml-1">
               Jl. Bougenvile No.32, Jakarta Utara, Indonesia, 14230

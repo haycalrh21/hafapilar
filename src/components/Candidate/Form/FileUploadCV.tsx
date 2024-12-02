@@ -25,7 +25,7 @@ const FileUploadCv = ({
       setUploadStatus("idle");
 
       if (!acceptedFiles || acceptedFiles.length === 0) {
-        alert("FIle not type pdf");
+        // alert("FIle not type pdf");
         return;
       }
 
@@ -33,7 +33,7 @@ const FileUploadCv = ({
 
       // Validasi tipe file
       if (selectedFile?.type !== "application/pdf") {
-        alert("Only PDF files are allowed.");
+        // alert("Only PDF files are allowed.");
         return;
       }
 

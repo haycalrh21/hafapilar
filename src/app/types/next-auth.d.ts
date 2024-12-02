@@ -1,16 +1,13 @@
-import NextAuth from "next-auth";
+import { DefaultSession, DefaultUser } from "next-auth";
 
+// Extend the NextAuth `User` type
 declare module "next-auth" {
-  interface Session {
-    user: {
-      id: string;
-      role?: string;
-      accessToken?: string;
-    } & DefaultSession["user"];
+  interface User {
+    token: string; // Add token to the user object
   }
 
-  interface User {
-    role?: string;
-    accessToken?: string;
+  // Extend the NextAuth `Session` type
+  interface Session {
+    accessToken: string; // Add accessToken to the session
   }
 }

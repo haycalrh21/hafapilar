@@ -1,0 +1,56 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  # TIMESTAMP: $(date +%d-%m-%Y-%H-%M)
+  TAG_LATEST: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:latest
+  timestamp: $(date +%Y%m%d)
+  TAG_COMMIT: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:$CI_COMMIT_SHORT_SHA
+  TAG_TIME: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME
+  TAG: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME
+  TAG_FE: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME/fe
+  TAG_API: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME/api
+  TAG_BRIDGE: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME
+  TAG_DASHBOARD: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME/dashboard
+  SSH_PORT: 717
+  DOCKER_DRIVER: overlay
+
+build-FE:
+  image: docker:stable
+  stage: build
+  before_script:
+    - apk add --no-cache git
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - |
+      timestamp=$(date +%Y%m%d)
+      echo $timestamp
+
+      IMAGE_CURRENT_VERSION=$(cat versions/version.txt)
+      echo "$IMAGE_CURRENT_VERSION" > versions/rollback/version.txt
+      echo "Updating version from  $IMAGE_CURRENT_VERSION"
+      MAJOR=$(echo $IMAGE_CURRENT_VERSION | cut -d. -f1)
+      MINOR=$(echo $IMAGE_CURRENT_VERSION | cut -d. -f2)
+      PATCH=$(echo $IMAGE_CURRENT_VERSION | cut -d. -f3)
+      NEW_PATCH=$((PATCH + 1))
+      NEW_VERSION="$MAJOR.$MINOR.$NEW_PATCH"
+      echo "Incrementing version from $IMAGE_CURRENT_VERSION to $NEW_VERSION"
+      echo "$NEW_VERSION" > versions/version.txt
+      sed -i "s/version: $IMAGE_CURRENT_VERSION/version: $NEW_VERSION/g" versions/version.txt
+
+      git config --global user.email "rendyinsane@gmail.com"
+      git config --global user.name "DigitelsDevops"
+      git add .
+      git commit -m "Update version to $NEW_VERSION"
+      git push "https://$CI_PROJECT_PATH_SLUG:$GITLAB_ACCESS_TOKEN@gitlab.com/$CI_PROJECT_PATH.git" HEAD:$(echo $CI_COMMIT_REF_NAME)
+
+      echo "Updating source code with new version=$NEW_VERSION"
+      echo "Building Docker image with tag=$TAG_COMMIT:$NEW_VERSION"
+
+      docker build -f Dockerfile -t ${TAG_FE}:$NEW_VERSION .
+      docker push ${TAG_FE}:$NEW_VERSION
+  tags:
+    - hafa2
+  when: manual
+

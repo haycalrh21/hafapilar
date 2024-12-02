@@ -54,7 +54,7 @@ export default function MarqueeDemo() {
       </h1>
       <Marquee
         pauseOnHover
-        className="[--duration:20s] max-w-[300px] sm:max-w-[1100px]  lg:max-w-[1120px] mx-auto py-10"
+        className="[--duration:20s] max-w-[330px] sm:max-w-[1100px]  lg:max-w-[1120px] mx-auto py-10"
       >
         {firstRow.map((review) => (
           <MarqueLogo key={review.id} {...review} />

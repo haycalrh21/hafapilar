@@ -92,17 +92,12 @@ export default function Testimonial() {
           <div className="relative w-full max-w-xl mx-8  ">
             <div className="relative space-y-4 ">
               {/* Card 2 (Background Card) */}
-              <Card className="absolute top-14 left-5 md:-left-4 bg-cardtesti bg-opacity-35 rounded-2xl p-3 py-4  border-hijau border-[1px] border-opacity-45 w-[300px] sm:w-1/2 md:1/3 lg:w-full h-[350px]  md:h-[320px] scale-95 z-0 ">
+              <Card className="absolute top-20 -mx-5 md:-left-4 bg-[#C4D1D4]  rounded-2xl p-3 py-4  border-hijau border-[1px] border-opacity-45 w-full md:1/3 lg:w-full h-[300px]  md:h-[320px] scale-95 z-0 ">
                 <CardContent>
-                  <p className="text-cardtesti opacity-0 text-[13px] md:text-[17px]">
-                    {
-                      testimonials[(currentIndex + 1) % testimonials.length]
-                        .text
-                    }
-                  </p>
+                  <p className="text-cardtesti opacity-0 text-[13px] md:text-[17px]"></p>
                 </CardContent>
                 <CardFooter className="flex flex-col mt-10 justify-center items-start">
-                  <p className="text-texttesti  text-[16px] font-bold">
+                  <p className="text-texttesti  text-[16px] font-bold mt-40">
                     {
                       testimonials[(currentIndex + 1) % testimonials.length]
                         .author
@@ -118,14 +113,14 @@ export default function Testimonial() {
               </Card>
 
               {/* Card 1 (Front Card) */}
-              <Card className="relative bg-white rounded-2xl p-3 py-4 right-8 md:right-14 border-hijau border-[1px] shadow-lg w-[300px] sm:w-1/2 md:1/3 lg:w-full h-[310px] md:h-[300px] z-30">
+              <Card className="relative bg-white rounded-2xl p-3 py-4 -mx-10 md:right-14 border-hijau border-[1px] shadow-lg w-full  md:1/3 lg:w-full h-[300px] md:h-[300px] scale-95 z-30">
                 <CardContent>
                   <p className="text-texttesti text-[12px] md:text-[17px] mb-4">
                     {testimonials[currentIndex].text}
                   </p>
                 </CardContent>
                 <CardFooter className="flex flex-col justify-center items-start">
-                  <p className="text-texttesti text-[16px] font-bold">
+                  <p className="text-texttesti text-[16px] font-bold mt-8 md:mt-0">
                     {testimonials[currentIndex].author}
                   </p>
                   <p className="text-departement text-[12px]">
@@ -138,7 +133,7 @@ export default function Testimonial() {
             {/* Navigation Buttons */}
             <button
               onClick={prevTestimonial}
-              className="absolute left-[-50px] md:left-[-60px] top-1/2 transform -translate-y-1/2 bg-white z-40 rounded-full p-2 shadow-md hover:bg-gray-100"
+              className="absolute left-[-50px] md:left-[-100px] top-1/2 transform -translate-y-1/2 bg-white z-40 rounded-full p-2 shadow-md hover:bg-gray-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -157,7 +152,7 @@ export default function Testimonial() {
             </button>
             <button
               onClick={nextTestimonial}
-              className="absolute right-[25px] md:right-[20px] top-1/2 transform -translate-y-1/2 bg-white z-30 rounded-full p-2 shadow-md hover:bg-gray-100"
+              className="absolute right-[25px] md:right-[40px] top-1/2 transform -translate-y-1/2 bg-white z-30 rounded-full p-2 shadow-md hover:bg-gray-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -18,12 +18,14 @@ const config: Config = withUt({
       },
       colors: {
         hijau: "#0F4C5C",
+
         textlayout: "#07242B",
+        tableName: "#BCCDD1",
         departement: "#63767A",
         textpartner: "#FFFFFE",
         texttesti: "#07242B",
         hero: "#07242B",
-        cardtesti: "#0F4C5C80",
+        cardtesti: "#0F4C5C",
         testi: "#07242B",
         testi2: "#63767A",
         impact: "#F2AF29",
